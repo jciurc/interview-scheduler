@@ -34,6 +34,7 @@ const interviewers = [
 
 export default function App() {
   const [day, setDay] = useState('Monday');
+  const [interviewer, setInterviewer] = useState(3);
 
   return (
     <main className="layout">
@@ -47,14 +48,18 @@ export default function App() {
         <nav className="sidebar__menu">
           <DayList
             days={days}
-            day={day}
-            setDay={(name) => { setDay(name) }}
+            value={day}
+            onChange={(name) => { setDay(name) }}
           />
         </nav>
 
       </section>
       <section className="schedule">
-        {/* Replace this with the schedule elements durint the "The Scheduler" activity. */}
+        <InterviewerList
+        interviewers={interviewers}
+        value={interviewer}
+        onChange={(id) => { setInterviewer(id) }}
+        />
       </section>
     </main>
   );
