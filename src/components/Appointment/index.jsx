@@ -1,11 +1,15 @@
 import React, { useState } from "react";
+import Header from "./Header";
+import Empty from "./Empty";
 import './styles.scss';
 
-export default function Appointment(props){
+export default function Appointment(props) {
   return (
     <article className="appointment">
-      <h2>helo</h2>
+      <Header time={props.time}/>
       {props.time && <p>Appointment for {props.time}</p>}
+
+      <Empty />
     </article>
   );
 }
