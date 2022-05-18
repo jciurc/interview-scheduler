@@ -185,9 +185,17 @@ storiesOf("Appointment", module)
   .addParameters({
     backgrounds: [{ name: "white", value: "#fff", default: true }]
   })
-  .add("Form", () => <Form
+  .add("Form Default", () => <Form
+    student={''}
+    interviewer={null}
     interviewers={interviewers}
-    value={2}
+    onCancel={action("onCancel")}
+    onSave={action("onSave")}
+  />)
+  .add("Form with Info", () => <Form
+    student={'Somebody'}
+    interviewer={interviewers[1].id}
+    interviewers={interviewers}
     onCancel={action("onCancel")}
     onSave={action("onSave")}
   />)
