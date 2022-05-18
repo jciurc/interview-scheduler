@@ -46,14 +46,12 @@ export default function Application() {
           <DayList
             days={days}
             day={day}
-            setDay={setDay}
+            setDay={(name) => { setDay(name) }}
           />
-
         </nav>
 
       </section>
       <section className="schedule">
-        <DayList days={days} day={day} setDay={setDay} /> {/* TEST SECTION REPLACE WITH SCHEDULE COMPONENT */}
         {/* Replace this with the schedule elements durint the "The Scheduler" activity. */}
       </section>
     </main>
