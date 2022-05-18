@@ -10,6 +10,7 @@ export default function InterviewerListItem(props) {
   return (
     <li className={interviewerClass} selected={props.selected}>
       <img className={'interviewers__item-image'} src={props.avatar} alt={props.name + "Profile Picture"} />
+      {props.selected && props.name}
     </li>
   );
 }
