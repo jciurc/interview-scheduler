@@ -17,6 +17,7 @@ import Show from "components/Appointment/Show";
 import Confirm from "components/Appointment/Confirm";
 import Status from "components/Appointment/Status";
 import Error from "components/Appointment/Error";
+import Form from "components/Appointment/Form";
 
 
 //  = button =
@@ -176,4 +177,18 @@ storiesOf("Appointment", module)
   />)
   .add("Status", () => <Status />)
   .add("Error", () => <Error onClose={action("onClose")} />)
+  ;
+
+
+// = Form =
+storiesOf("Appointment", module)
+  .addParameters({
+    backgrounds: [{ name: "white", value: "#fff", default: true }]
+  })
+  .add("Form", () => <Form
+    interviewers={interviewers}
+    value={2}
+    onCancel={action("onCancel")}
+    onSave={action("onSave")}
+  />)
   ;
