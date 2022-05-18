@@ -1,6 +1,6 @@
 import React from "react";
-import 'components/DayListItem.scss';
 import classNames from "classnames";
+import './styles/DayListItem.scss';
 
 const formatSpots = (spots) => {
   if (spots === 0) return <>no spots remaining</>;
