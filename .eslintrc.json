@@ -1,6 +1,5 @@
 {
   "extends": [
-    "../../../.eslintrc.json", // "~/.eslintrc.json" global file
     "react-app"
   ],
   "parser": "babel-eslint"

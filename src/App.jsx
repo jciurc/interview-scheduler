@@ -63,12 +63,9 @@ const appointments = {
   }
 };
 
-const parsedAppointments = Object.values(appointments).map((apt) => {
-  return (<Appointment
-    key={apt.id}
-    {...apt}
-  />);
-});
+const parsedAppointments = Object.values(appointments).map((apt) => (
+  <Appointment key={apt.id} {...apt} />
+));
 
 
 // = main App component =
