@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Appointment from "components/Appointment";
 import DayList from "components/DayList";
+import { getAppointmentsForDay } from "helpers/selectors";
 
 import "styles/App.scss";
 
@@ -11,33 +12,35 @@ export default function App() {
     day: "Monday",
     days: [],
     appointments: {},
+    interviewers: [],
   });
+
+  const dailyAppointments = getAppointmentsForDay(state, state.day);
 
   // get days
   useEffect(() => {
-    axios.get('/api/days')
+    Promise.all([
+      axios.get('/api/days'),
+      axios.get('/api/appointments'),
+      axios.get('/api/interviewers'),
+    ])
       .then((res) => {
-        setState((prev) => ({ ...prev, days: res.data }));
+        setState((prev) => ({
+          ...prev,
+          days: res[0].data,
+          appointments: { ...res[1].data },
+          interviewers: {...res[2].data},
+        }));
       })
       .catch((e) => {
         console.error(e);
       });
   }, []);
 
-  // get appointments
-  useEffect(() => {
-    axios.get('/api/appointments')
-      .then((res) => {
-        setState((prev) => ({ ...prev, appointments: { ...res.data } }));
-      })
-      .catch((e) => {
-        console.error(e);
-      });
-  }, []);
 
-  const setDay = (name) => { setState((prev) => ({ ...prev, name })); };
+  const setDay = (name) => { setState((prev) => ({ ...prev, day: name })); };
 
-  const parsedAppointments = Object.values(state.appointments).map((apt) => (
+  const aptsList = dailyAppointments.map((apt) => (
     <Appointment key={apt.id} {...apt} />
   ));
 
@@ -61,7 +64,7 @@ export default function App() {
 
       </section>
       <section className="schedule">
-        {parsedAppointments}
+        {aptsList}
         <Appointment time="5pm" />
       </section>
     </main>
