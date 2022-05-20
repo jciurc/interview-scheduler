@@ -10,31 +10,32 @@ export default function App() {
   const [state, setState] = useState({
     day: "Monday",
     days: [],
-    // you may put the line below, but will have to remove/comment hardcoded appointments variable
-    appointments: {}
+    appointments: {},
   });
 
   // get days
   useEffect(() => {
     axios.get('/api/days')
-    .then((res) => {
-      state.setDays(res.data);
-    })
-    .catch((e) => {
-      console.error(e);
-    })
+      .then((res) => {
+        setState((prev) => ({ ...prev, days: res.data }));
+      })
+      .catch((e) => {
+        console.error(e);
+      });
   }, []);
 
+  // get appointments
   useEffect(() => {
     axios.get('/api/appointments')
-    .then((res) => {
-      console.log('apps response', res.data)
-      state.setAppointments({...res.data})
-    })
-    .catch((e) => {
-      console.error(e);
-    })
+      .then((res) => {
+        setState((prev) => ({ ...prev, appointments: { ...res.data } }));
+      })
+      .catch((e) => {
+        console.error(e);
+      });
   }, []);
+
+  const setDay = (name) => { setState((prev) => ({ ...prev, name })); };
 
   const parsedAppointments = Object.values(state.appointments).map((apt) => (
     <Appointment key={apt.id} {...apt} />
@@ -54,14 +55,14 @@ export default function App() {
           <DayList
             days={state.days}
             value={state.day}
-            onChange={(name) => {state.setDay(name);}}
+            onChange={setDay}
           />
         </nav>
 
       </section>
       <section className="schedule">
         {parsedAppointments}
-        <Appointment time="5pm"/>
+        <Appointment time="5pm" />
       </section>
     </main>
   );
