@@ -13,15 +13,6 @@ export default function Appointment(props) {
     <article className="appointment">
       {props.time && <Header time={props.time} />}
       {props.interview ? <Show {...props.interview}/> : <Empty />}
-
-
-      {/* <Confirm /> */}
-      {/* <Empty /> */}
-      {/* <Error /> */}
-      {/* <Form /> */}
-      {/* <Show /> */}
-      {/* <Status /> */}
-
     </article>
   );
 }
