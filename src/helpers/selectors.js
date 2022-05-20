@@ -1,12 +1,12 @@
 export function getAppointmentsForDay(state, day) {
-  if (!state.days.length) return [];
-
   const foundDay = state.days.find((item) => item.name === day);
   if (!foundDay) return [];
 
-  const filteredApts = Object.values(state.appointments).filter((app) => (
-    foundDay.appointments.includes(app.id)
-  ));
+  return foundDay.appointments.map((k) => state.appointments[k])
+};
 
-  return filteredApts;
+
+export function getInterview(state, interview) {
+  return !interview ? interview :
+  {...interview, interviewer: state.interviewers[interview.interviewer]}
 };
