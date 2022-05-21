@@ -10,7 +10,6 @@ import Header from './Header';
 import Show from './Show';
 import Status from './Status';
 
-
 const EMPTY = 'EMPTY';
 const SHOW = 'SHOW';
 const CREATE = 'CREATE';

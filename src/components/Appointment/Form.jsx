@@ -27,7 +27,7 @@ export default (props) => {
         <InterviewerList
           interviewers={props.interviewers}
           value={interviewer ? interviewer.id : null}
-          onChange={(id) => { setInterviewer(id); }}
+          onChange={(obj) => { setInterviewer(obj); }}
         />
       </section>
       <section className="appointment__card-right">

@@ -8,7 +8,7 @@ const formatSpots = (spots) => {
   return <>{spots} spots remaining</>;
 }
 
-export default function DayListItem(props) {
+export default (props) => {
   const buttonClass = classNames('day-list__item', {
     'day-list__item--selected': props.selected,
     'day-list__item--full': props.spots === 0,
@@ -24,4 +24,4 @@ export default function DayListItem(props) {
       <h3 className="text--light">{formatSpots(props.spots)}</h3>
     </li>
   );
-}
+};
