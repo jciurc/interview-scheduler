@@ -12,7 +12,7 @@ export default function App() {
     day: "Monday",
     days: [],
     appointments: {},
-    interviewers: {},
+    interviewers: [],
   });
 
   const setDay = (name) => { setState((prev) => ({ ...prev, day: name })); };
@@ -25,6 +25,7 @@ export default function App() {
         key={appointment.id}
         id={appointment.id}
         time={appointment.time}
+        interviewers={state.interviewers}
         interview={interview}
       />
     );
@@ -42,7 +43,7 @@ export default function App() {
           ...prev,
           days: res[0].data,
           appointments: { ...res[1].data },
-          interviewers: { ...res[2].data },
+          interviewers: Object.values(res[2].data),
         }));
       })
       .catch((e) => {
@@ -71,7 +72,7 @@ export default function App() {
       </section>
       <section className="schedule">
         {schedule}
-        <Appointment time="5pm" />
+        <Appointment interviewers={state.interviewers} time="5pm" />
       </section>
     </main>
   );
