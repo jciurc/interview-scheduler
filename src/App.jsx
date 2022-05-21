@@ -16,10 +16,10 @@ export default function App() {
   });
 
   const setDay = (name) => { setState((prev) => ({ ...prev, day: name })); };
+
   const appointments = getAppointmentsForDay(state, state.day);
   const schedule = appointments.map((appointment) => {
     const interview = getInterview(state, appointment.interview);
-
     return (
       <Appointment
         key={appointment.id}
@@ -31,7 +31,6 @@ export default function App() {
   });
 
 
-  // get days
   useEffect(() => {
     Promise.all([
       axios.get('/api/days'),
