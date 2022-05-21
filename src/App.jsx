@@ -2,22 +2,25 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Appointment from "components/Appointment";
 import DayList from "components/DayList";
-import { getAppointmentsForDay, getInterview } from "helpers/selectors";
+import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "helpers/selectors";
 
 import "styles/App.scss";
 
+
 // = main App component =
-export default function App() {
+export default () => {
   const [state, setState] = useState({
     day: "Monday",
     days: [],
     appointments: {},
-    interviewers: [],
+    interviewers: {},
   });
 
-  const setDay = (name) => { setState((prev) => ({ ...prev, day: name })); };
+  const setDay = (day) => { setState((prev) => ({ ...prev, day })); };
 
+  // = selectors =
   const appointments = getAppointmentsForDay(state, state.day);
+  const interviewers = getInterviewersForDay(state, state.day);
   const schedule = appointments.map((appointment) => {
     const interview = getInterview(state, appointment.interview);
     return (
@@ -25,13 +28,14 @@ export default function App() {
         key={appointment.id}
         id={appointment.id}
         time={appointment.time}
-        interviewers={state.interviewers}
+        interviewers={interviewers}
         interview={interview}
       />
     );
   });
 
 
+  // get interview data from database on page load
   useEffect(() => {
     Promise.all([
       axios.get('/api/days'),
@@ -43,7 +47,7 @@ export default function App() {
           ...prev,
           days: res[0].data,
           appointments: { ...res[1].data },
-          interviewers: Object.values(res[2].data),
+          interviewers: { ...res[2].data },
         }));
       })
       .catch((e) => {
@@ -52,6 +56,7 @@ export default function App() {
   }, []);
 
 
+  // render main page
   return (
     <main className="layout">
       <section className="sidebar">
@@ -72,7 +77,7 @@ export default function App() {
       </section>
       <section className="schedule">
         {schedule}
-        <Appointment interviewers={state.interviewers} time="5pm" />
+        <Appointment key="last" time="5pm" />
       </section>
     </main>
   );

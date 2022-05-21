@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import './styles.scss';
-
 import useVisualMode from 'hooks/useVisualMode';
+import './styles.scss';
 
 import Confirm from './Confirm';
 import Empty from './Empty';
@@ -19,16 +18,18 @@ const CREATE = 'CREATE';
 
 export default (props) => {
   const { mode, transition, back } = useVisualMode(props.interview ? SHOW : EMPTY);
+
   return (
     <article className='appointment'>
       {props.time && <Header time={props.time} />}
 
       {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
-      {mode === SHOW && <Show {...props.interview} />}
+      {mode === SHOW && <Show {...props.interview} onEdit={() => transition(CREATE)} />}
       {mode === CREATE &&
         <Form
-          {...props}
-          onCancel={() => transition(EMPTY)}
+          {...props.interview}
+          interviewers={props.interviewers}
+          onCancel={() => back()}
           onSave={() => { console.log('hello saveed'); }}
         />}
 

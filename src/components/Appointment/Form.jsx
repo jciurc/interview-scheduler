@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import Button from "components/Button";
 import InterviewerList from "components/InterviewerList";
 
-
-export default function Form(props) {
+export default (props) => {
   const [student, setStudent] = useState(props.student || ''); // string
-  const [interviewer, setInterviewer] = useState(props.interviewer || null); // id number
+  const [interviewer, setInterviewer] = useState(props.interviewer || null); // interview obj
   const reset = (cb) => {
     setStudent('');
     setInterviewer(null);
@@ -27,16 +26,16 @@ export default function Form(props) {
         </form>
         <InterviewerList
           interviewers={props.interviewers}
-          value={interviewer}
-          onChange={(id) => {setInterviewer(id)}}
+          value={interviewer ? interviewer.id : null}
+          onChange={(id) => { setInterviewer(id); }}
         />
       </section>
       <section className="appointment__card-right">
         <section className="appointment__actions">
-          <Button danger onClick={() => {reset(props.onCancel)}}>Cancel</Button>
+          <Button danger onClick={() => { reset(props.onCancel); }}>Cancel</Button>
           <Button confirm onClick={props.onSave}>Save</Button>
         </section>
       </section>
     </main>
   );
-}
+};
