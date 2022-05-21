@@ -1,16 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export default (initial) => {
   const [mode, setMode] = useState(initial);
   const [history, setHistory] = useState([initial]);
 
-  useEffect(() => {
-
-  }, []);
-
-  const transition = (newMode, replace) => {
-    setMode(newMode);
-    setHistory((prev) => [...(replace ? prev.slice(0, -1) : prev), newMode]);
+  const transition = (mode, replace) => {
+    setMode(mode);
+    setHistory((prev) => [...(replace ? prev.slice(0, -1) : prev), mode]);
   };
 
   const back = () => {
@@ -20,4 +16,3 @@ export default (initial) => {
 
   return { mode, transition, back };
 };
-
