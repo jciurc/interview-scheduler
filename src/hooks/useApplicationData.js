@@ -1,6 +1,23 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
+// = local helpers =
+const getDaySpots = (state, appointments) => {
+  const index = state.days.findIndex((day) => day.name === state.day);
+  const dailyApts = state.days[index].appointments.map((id) => appointments[id]);
+  return { index, spots: dailyApts.filter((apt) => !apt.interview).length };
+};
+
+const updateSpots = (state, appointments) => {
+  const { index, spots } = getDaySpots(state, appointments);
+  const day = { ...state.days[index], spots };
+  const days = [...state.days];
+  days[index] = day;
+  return days;
+};
+
+
+// = main function/hook =
 export default () => {
   // = state =
   const [state, setState] = useState({
@@ -29,20 +46,23 @@ export default () => {
       .catch((e) => { console.error(e); });
   }, []);
 
-  // = helpers =
+  // = exported helpers =
   const setDay = (day) => { setState((prev) => ({ ...prev, day })); };
-
   const updateAppointment = (id, interview = null) => {
+    // add or remove interview
     const appointment = { ...state.appointments[id], interview, };
     const appointments = { ...state.appointments, [id]: appointment, };
+
+    // recount spots
+    const days = updateSpots(state, appointments);
 
     // update db with new interview or delete interview
     return interview ? (
       axios.put('/api/appointments/' + id, { interview })
-        .then((res) => { setState((prev) => ({ ...prev, appointments, })); })
+        .then((res) => { setState((prev) => ({ ...prev, appointments, days })); })
     ) : (
       axios.delete('/api/appointments/' + id)
-        .then((res) => { setState((prev) => ({ ...prev, appointments, })); })
+        .then((res) => { setState((prev) => ({ ...prev, appointments, days })); })
     );
   };
 

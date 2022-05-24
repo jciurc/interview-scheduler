@@ -46,6 +46,7 @@ export default (props) => {
       .catch((err) => { transition(ERROR_SAVE, true); });
   };
 
+
   const confirmDelete = () => {
     // make axios delete request in app.js
     transition(DELETING, true);
