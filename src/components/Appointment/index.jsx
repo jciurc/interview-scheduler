@@ -38,10 +38,7 @@ export default (props) => {
       return;
     };
 
-    const interview = {
-      student,
-      interviewer,
-    };
+    const interview = { student, interviewer, };
 
     // make axios put request in app.js
     transition(SAVING);
