@@ -19,7 +19,9 @@ const App = () => {
 
   // = helpers =
   const setDay = (day) => { setState((prev) => ({ ...prev, day })); };
+
   const bookInterview = (id, interview) => {
+    console.log('interview', interview)
     const appointment = {
       ...state.appointments[id],
       interview,
@@ -30,12 +32,23 @@ const App = () => {
       [id]: appointment,
     };
 
-    setState((prev) => {
-      return {
-        ...prev,
-        appointments,
-      };
-    });
+
+
+    return axios.put('/api/appointments/' + id, appointment )
+    .then((res) => {
+      setState((prev) => {
+        return {
+          ...prev,
+          appointments,
+        };
+      });
+
+      return 'done';
+    })
+    .catch((err) => {
+      console.log('error making put request');
+      console.error(err);
+    })
   };
 
 

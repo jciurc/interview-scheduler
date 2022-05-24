@@ -19,14 +19,31 @@ export default (props) => {
   const { mode, transition, back } = useVisualMode(props.interview ? SHOW : EMPTY);
 
   // = helpers =
+  /**
+   * @param {string} student student name
+   * @param {number} interviewer interviewer id
+   */
   const save = (student, interviewer) => {
+    if (!student || !interviewer) {
+      back();
+      return;
+    };
+
     const interview = {
       student,
-      interviewer: interviewer,
+      interviewer,
     };
-    props.bookInterview(props.id, interview);
-    transition(SHOW);
+
+    props.bookInterview(props.id, interview)
+      .then((res) => {
+        transition(SHOW);
+      })
+      .catch((err) => {
+        console.error(err);
+        back();
+      });
   };
+
 
   // = render component =
   return (
