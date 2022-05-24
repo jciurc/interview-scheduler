@@ -21,7 +21,6 @@ const App = () => {
   const setDay = (day) => { setState((prev) => ({ ...prev, day })); };
 
   const bookInterview = (id, interview) => {
-    console.log('interview', interview)
     const appointment = {
       ...state.appointments[id],
       interview,
@@ -31,7 +30,6 @@ const App = () => {
       ...state.appointments,
       [id]: appointment,
     };
-
 
 
     return axios.put('/api/appointments/' + id, appointment )

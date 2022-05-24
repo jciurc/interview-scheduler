@@ -11,8 +11,9 @@ import Show from './Show';
 import Status from './Status';
 
 // appointment modes
-const SHOW = 'SHOW';
 const EMPTY = 'EMPTY';
+const SHOW = 'SHOW';
+const SAVING = 'SAVING';
 const CREATE = 'CREATE';
 
 export default (props) => {
@@ -24,7 +25,9 @@ export default (props) => {
    * @param {number} interviewer interviewer id
    */
   const save = (student, interviewer) => {
-    if (!student || !interviewer) {
+    if (!student || !interviewer) return;
+    if (student === props.interview.student &&
+      interviewer === props.interview.interviewer.id) {
       back();
       return;
     };
@@ -34,6 +37,8 @@ export default (props) => {
       interviewer,
     };
 
+    // make axios put request in app.js
+    transition(SAVING);
     props.bookInterview(props.id, interview)
       .then((res) => {
         transition(SHOW);
@@ -52,6 +57,7 @@ export default (props) => {
 
       {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
       {mode === SHOW && <Show {...props.interview} onEdit={() => transition(CREATE)} />}
+      {mode === SAVING && <Status />}
       {mode === CREATE && (
         <Form
           {...props.interview}
