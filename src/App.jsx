@@ -40,8 +40,7 @@ const App = () => {
           appointments,
         }));
         return 'done';
-      })
-      .catch((err) => { console.error(err); });
+      });
   };
 
 
@@ -63,9 +62,7 @@ const App = () => {
           appointments,
         }));
         return 'done deleting';
-      })
-
-      .catch((err) => { console.error(err); });
+      });
   };
 
 

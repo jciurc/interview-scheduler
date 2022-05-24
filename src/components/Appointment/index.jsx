@@ -17,7 +17,8 @@ const FORM = 'FORM';
 const SAVING = 'SAVING';
 const CONFIRM = 'CONFIRM';
 const DELETING = 'DELETING';
-const ERROR = 'ERROR';
+const ERROR_SAVE = 'ERROR_SAVE';
+const ERROR_DELETE = 'ERROR_DELETE';
 
 export default (props) => {
   const { mode, transition, back } = useVisualMode(props.interview ? SHOW : EMPTY);
@@ -29,6 +30,7 @@ export default (props) => {
    */
   const save = (student, interviewer) => {
     if (!student || !interviewer) return;
+    // don't make post request if no new changes
     if (props.interview && (
       student === props.interview.student &&
       interviewer === props.interview.interviewer.id)) {
@@ -44,26 +46,16 @@ export default (props) => {
     // make axios put request in app.js
     transition(SAVING);
     props.bookInterview(props.id, interview)
-      .then((res) => {
-        transition(SHOW);
-      })
-      .catch((err) => {
-        console.error(err);
-        back();
-      });
+      .then((res) => { transition(SHOW); })
+      .catch((err) => { transition(ERROR_SAVE, true); });
   };
 
   const confirmDelete = () => {
     // make axios put request in app.js
-    transition(DELETING);
+    transition(DELETING, true);
     props.cancelInterview(props.id)
-      .then((res) => {
-        transition(EMPTY);
-      })
-      .catch((err) => {
-        transition(ERROR);
-        console.error(err);
-      });
+      .then((res) => { transition(EMPTY); })
+      .catch((err) => { transition(ERROR_DELETE, true); });
   };
 
 
@@ -78,7 +70,8 @@ export default (props) => {
       {mode === SAVING && <Status status='Saving' />}
       {mode === CONFIRM && <Confirm onCancel={back} onConfirm={confirmDelete} />}
       {mode === DELETING && <Status status='Deleting' />}
-      {mode === ERROR && <Error onClose={back} />}
+      {mode === ERROR_SAVE && <Error onClose={back} />}
+      {mode === ERROR_DELETE && <Error onClose={back} />}
     </article>
   );
 };
