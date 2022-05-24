@@ -10,12 +10,7 @@ import "styles/App.scss";
 // = main component =
 const App = () => {
   // get and set pre-render data
-  const {
-    state,
-    setDay,
-    bookInterview,
-    cancelInterview
-  } = useApplicationData();
+  const { state, setDay, updateAppointment } = useApplicationData();
 
   // = selectors =
   const { appointments, interviewers } = getScheduleInfoForDay(state, state.day);
@@ -28,8 +23,7 @@ const App = () => {
         time={appointment.time}
         interviewers={interviewers}
         interview={interview}
-        bookInterview={bookInterview}
-        cancelInterview={cancelInterview}
+        updateAppointment={updateAppointment}
       />
     );
   });

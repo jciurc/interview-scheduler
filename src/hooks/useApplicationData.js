@@ -32,54 +32,19 @@ export default () => {
   // = helpers =
   const setDay = (day) => { setState((prev) => ({ ...prev, day })); };
 
-  const bookInterview = (id, interview) => {
-    const appointment = {
-      ...state.appointments[id],
-      interview,
-    };
+  const updateAppointment = (id, interview = null) => {
+    const appointment = { ...state.appointments[id], interview, };
+    const appointments = { ...state.appointments, [id]: appointment, };
 
-    const appointments = {
-      ...state.appointments,
-      [id]: appointment,
-    };
-
-
-    return axios.put('/api/appointments/' + id, { interview })
-      .then((res) => {
-        setState((prev) => ({
-          ...prev,
-          appointments,
-        }));
-        return 'done';
-      });
+    // update db with new interview or delete interview
+    return interview ? (
+      axios.put('/api/appointments/' + id, { interview })
+        .then((res) => { setState((prev) => ({ ...prev, appointments, })); })
+    ) : (
+      axios.delete('/api/appointments/' + id)
+        .then((res) => { setState((prev) => ({ ...prev, appointments, })); })
+    );
   };
 
-
-  const cancelInterview = (id) => {
-    const appointment = {
-      ...state.appointments[id],
-      interview: null,
-    };
-
-    const appointments = {
-      ...state.appointments,
-      [id]: appointment,
-    };
-
-    return axios.delete('/api/appointments/' + id)
-      .then((res) => {
-        setState((prev) => ({
-          ...prev,
-          appointments,
-        }));
-        return 'done deleting';
-      });
-  };
-
-  return {
-    state,
-    setDay,
-    bookInterview,
-    cancelInterview
-  };
+  return { state, setDay, updateAppointment };
 };

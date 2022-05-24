@@ -37,20 +37,19 @@ export default (props) => {
       back();
       return;
     };
-
     const interview = { student, interviewer, };
 
     // make axios put request in app.js
     transition(SAVING);
-    props.bookInterview(props.id, interview)
+    props.updateAppointment(props.id, interview)
       .then((res) => { transition(SHOW); })
       .catch((err) => { transition(ERROR_SAVE, true); });
   };
 
   const confirmDelete = () => {
-    // make axios put request in app.js
+    // make axios delete request in app.js
     transition(DELETING, true);
-    props.cancelInterview(props.id)
+    props.updateAppointment(props.id)
       .then((res) => { transition(EMPTY); })
       .catch((err) => { transition(ERROR_DELETE, true); });
   };
