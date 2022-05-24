@@ -3,8 +3,8 @@ import Button from "components/Button";
 import InterviewerList from "components/InterviewerList";
 
 export default (props) => {
-  const [student, setStudent] = useState(props.student || ''); // string
-  const [interviewer, setInterviewer] = useState(props.interviewer || null); // interview obj
+  const [student, setStudent] = useState(props.student || ''); // string - student name
+  const [interviewerId, setInterviewer] = useState(props.interviewer && props.interviewer.id || null); // null or id number
   const reset = (cb) => {
     setStudent('');
     setInterviewer(null);
@@ -26,14 +26,14 @@ export default (props) => {
         </form>
         <InterviewerList
           interviewers={props.interviewers}
-          value={interviewer ? interviewer.id : null}
-          onChange={(obj) => { setInterviewer(obj); }}
+          value={interviewerId}
+          onChange={setInterviewer}
         />
       </section>
       <section className="appointment__card-right">
         <section className="appointment__actions">
           <Button danger onClick={() => { reset(props.onCancel); }}>Cancel</Button>
-          <Button confirm onClick={props.onSave}>Save</Button>
+          <Button confirm onClick={()=> {props.onSave(student, interviewerId)}}>Save</Button>
         </section>
       </section>
     </main>

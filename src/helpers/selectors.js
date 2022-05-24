@@ -1,5 +1,5 @@
 // combined functions
-export const getDayProperties = (state, day) => {
+export const getScheduleInfoForDay = (state, day) => {
   const foundDay = state.days.find((item) => item.name === day);
   if (!foundDay) return {appointments: [], interviewers: []};
 
@@ -15,7 +15,8 @@ export const getInterview = (state, interview) => {
 };
 
 
-// = old indidivual functions =
+// ----------
+// = old indidivual functions - only used for jest tests =
 export const getAppointmentsForDay = (state, day) => {
   const foundDay = state.days.find((item) => item.name === day);
   if (!foundDay) return [];
@@ -29,4 +30,4 @@ export const getInterviewersForDay = (state, day) => {
 
   return foundDay.interviewers.map((id) => state.interviewers[id]);
 };
-// = old functions =
+// ----------

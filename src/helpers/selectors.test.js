@@ -1,4 +1,9 @@
-import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "helpers/selectors";
+import {
+  getScheduleInfoForDay,
+  getInterview,
+  getAppointmentsForDay,
+  getInterviewersForDay
+} from "helpers/selectors";
 
 // test data
 const state = {

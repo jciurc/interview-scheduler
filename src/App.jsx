@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Appointment from "components/Appointment";
 import DayList from "components/DayList";
-import { getDayProperties, getInterview } from "helpers/selectors";
+import { getScheduleInfoForDay, getInterview } from "helpers/selectors";
 
 import "styles/App.scss";
 
 
-// = main App component =
-export default () => {
+// = main component =
+const App = () => {
+  // = state =
   const [state, setState] = useState({
     day: "Monday",
     days: [],
@@ -16,11 +17,30 @@ export default () => {
     interviewers: {},
   });
 
+  // = helpers =
   const setDay = (day) => { setState((prev) => ({ ...prev, day })); };
+  const bookInterview = (id, interview) => {
+    const appointment = {
+      ...state.appointments[id],
+      interview,
+    };
+
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment,
+    };
+
+    setState((prev) => {
+      return {
+        ...prev,
+        appointments,
+      };
+    });
+  };
+
 
   // = selectors =
-  const { appointments , interviewers } = getDayProperties(state, state.day);
-  console.log('apps', appointments, 'interviewers', interviewers)
+  const { appointments, interviewers } = getScheduleInfoForDay(state, state.day);
   const schedule = appointments.map((appointment) => {
     const interview = getInterview(state, appointment.interview);
     return (
@@ -30,11 +50,13 @@ export default () => {
         time={appointment.time}
         interviewers={interviewers}
         interview={interview}
+        bookInterview={bookInterview}
       />
     );
   });
 
 
+  // = effects =
   // get interview data from database on page load
   useEffect(() => {
     Promise.all([
@@ -56,7 +78,7 @@ export default () => {
   }, []);
 
 
-  // render main page
+  // = render component =
   return (
     <main className="layout">
       <section className="sidebar">
@@ -66,6 +88,7 @@ export default () => {
           alt="Interview Scheduler"
         />
         <hr className="sidebar__separator sidebar--centered" />
+
         <nav className="sidebar__menu">
           <DayList
             days={state.days}
@@ -82,3 +105,5 @@ export default () => {
     </main>
   );
 };
+
+export default App;
