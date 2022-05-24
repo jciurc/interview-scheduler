@@ -17,6 +17,7 @@ const App = () => {
     interviewers: {},
   });
 
+
   // = helpers =
   const setDay = (day) => { setState((prev) => ({ ...prev, day })); };
 
@@ -32,21 +33,39 @@ const App = () => {
     };
 
 
-    return axios.put('/api/appointments/' + id, appointment )
-    .then((res) => {
-      setState((prev) => {
-        return {
+    return axios.put('/api/appointments/' + id, { interview })
+      .then((res) => {
+        setState((prev) => ({
           ...prev,
           appointments,
-        };
-      });
+        }));
+        return 'done';
+      })
+      .catch((err) => { console.error(err); });
+  };
 
-      return 'done';
-    })
-    .catch((err) => {
-      console.log('error making put request');
-      console.error(err);
-    })
+
+  const cancelInterview = (id) => {
+    const appointment = {
+      ...state.appointments[id],
+      interview: null,
+    };
+
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment,
+    };
+
+    return axios.delete('/api/appointments/' + id)
+      .then((res) => {
+        setState((prev) => ({
+          ...prev,
+          appointments,
+        }));
+        return 'done deleting';
+      })
+
+      .catch((err) => { console.error(err); });
   };
 
 
@@ -62,6 +81,7 @@ const App = () => {
         interviewers={interviewers}
         interview={interview}
         bookInterview={bookInterview}
+        cancelInterview={cancelInterview}
       />
     );
   });
@@ -83,9 +103,7 @@ const App = () => {
           interviewers: { ...res[2].data },
         }));
       })
-      .catch((e) => {
-        console.error(e);
-      });
+      .catch((e) => { console.error(e); });
   }, []);
 
 

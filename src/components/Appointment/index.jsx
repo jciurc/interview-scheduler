@@ -13,8 +13,11 @@ import Status from './Status';
 // appointment modes
 const EMPTY = 'EMPTY';
 const SHOW = 'SHOW';
+const FORM = 'FORM';
 const SAVING = 'SAVING';
-const CREATE = 'CREATE';
+const CONFIRM = 'CONFIRM';
+const DELETING = 'DELETING';
+const ERROR = 'ERROR';
 
 export default (props) => {
   const { mode, transition, back } = useVisualMode(props.interview ? SHOW : EMPTY);
@@ -26,8 +29,9 @@ export default (props) => {
    */
   const save = (student, interviewer) => {
     if (!student || !interviewer) return;
-    if (student === props.interview.student &&
-      interviewer === props.interview.interviewer.id) {
+    if (props.interview && (
+      student === props.interview.student &&
+      interviewer === props.interview.interviewer.id)) {
       back();
       return;
     };
@@ -49,24 +53,32 @@ export default (props) => {
       });
   };
 
+  const confirmDelete = () => {
+    // make axios put request in app.js
+    transition(DELETING);
+    props.cancelInterview(props.id)
+      .then((res) => {
+        transition(EMPTY);
+      })
+      .catch((err) => {
+        transition(ERROR);
+        console.error(err);
+      });
+  };
+
 
   // = render component =
   return (
     <article className='appointment'>
       {props.time && <Header time={props.time} />}
 
-      {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
-      {mode === SHOW && <Show {...props.interview} onEdit={() => transition(CREATE)} />}
-      {mode === SAVING && <Status />}
-      {mode === CREATE && (
-        <Form
-          {...props.interview}
-          interviewers={props.interviewers}
-          onCancel={back}
-          onSave={save}
-        />
-      )}
-
+      {mode === EMPTY && <Empty onAdd={() => transition(FORM)} />}
+      {mode === SHOW && <Show {...props.interview} onEdit={() => transition(FORM)} onDelete={() => { transition(CONFIRM); }} />}
+      {mode === FORM && <Form {...props.interview} interviewers={props.interviewers} onCancel={back} onSave={save} />}
+      {mode === SAVING && <Status status='Saving' />}
+      {mode === CONFIRM && <Confirm onCancel={back} onConfirm={confirmDelete} />}
+      {mode === DELETING && <Status status='Deleting' />}
+      {mode === ERROR && <Error onClose={back} />}
     </article>
   );
 };
