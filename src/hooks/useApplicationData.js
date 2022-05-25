@@ -49,7 +49,7 @@ export default () => {
   const setDay = (day) => { setState((prev) => ({ ...prev, day })); };
 
   /**
-   * @param {number} id id of appointment
+   * @param {number} id id of appointment component
    * @param {object} interview if no interview is given a delete request will be made, otherwise a put request will be made to update the existing appointment
    */
   const updateAppointment = (id, interview = null) => {
