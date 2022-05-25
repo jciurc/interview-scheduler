@@ -14,7 +14,9 @@ const interviewers = [
 ];
 const placeHolderText = 'Enter Student Name';
 const student = 'Lydia Miller-Jones';
-const nameErrorReg = /please enter your name/i;
+const nameErrReg = /please enter your name/i;
+const interviewerErrReg = /please select an interviewer/i;
+
 
 // default state handling
 describe('Form prop handling', () => {
@@ -38,7 +40,7 @@ describe('Form validation', () => {
 
     fireEvent.click(getByText('Save'));
 
-    expect(getByText(nameErrorReg)).toBeInTheDocument();
+    expect(getByText(nameErrReg)).toBeInTheDocument();
     expect(onSave).not.toHaveBeenCalled();
   });
 
@@ -48,7 +50,7 @@ describe('Form validation', () => {
 
     fireEvent.click(getByText('Save'));
 
-    expect(getByText(/please select an interviewer/i)).toBeInTheDocument();
+    expect(getByText(interviewerErrReg)).toBeInTheDocument();
     expect(onSave).not.toHaveBeenCalled();
   });
 
@@ -64,8 +66,8 @@ describe('Form validation', () => {
       />);
 
     fireEvent.click(getByText('Save'));
-    expect(queryByText(nameErrorReg)).toBeNull();
-    expect(queryByText(/please select an interviewer/i)).toBeNull();
+    expect(queryByText(nameErrReg)).toBeNull();
+    expect(queryByText(interviewerErrReg)).toBeNull();
     expect(onSave).toHaveBeenCalledTimes(1);
     expect(onSave).toHaveBeenCalledWith(student, 1);
   });
@@ -108,13 +110,13 @@ describe('more Form improvement', () => {
 
     fireEvent.click(getByText('Save'));
 
-    expect(getByText(nameErrorReg)).toBeInTheDocument();
+    expect(getByText(nameErrReg)).toBeInTheDocument();
     expect(onSave).not.toHaveBeenCalled();
 
     fireEvent.change(getByPlaceholderText(placeHolderText), { target: { value: student } });
     fireEvent.click(getByText('Save'));
 
-    expect(queryByText(nameErrorReg)).toBeNull();
+    expect(queryByText(nameErrReg)).toBeNull();
     expect(onSave).toHaveBeenCalledTimes(1);
     expect(onSave).toHaveBeenCalledWith(student, interviewers[0].id);
   });
@@ -141,7 +143,7 @@ describe('Form on cancel', () => {
 
     fireEvent.click(getByText('Cancel'));
 
-    expect(queryByText(nameErrorReg)).toBeNull();
+    expect(queryByText(nameErrReg)).toBeNull();
     expect(getByPlaceholderText(placeHolderText)).toHaveValue('');
     expect(onCancel).toHaveBeenCalledTimes(1);
   });
