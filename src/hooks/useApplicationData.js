@@ -3,10 +3,13 @@ import axios from "axios";
 
 // = local helpers =
 const updateSpots = (state, appointments) => {
+  // count null interviews for day
   const day = state.days.find((day) => day.name === state.day);
   const spots = day.appointments.filter((id) => !appointments[id].interview).length;
+
+  // copy days array and update current day spots
   return state.days.map((day) => (
-    day.name === state.day ? { ...day, spots } : { ...day }
+    (day.name === state.day) ? { ...day, spots } : { ...day }
   ));
 };
 

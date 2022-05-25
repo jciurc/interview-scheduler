@@ -7,6 +7,5 @@ afterEach(cleanup);
 describe('Appointment', () => {
   it("renders without crashing", () => {
     const { debug } = render(<Appointment />);
-    debug();
   });
 });
