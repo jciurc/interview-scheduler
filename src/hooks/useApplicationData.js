@@ -10,10 +10,11 @@ const getDaySpots = (state, appointments) => {
 
 const updateSpots = (state, appointments) => {
   const { index, spots } = getDaySpots(state, appointments);
-  const days = [...state.days];
-  days[index] = { ...state.days[index], spots };
-  return days;
+  return state.days.map((day, i) => (
+    i === index ? { ...day, spots } : { ...day }
+  ));
 };
+
 
 // = main hook function =
 export default () => {
@@ -46,6 +47,11 @@ export default () => {
 
   // = exported helpers =
   const setDay = (day) => { setState((prev) => ({ ...prev, day })); };
+
+  /**
+   * @param {number} id id of appointment
+   * @param {object} interview if no interview is given a delete request will be made, otherwise a put request will be made to update the existing appointment
+   */
   const updateAppointment = (id, interview = null) => {
     // add or remove interview
     const appointment = { ...state.appointments[id], interview };
