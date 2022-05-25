@@ -15,12 +15,29 @@ const updateSpots = (state, appointments) => {
 
 // = constants =
 const SET_DAY = 'SET_DAY';
-const SET_STATE = 'SET_STATE';
+const UPDATE_APPOINTMENT = 'UPDATE_APPOINTMENT';
 const SET_INITIAL = 'SET_INITIAL';
+
 const actions = {
-  SET_INITIAL(state, { days, appointments, interviewers }) { return { ...state, days, appointments, interviewers }; },
+  SET_INITIAL(state, { res }) {
+    return {
+      ...state, days: res[0].data,
+      appointments: { ...res[1].data },
+      interviewers: { ...res[2].data },
+    };
+  },
+
   SET_DAY(state, { day }) { return { ...state, day }; },
-  SET_STATE(state, { appointments, days }) { return { ...state, appointments, days }; },
+
+  UPDATE_APPOINTMENT(state, { id, interview }) {
+    // add or remove interview
+    const appointment = { ...state.appointments[id], interview };
+    const appointments = { ...state.appointments, [id]: appointment };
+
+    // recount spots
+    const days = updateSpots(state, appointments);
+    return { ...state, appointments, days };
+  },
 };
 
 const reducer = (state, { type, values }) => {
@@ -46,13 +63,7 @@ export default () => {
       axios.get('/api/interviewers'),
     ])
       .then((res) => {
-        dispatch({
-          type: SET_INITIAL, values: {
-            days: res[0].data,
-            appointments: { ...res[1].data },
-            interviewers: { ...res[2].data },
-          }
-        });
+        dispatch({ type: SET_INITIAL, values: { res } });
       })
       .catch((e) => { console.error(e); });
   }, []);
@@ -70,13 +81,7 @@ export default () => {
       : axios.delete('/api/appointments/' + id)
     )
       .then((res) => {
-        // add or remove interview
-        const appointment = { ...state.appointments[id], interview };
-        const appointments = { ...state.appointments, [id]: appointment };
-
-        // recount spots
-        const days = updateSpots(state, appointments);
-        dispatch({ type: SET_STATE, values: { appointments, days } });
+        dispatch({ type: UPDATE_APPOINTMENT, values: { id, interview } });
       });
   };
 
