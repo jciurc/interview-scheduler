@@ -8,6 +8,7 @@ const Form = (props) => {
   const [student, setStudent] = useState(props.student || ''); // student name
   const [interviewerID, setInterviewer] = useState((props.interviewer && props.interviewer.id) || null); // number
   const reset = (cb) => {
+    setError('');
     setStudent('');
     setInterviewer(null);
     cb();
@@ -17,6 +18,7 @@ const Form = (props) => {
   const validate = () => {
     if (student === '') return setError('Please enter your name');
     if (interviewerID === null) return setError('Please select an interviewer');
+    setError('');
     props.onSave(student, interviewerID);
   };
 
