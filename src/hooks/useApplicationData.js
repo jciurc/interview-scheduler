@@ -2,19 +2,13 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 // = local helpers =
-const getDaySpots = (state, appointments) => {
-  const index = state.days.findIndex((day) => day.name === state.day);
-  const spots = state.days[index].appointments.filter((id) => !appointments[id].interview).length;
-  return { index, spots };
-};
-
 const updateSpots = (state, appointments) => {
-  const { index, spots } = getDaySpots(state, appointments);
-  return state.days.map((day, i) => (
-    i === index ? { ...day, spots } : { ...day }
+  const day = state.days.find((day) => day.name === state.day);
+  const spots = day.appointments.filter((id) => !appointments[id].interview).length;
+  return state.days.map((day) => (
+    day.name === state.day ? { ...day, spots } : { ...day }
   ));
 };
-
 
 // = main hook function =
 export default () => {
