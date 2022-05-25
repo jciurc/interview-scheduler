@@ -10,9 +10,8 @@ const getDaySpots = (state, appointments) => {
 
 const updateSpots = (state, appointments) => {
   const { index, spots } = getDaySpots(state, appointments);
-  const day = { ...state.days[index], spots }; // copy day object and update spots
   const days = [...state.days];
-  days[index] = day;
+  days[index] = { ...state.days[index], spots };
   return days;
 };
 
@@ -56,12 +55,13 @@ export default () => {
     const days = updateSpots(state, appointments);
 
     // update db with new interview or delete interview
-    return (interview ?
-      axios.put('/api/appointments/' + id, { interview }) :
-      axios.delete('/api/appointments/' + id)
-    ).then((res) => {
-      setState((prev) => ({ ...prev, appointments, days }));
-    });
+    return (interview
+      ? axios.put('/api/appointments/' + id, { interview })
+      : axios.delete('/api/appointments/' + id)
+    )
+      .then((res) => {
+        setState((prev) => ({ ...prev, appointments, days }));
+      });
   };
 
   return { state, setDay, updateAppointment };
