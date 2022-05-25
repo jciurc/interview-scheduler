@@ -1,9 +1,9 @@
 import React from "react";
-import Appointment from "components/Appointment";
-import DayList from "components/DayList";
+import "styles/App.scss";
 import { getScheduleInfoForDay, getInterview } from "helpers/selectors";
 import useApplicationData from "hooks/useApplicationData";
-import "styles/App.scss";
+import Appointment from "components/Appointment";
+import DayList from "components/DayList";
 
 // = main component =
 const App = () => {

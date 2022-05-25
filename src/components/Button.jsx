@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from "classnames";
 import './styles/Button.scss';
 
-export default (props) => {
+ const Button = (props) => {
   const buttonClass = classNames('button', {
     'button--confirm': props.confirm,
     'button--danger': props.danger,
@@ -18,3 +18,5 @@ export default (props) => {
     </button>
   );
 };
+
+export default Button;

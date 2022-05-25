@@ -1,11 +1,12 @@
 import React from "react";
+import PropTypes from 'prop-types';
 
-export default (props) => {
+const Error = (props) => {
   return (
     <main className="appointment__card appointment__card--error">
       <section className="appointment__error-message">
         <h1 className="text--semi-bold">Error</h1>
-        <h3 className="text--light">Could not delete appointment</h3>
+        <h3 className="text--light">Could not {props.type} appointment</h3>
       </section>
       <img
         className="appointment__error-close"
@@ -16,3 +17,10 @@ export default (props) => {
     </main>
   );
 };
+
+Error.propTypes = {
+  type: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
+};
+
+export default Error;

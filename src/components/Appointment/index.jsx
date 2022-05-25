@@ -29,23 +29,20 @@ export default (props) => {
    * @param {number} interviewer interviewer id
    */
   const save = (student, interviewer) => {
-    if (!student || !interviewer) return;
-    // don't make post request if no new changes
-    if (props.interview && (
-      student === props.interview.student &&
-      interviewer === props.interview.interviewer.id)) {
+    // accept but don't make post request if no new changes
+    if (student === props.interview.student &&
+      interviewer === props.interview.interviewer.id) {
       back();
       return;
     };
-    const interview = { student, interviewer, };
 
-    // make axios put request in app.js
+    // submit information in axios request
     transition(SAVING);
+    const interview = { student, interviewer, };
     props.updateAppointment(props.id, interview)
       .then((res) => { transition(SHOW); })
       .catch((err) => { transition(ERROR_SAVE, true); });
   };
-
 
   const confirmDelete = () => {
     // make axios delete request in app.js
@@ -54,7 +51,6 @@ export default (props) => {
       .then((res) => { transition(EMPTY); })
       .catch((err) => { transition(ERROR_DELETE, true); });
   };
-
 
   // = render component =
   return (
@@ -67,8 +63,8 @@ export default (props) => {
       {mode === SAVING && <Status status='Saving' />}
       {mode === CONFIRM && <Confirm onCancel={back} onConfirm={confirmDelete} />}
       {mode === DELETING && <Status status='Deleting' />}
-      {mode === ERROR_SAVE && <Error onClose={back} />}
-      {mode === ERROR_DELETE && <Error onClose={back} />}
+      {mode === ERROR_SAVE && <Error type='save' onClose={back} />}
+      {mode === ERROR_DELETE && <Error type='cancel' onClose={back} />}
     </article>
   );
 };
