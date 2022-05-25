@@ -1,6 +1,8 @@
 import React from "react";
+import PropTypes from 'prop-types';
 
-export default (props) => {
+
+const Show = (props) => {
   return (
     <main className="appointment__card appointment__card--show">
       <section className="appointment__card-left">
@@ -29,3 +31,13 @@ export default (props) => {
     </main>
   );
 };
+
+
+Show.propTypes = {
+  onEdit: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
+  student: PropTypes.string,
+  interviewer: PropTypes.object,
+};
+
+export default Show;

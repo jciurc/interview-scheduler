@@ -10,7 +10,7 @@ export default (initial) => {
   };
 
   const back = () => {
-    if (history.length <= 1) return;
+    if (history.length <= 1) return; // always keep at least one mode
     setMode(history[history.length - 2]);
     setHistory((prev) => [...prev].slice(0, -1));
   };

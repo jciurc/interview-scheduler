@@ -13,14 +13,13 @@ const App = () => {
   // = selectors =
   const { appointments, interviewers } = getScheduleInfoForDay(state, state.day);
   const schedule = appointments.map((appointment) => {
-    const interview = getInterview(state, appointment.interview);
     return (
       <Appointment
         key={appointment.id}
         id={appointment.id}
         time={appointment.time}
         interviewers={interviewers}
-        interview={interview}
+        interview={getInterview(state, appointment.interview)}
         updateAppointment={updateAppointment}
       />
     );

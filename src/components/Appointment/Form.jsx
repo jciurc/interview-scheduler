@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import Button from "components/Button";
 import InterviewerList from "components/InterviewerList";
+import PropTypes from 'prop-types';
 
-export default (props) => {
+const Form = (props) => {
   const [student, setStudent] = useState(props.student || ''); // string - student name
   const [interviewerID, setInterviewer] = useState((props.interviewer && props.interviewer.id) || null); // number
   const reset = (cb) => {
@@ -39,3 +40,13 @@ export default (props) => {
     </main>
   );
 };
+
+Form.propTypes = {
+  interviewers: PropTypes.array.isRequired,
+  onCancel: PropTypes.func.isRequired,
+  onSave: PropTypes.func.isRequired,
+  student: PropTypes.string,
+  interviewer: PropTypes.object,
+};
+
+export default Form;
