@@ -1,4 +1,4 @@
-import { useReducer, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 // = local helpers =
@@ -13,37 +13,10 @@ const updateSpots = (state, appointments) => {
   ));
 };
 
-// = reducer stuff =
-const SET_DAY = 'SET_DAY';
-const UPDATE_APPOINTMENT = 'UPDATE_APPOINTMENT';
-const SET_INITIAL = 'SET_INITIAL';
-const actions = {
-  SET_INITIAL(state, { res }) {
-    return {
-      ...state, days: res[0].data,
-      appointments: { ...res[1].data },
-      interviewers: { ...res[2].data },
-    };
-  },
-  SET_DAY(state, { day }) {
-    return { ...state, day };
-  },
-  UPDATE_APPOINTMENT(state, { id, interview }) {
-    // add or remove interview
-    const appointment = { ...state.appointments[id], interview };
-    const appointments = { ...state.appointments, [id]: appointment };
-    // recount spots
-    const days = updateSpots(state, appointments);
-    return { ...state, appointments, days };
-  },
-};
-const reducer = (state, { type, values }) => actions[type](state, values);
-
-
 // = main hook function =
 export default () => {
   // = App state =
-  const [state, dispatch] = useReducer(reducer, {
+  const [state, setState] = useState({
     day: "Monday",
     days: [],
     appointments: {},
@@ -59,14 +32,18 @@ export default () => {
       axios.get('/api/interviewers'),
     ])
       .then((res) => {
-        dispatch({ type: SET_INITIAL, values: { res } });
+        setState((prev) => ({
+          ...prev,
+          days: res[0].data,
+          appointments: { ...res[1].data },
+          interviewers: { ...res[2].data },
+        }));
       })
       .catch((e) => { console.error(e); });
   }, []);
 
   // = exported helpers =
-  const setDay = (day) => { dispatch({ type: SET_DAY, values: { day } }); };
-
+  const setDay = (day) => { setState((prev) => ({ ...prev, day })); };
   /**
    * @param {number} id id of appointment component
    * @param {object?} interview if no interview is given a delete request will be made, otherwise a put request will be made to update the existing appointment */
@@ -77,7 +54,12 @@ export default () => {
       : axios.delete('/api/appointments/' + id)
     )
       .then((res) => {
-        dispatch({ type: UPDATE_APPOINTMENT, values: { id, interview } });
+        // add or remove interview and recount spots
+        const appointment = { ...state.appointments[id], interview };
+        const appointments = { ...state.appointments, [id]: appointment };
+        const days = updateSpots(state, appointments);
+
+        setState((prev) => ({ ...prev, appointments, days }));
       });
   };
 
