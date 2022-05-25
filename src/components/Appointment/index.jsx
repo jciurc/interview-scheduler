@@ -30,8 +30,9 @@ export default (props) => {
    */
   const save = (student, interviewer) => {
     // accept but don't make post request if no new changes
-    if (student === props.interview.student &&
-      interviewer === props.interview.interviewer.id) {
+    if (props.interview && (
+      student === props.interview.student &&
+      interviewer === props.interview.interviewer.id)) {
       back();
       return;
     };

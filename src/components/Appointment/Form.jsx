@@ -15,8 +15,8 @@ const Form = (props) => {
 
   // = helpers =
   const validate = () => {
-    if (student === '')  return setError('Please enter your name');
-    if (interviewerID === null)  return setError('Please select an interviewer');
+    if (student === '') return setError('Please enter your name');
+    if (interviewerID === null) return setError('Please select an interviewer');
     props.onSave(student, interviewerID);
   };
 
@@ -34,7 +34,7 @@ const Form = (props) => {
             data-testid={'student-name-input'}
           />
         </form>
-        <span>{error}</span>
+        <section className="appointment__validation">{error}</section>
         <InterviewerList
           interviewers={props.interviewers}
           value={interviewerID}
