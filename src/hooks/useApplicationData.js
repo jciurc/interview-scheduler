@@ -4,22 +4,21 @@ import axios from "axios";
 // = local helpers =
 const getDaySpots = (state, appointments) => {
   const index = state.days.findIndex((day) => day.name === state.day);
-  const dailyApts = state.days[index].appointments.map((id) => appointments[id]);
-  return { index, spots: dailyApts.filter((apt) => !apt.interview).length };
+  const spots = state.days[index].appointments.filter((id) => !appointments[id].interview).length;
+  return { index, spots };
 };
 
 const updateSpots = (state, appointments) => {
   const { index, spots } = getDaySpots(state, appointments);
-  const day = { ...state.days[index], spots };
+  const day = { ...state.days[index], spots }; // copy day object and update spots
   const days = [...state.days];
   days[index] = day;
   return days;
 };
 
-
-// = main function/hook =
+// = main hook function =
 export default () => {
-  // = state =
+  // = App state =
   const [state, setState] = useState({
     day: "Monday",
     days: [],
@@ -28,7 +27,7 @@ export default () => {
   });
 
   // = effects =
-  // get interview data from database on page load
+  // get interview data from database on initial page load
   useEffect(() => {
     Promise.all([
       axios.get('/api/days'),
@@ -50,20 +49,19 @@ export default () => {
   const setDay = (day) => { setState((prev) => ({ ...prev, day })); };
   const updateAppointment = (id, interview = null) => {
     // add or remove interview
-    const appointment = { ...state.appointments[id], interview, };
-    const appointments = { ...state.appointments, [id]: appointment, };
+    const appointment = { ...state.appointments[id], interview };
+    const appointments = { ...state.appointments, [id]: appointment };
 
     // recount spots
     const days = updateSpots(state, appointments);
 
     // update db with new interview or delete interview
-    return interview ? (
-      axios.put('/api/appointments/' + id, { interview })
-        .then((res) => { setState((prev) => ({ ...prev, appointments, days })); })
-    ) : (
+    return (interview ?
+      axios.put('/api/appointments/' + id, { interview }) :
       axios.delete('/api/appointments/' + id)
-        .then((res) => { setState((prev) => ({ ...prev, appointments, days })); })
-    );
+    ).then((res) => {
+      setState((prev) => ({ ...prev, appointments, days }));
+    });
   };
 
   return { state, setDay, updateAppointment };

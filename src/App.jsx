@@ -3,9 +3,7 @@ import Appointment from "components/Appointment";
 import DayList from "components/DayList";
 import { getScheduleInfoForDay, getInterview } from "helpers/selectors";
 import useApplicationData from "hooks/useApplicationData";
-
 import "styles/App.scss";
-
 
 // = main component =
 const App = () => {
