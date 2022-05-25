@@ -13,11 +13,10 @@ const updateSpots = (state, appointments) => {
   ));
 };
 
-// = constants =
+// = reducer stuff =
 const SET_DAY = 'SET_DAY';
 const UPDATE_APPOINTMENT = 'UPDATE_APPOINTMENT';
 const SET_INITIAL = 'SET_INITIAL';
-
 const actions = {
   SET_INITIAL(state, { res }) {
     return {
@@ -26,23 +25,20 @@ const actions = {
       interviewers: { ...res[2].data },
     };
   },
-
-  SET_DAY(state, { day }) { return { ...state, day }; },
-
+  SET_DAY(state, { day }) {
+    return { ...state, day };
+  },
   UPDATE_APPOINTMENT(state, { id, interview }) {
     // add or remove interview
     const appointment = { ...state.appointments[id], interview };
     const appointments = { ...state.appointments, [id]: appointment };
-
     // recount spots
     const days = updateSpots(state, appointments);
     return { ...state, appointments, days };
   },
 };
+const reducer = (state, { type, values }) => actions[type](state, values);
 
-const reducer = (state, { type, values }) => {
-  return actions[type](state, values);
-};
 
 // = main hook function =
 export default () => {
@@ -70,10 +66,10 @@ export default () => {
 
   // = exported helpers =
   const setDay = (day) => { dispatch({ type: SET_DAY, values: { day } }); };
+
   /**
    * @param {number} id id of appointment component
-   * @param {object?} interview if no interview is given a delete request will be made, otherwise a put request will be made to update the existing appointment
-   */
+   * @param {object?} interview if no interview is given a delete request will be made, otherwise a put request will be made to update the existing appointment */
   const updateAppointment = (id, interview = null) => {
     // update db with new interview or delete interview
     return (interview
