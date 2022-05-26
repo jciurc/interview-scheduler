@@ -2,7 +2,7 @@
 
 Interview Scheduler is a single page App built in JS that utilizes React and PostgreSQL.  
 It simulates a web portal that allows students to view and book appointments with instructors.  
-<sub>disclaimer - this project was built for educational purposes only as part of the curriculum at Lighthouse Labs - Web Dev Bootcamp</sub> 
+<sub>disclaimer - this project was built for educational purposes only as part of the curriculum at [Lighthouse Labs](https://github.com/lighthouse-labs) - Web Dev Bootcamp</sub> 
 
 ## Features
 
@@ -13,7 +13,7 @@ It simulates a web portal that allows students to view and book appointments wit
 
 ## Usage
 
-**Download or Clone the Project in Your Terminal**  
+**Download or Clone the Project**  
 `git clone git@github.com:symphony/interview-scheduler.git && cd interview-scheduler`
 
 **Node Version**  
@@ -89,3 +89,10 @@ Use hotkey `CTRL + C` in the terminal
 - node-sass
 - prop-types
 - react-test-renderer
+
+## Troubleshooting
+- Node versions may vary from machine to machine. If you are having trouble running the project, some versions to try are 12, 14-16. The project was built and tested in a WSL2 environment on Windows 11 running Node v12.22.12
+- The (external) Scheduler API database data can be reset by visiting `http://localhost:8001/api/debug/reset` 
+- The Scheduler API can intentionally fail requests by running it with `npm run error`
+- A test environment for the Scheduler API can be run with `NODE_ENV=test npm start` - this is used for Cypress E2E testing
+- More instructions for Scheduler API can be found here: https://github.com/lighthouse-labs/scheduler-api
