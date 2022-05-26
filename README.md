@@ -15,6 +15,10 @@ It simulates a web portal that allows students to view and book appointments wit
 **Download or Clone the Project in Your Terminal**  
 `git clone git@github.com:symphony/interview-scheduler.git && cd interview-scheduler`
 
+**Node Version**  
+If using M1 Mac please switch to `Node 15x`  
+For Vagrant/WSL please use `Node 12x`
+
 **Install Dependencies**  
 `npm i`
 
