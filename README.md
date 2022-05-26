@@ -20,9 +20,9 @@ It simulates a web portal that allows students to view and book appointments wit
 
 `npm i`
 
-**Clone and Run External Scheduler API**
+**Clone and Run External Scheduler API** ([@lighthouse-labs/scheduler-api](https://github.com/lighthouse-labs/scheduler-api))
 
-`The Scheduler API repo will need to be cloned and set up. Visit` [@lighthouse-labs/scheduler-api](https://github.com/lighthouse-labs/scheduler-api) `for more instructions`
+`The Scheduler API repo will need to be cloned and set up. Visit repo above for more instructions.`
 
 **Set up .env.development variables**
 
