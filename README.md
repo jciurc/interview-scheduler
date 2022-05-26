@@ -22,7 +22,7 @@ It simulates a web portal that allows students to view and book appointments wit
 
 **Clone and Run External Scheduler API**
 
-`The Scheduler API repo will need to be cloned and set up. Visit `[@lighthouse-labs/scheduler-api](https://github.com/lighthouse-labs/scheduler-api)` for more instructions`
+`The Scheduler API repo will need to be cloned and set up. Visit [@lighthouse-labs/scheduler-api](https://github.com/lighthouse-labs/scheduler-api) for more instructions`
 
 **Run the Server**
 
@@ -56,9 +56,9 @@ Use hotkey `CTRL + C` in the terminal
 
 ## Running Tests (Ensure Scheduler API and PSQL db are running)
 
-* `npm run storybook` (visit http://localhost:9009)
 * `npm test` 
-* `npm run cypress` (run Scheduler API in test environment with 'NODE_ENV=test npm start')
+* `npm run storybook` (visit http://localhost:9009)
+* `npm run cypress` (run Scheduler API in test environment with `NODE_ENV=test npm start`)
 
 ## Dependencies
 
