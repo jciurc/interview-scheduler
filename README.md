@@ -22,7 +22,7 @@ It simulates a web portal that allows students to view and book appointments wit
 
 **Clone and Run External Scheduler API**
 
-`The Scheduler API repo will need to be cloned and set up. Visit [@lighthouse-labs/scheduler-api](https://github.com/lighthouse-labs/scheduler-api) for more instructions`
+`The Scheduler API repo will need to be cloned and set up. Visit `[@lighthouse-labs/scheduler-api](https://github.com/lighthouse-labs/scheduler-api)` for more instructions`
 
 **Run the Server**
 
