@@ -26,10 +26,10 @@ For Vagrant/WSL please use `Node 12x`
 
 **Clone and Run External Scheduler API** ([@lighthouse-labs/scheduler-api](https://github.com/lighthouse-labs/scheduler-api))  
 The Scheduler API repo will need to be cloned and set up. Visit link above and follow the instructions.  
-Once running curl or visit `http://localhost:8001/api/debug/reset` to reseed that db.
+Once running curl or visit `http://localhost:8001/api/debug/reset` to reseed the db.
 
 **Set up ENV variables**  
-Clone `.env.development.example` and rename to `.env.development` (file is already configured with default values)
+Copy `.env.development.example` and rename to `.env.development` (file is already configured with default values)
 
 **Run the Server**  
 `npm start`
