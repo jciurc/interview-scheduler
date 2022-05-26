@@ -12,32 +12,25 @@ It simulates a web portal that allows students to view and book appointments wit
 
 ## Usage
 
-**Download or Clone the Project in Your Terminal**
-
+**Download or Clone the Project in Your Terminal**  
 `git clone git@github.com:symphony/interview-scheduler.git && cd interview-scheduler`
 
-**Install Dependencies**
-
+**Install Dependencies**  
 `npm i`
 
-**Clone and Run External Scheduler API** ([@lighthouse-labs/scheduler-api](https://github.com/lighthouse-labs/scheduler-api))
+**Clone and Run External Scheduler API** ([@lighthouse-labs/scheduler-api](https://github.com/lighthouse-labs/scheduler-api))  
+The Scheduler API repo will need to be cloned and set up. Visit link above and follow the instructions.
 
-`The Scheduler API repo will need to be cloned and set up. Visit repo above for more instructions.`
+**Set up .env.development variables**  
+Clone `.env.development.example` and rename to `.env.development` (file is already configured with default values)
 
-**Set up .env.development variables**
-
-`Clone .env.development.example and rename to .env.development` (file is already configured with default values)
-
-**Run the Server**
-
+**Run the Server**  
 `npm start`
 
-**Visit Scheduler in Your Browser**
+**Visit Scheduler in Your Browser**  
+`http://localhost:8000`  
 
-`http://localhost:8000`
-
-**Stop the Server**
-
+**Stop the Server**  
 Use hotkey `CTRL + C` in the terminal
 
 ### Dashboard 
@@ -60,9 +53,9 @@ Use hotkey `CTRL + C` in the terminal
 
 ## Running Tests (Ensure Scheduler API and PSQL db are running)
 
-* `npm test` 
-* `npm run storybook` (visit http://localhost:9009)
-* `npm run cypress` (run Scheduler API in test environment with `NODE_ENV=test npm start`)
+* `npm test` for Jest tests
+* `npm run storybook` and visit http://localhost:9009
+* `npm run cypress` and restart Scheduler API in test environment with `NODE_ENV=test npm start`
 
 ## Dependencies
 
