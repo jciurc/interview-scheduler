@@ -57,28 +57,29 @@ const Appointment = (props) => {
       .catch((err) => { transition(ERROR_DELETE, true); });
   };
 
-  const buildComponent = (mode) => {
-    if (mode === EMPTY) return <Empty onAdd={() => transition(FORM)} />;
-    if (mode === SHOW) return <Show {...props.interview} onEdit={() => transition(FORM)} onDelete={() => { transition(CONFIRM); }} />;
-    if (mode === FORM) return <Form {...props.interview} interviewers={props.interviewers} onCancel={back} onSave={save} />;
-    if (mode === SAVING) return <Status status='Saving' />;
-    if (mode === CONFIRM) return <Confirm onCancel={back} onConfirm={confirmDelete} />;
-    if (mode === DELETING) return <Status status='Deleting' />;
-    if (mode === ERROR_SAVE) return <Error type='save' onClose={back} />;
-    if (mode === ERROR_DELETE) return <Error type='cancel' onClose={back} />;
-  };
-
+  // render component
   return (
     <article className='appointment'>
       {props.time && <Header time={props.time} />}
-      {buildComponent(mode)}
+      {(() => {
+        // iife for slight optimization to break early
+        if (mode === EMPTY) return <Empty onAdd={() => transition(FORM)} />;
+        if (mode === SHOW) return <Show {...props.interview} onEdit={() => transition(FORM)} onDelete={() => { transition(CONFIRM); }} />;
+        if (mode === FORM) return <Form {...props.interview} interviewers={props.interviewers} onCancel={back} onSave={save} />;
+        if (mode === SAVING) return <Status status='Saving' />;
+        if (mode === CONFIRM) return <Confirm onCancel={back} onConfirm={confirmDelete} />;
+        if (mode === DELETING) return <Status status='Deleting' />;
+        if (mode === ERROR_SAVE) return <Error type='save' onClose={back} />;
+        if (mode === ERROR_DELETE) return <Error type='cancel' onClose={back} />;
+      })()}
     </article>
   );
 };
 
+// 5pm appointment doesn't require all properties
 Appointment.propTypes = {
-  id: PropTypes.number,
   time: PropTypes.string.isRequired,
+  id: PropTypes.number,
   interviewers: PropTypes.array,
   interview: PropTypes.object,
   updateAppointment: PropTypes.func,
