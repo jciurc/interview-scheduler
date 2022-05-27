@@ -36,6 +36,7 @@ const Form = (props) => {
             data-testid={'student-name-input'}
           />
         </form>
+
         <section className="appointment__validation">{error}</section>
         <InterviewerList
           interviewers={props.interviewers}
@@ -43,6 +44,7 @@ const Form = (props) => {
           onChange={setInterviewer}
         />
       </section>
+
       <section className='appointment__card-right'>
         <section className='appointment__actions'>
           <Button danger onClick={() => { reset(props.onCancel); }}>Cancel</Button>

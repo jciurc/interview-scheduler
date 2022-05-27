@@ -14,7 +14,7 @@ const interviewers = [
 ];
 const placeHolderText = 'Enter Student Name';
 const student = 'Lydia Miller-Jones';
-const nameErrReg = /please enter your name/i;
+const nameErrReg = /please enter a name/i;
 const interviewerErrReg = /please select an interviewer/i;
 
 

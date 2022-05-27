@@ -1,6 +1,6 @@
 import React from 'react';
-import useVisualMode from 'hooks/useVisualMode';
 import PropTypes from 'prop-types';
+import useVisualMode from 'hooks/useVisualMode';
 import './styles.scss';
 
 // components
@@ -61,6 +61,7 @@ const Appointment = (props) => {
   return (
     <article className='appointment'>
       {props.time && <Header time={props.time} />}
+
       {(() => {
         // iife for slight optimization to break early
         if (mode === EMPTY) return <Empty onAdd={() => transition(FORM)} />;
