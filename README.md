@@ -1,6 +1,6 @@
 ## About
 
-Interview Scheduler is a single page App built in JS that utilizes React and PostgreSQL.  
+Interview Scheduler is a single page App built in JS and React.
 It simulates a web portal that allows students to view and book appointments with instructors.  
 <sub>disclaimer - this project was built for educational purposes only as part of the curriculum at [Lighthouse Labs](https://github.com/lighthouse-labs) - Web Dev Bootcamp</sub> 
 
@@ -18,8 +18,8 @@ It simulates a web portal that allows students to view and book appointments wit
 
 **Node Version**  
 This project has dependencies that require an older version of Node.  
-If using M1 Mac please switch to `Node 15x`
-For Vagrant/WSL please use `Node 12x`
+If using M1 Mac please switch to `Node 15.x`
+For Vagrant/WSL please use `Node 12.x`
 
 **Install Dependencies**  
 `npm i`
