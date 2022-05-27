@@ -1,7 +1,8 @@
-# Interview Scheduler
+## About
 
-Interview Scheduler is a single page App built in JS that utilizes React and PostgreSQL.  
-It simulates a web portal that allows students to view and book appointments with instructors.
+Interview Scheduler is a single page App built in JS and React.
+It simulates a web portal that allows students to view and book appointments with instructors.  
+<sub>disclaimer - this project was built for educational purposes only as part of the curriculum at [Lighthouse Labs](https://github.com/lighthouse-labs) - Web Dev Bootcamp</sub> 
 
 ## Features
 
@@ -12,32 +13,31 @@ It simulates a web portal that allows students to view and book appointments wit
 
 ## Usage
 
-**Download or Clone the Project in Your Terminal**
-
+**Download or Clone the Project**  
 `git clone git@github.com:symphony/interview-scheduler.git && cd interview-scheduler`
 
-**Install Dependencies**
+**Node Version**  
+This project has dependencies that require an older version of Node.  
+If using M1 Mac please switch to `Node 15.x`
+For Vagrant/WSL please use `Node 12.x`
 
+**Install Dependencies**  
 `npm i`
 
-**Clone and Run External Scheduler API**
+**Clone and Run External Scheduler API** ([@lighthouse-labs/scheduler-api](https://github.com/lighthouse-labs/scheduler-api))  
+The Scheduler API repo will need to be cloned and set up. Visit link above and follow the instructions.  
+Once running curl or visit `http://localhost:8001/api/debug/reset` to reseed the db.
 
-`The Scheduler API repo will need to be cloned and set up. Visit` [@lighthouse-labs/scheduler-api](https://github.com/lighthouse-labs/scheduler-api) `for more instructions`
+**Set up ENV variables**  
+Copy `.env.development.example` and rename to `.env.development` (file is already configured with default values)
 
-**Set up .env.development variables**
-
-`Clone .env.development.example and rename to .env.development` (file is already configured with default values)
-
-**Run the Server**
-
+**Run the Server**  
 `npm start`
 
-**Visit Scheduler in Your Browser**
+**Visit Scheduler in Your Browser**  
+`http://localhost:8000`  
 
-`http://localhost:8000`
-
-**Stop the Server**
-
+**Stop the Server**  
 Use hotkey `CTRL + C` in the terminal
 
 ### Dashboard 
@@ -60,9 +60,9 @@ Use hotkey `CTRL + C` in the terminal
 
 ## Running Tests (Ensure Scheduler API and PSQL db are running)
 
-* `npm test` 
-* `npm run storybook` (visit http://localhost:9009)
-* `npm run cypress` (run Scheduler API in test environment with `NODE_ENV=test npm start`)
+* `npm test` for Jest tests
+* `npm run storybook` and visit http://localhost:9009
+* `npm run cypress` and restart Scheduler API in test environment with `NODE_ENV=test npm start`
 
 ## Dependencies
 
@@ -89,3 +89,10 @@ Use hotkey `CTRL + C` in the terminal
 - node-sass
 - prop-types
 - react-test-renderer
+
+## Troubleshooting
+- Node versions may vary from machine to machine. If you are having trouble running the project, some versions to try are 12, 14-16. The project was built and tested in a WSL2 environment on Windows 11 running Node v12.22.12
+- The (external) Scheduler API database data can be reset by visiting `http://localhost:8001/api/debug/reset` 
+- The Scheduler API can intentionally fail requests by running it with `npm run error`
+- A test environment for the Scheduler API can be run with `NODE_ENV=test npm start` - this is used for Cypress E2E testing
+- More instructions for Scheduler API can be found here: https://github.com/lighthouse-labs/scheduler-api
