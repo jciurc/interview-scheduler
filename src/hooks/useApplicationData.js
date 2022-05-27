@@ -7,11 +7,12 @@ const updateSpots = (state, appointments) => {
   const day = state.days.find((day) => day.name === state.day);
   const spots = day.appointments.filter((id) => !appointments[id].interview).length;
 
-  // copy days array and update current day spots
+  // copy days array and update selected day spots
   return state.days.map((day) => (
     (day.name === state.day) ? { ...day, spots } : { ...day }
   ));
 };
+
 
 // = main hook function =
 export default () => {
@@ -44,17 +45,19 @@ export default () => {
 
   // = exported helpers =
   const setDay = (day) => { setState((prev) => ({ ...prev, day })); };
+
   /**
    * @param {number} id id of appointment component
-   * @param {object?} interview if no interview is given a delete request will be made, otherwise a put request will be made to update the existing appointment */
+   * @param {object?} interview if no interview is given a delete request will be made, otherwise a put request will be made to update the existing appointment
+   * */
   const updateAppointment = (id, interview = null) => {
     // update db with new interview or delete interview
     return (interview
       ? axios.put('/api/appointments/' + id, { interview })
       : axios.delete('/api/appointments/' + id)
     )
+      // add or remove interview and recount spots
       .then((res) => {
-        // add or remove interview and recount spots
         const appointment = { ...state.appointments[id], interview };
         const appointments = { ...state.appointments, [id]: appointment };
         const days = updateSpots(state, appointments);

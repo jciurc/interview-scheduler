@@ -1,7 +1,9 @@
 import React from 'react';
 import useVisualMode from 'hooks/useVisualMode';
+import PropTypes from 'prop-types';
 import './styles.scss';
 
+// components
 import Confirm from './Confirm';
 import Empty from './Empty';
 import Error from './Error';
@@ -20,7 +22,9 @@ const DELETING = 'DELETING';
 const ERROR_SAVE = 'ERROR_SAVE';
 const ERROR_DELETE = 'ERROR_DELETE';
 
-export default (props) => {
+
+// = main function =
+const Appointment = (props) => {
   const { mode, transition, back } = useVisualMode(props.interview ? SHOW : EMPTY);
 
   // = helpers =
@@ -37,7 +41,7 @@ export default (props) => {
       return;
     };
 
-    // submit information in axios request
+    // submit information in put request
     transition(SAVING);
     const interview = { student, interviewer, };
     props.updateAppointment(props.id, interview)
@@ -45,27 +49,39 @@ export default (props) => {
       .catch((err) => { transition(ERROR_SAVE, true); });
   };
 
+  // submit delete request in app.js
   const confirmDelete = () => {
-    // make axios delete request in app.js
     transition(DELETING, true);
     props.updateAppointment(props.id)
       .then((res) => { transition(EMPTY); })
       .catch((err) => { transition(ERROR_DELETE, true); });
   };
 
-  // = render component =
+  const buildComponent = (mode) => {
+    if (mode === EMPTY) return <Empty onAdd={() => transition(FORM)} />;
+    if (mode === SHOW) return <Show {...props.interview} onEdit={() => transition(FORM)} onDelete={() => { transition(CONFIRM); }} />;
+    if (mode === FORM) return <Form {...props.interview} interviewers={props.interviewers} onCancel={back} onSave={save} />;
+    if (mode === SAVING) return <Status status='Saving' />;
+    if (mode === CONFIRM) return <Confirm onCancel={back} onConfirm={confirmDelete} />;
+    if (mode === DELETING) return <Status status='Deleting' />;
+    if (mode === ERROR_SAVE) return <Error type='save' onClose={back} />;
+    if (mode === ERROR_DELETE) return <Error type='cancel' onClose={back} />;
+  };
+
   return (
     <article className='appointment'>
       {props.time && <Header time={props.time} />}
-
-      {mode === EMPTY && <Empty onAdd={() => transition(FORM)} />}
-      {mode === SHOW && <Show {...props.interview} onEdit={() => transition(FORM)} onDelete={() => { transition(CONFIRM); }} />}
-      {mode === FORM && <Form {...props.interview} interviewers={props.interviewers} onCancel={back} onSave={save} />}
-      {mode === SAVING && <Status status='Saving' />}
-      {mode === CONFIRM && <Confirm onCancel={back} onConfirm={confirmDelete} />}
-      {mode === DELETING && <Status status='Deleting' />}
-      {mode === ERROR_SAVE && <Error type='save' onClose={back} />}
-      {mode === ERROR_DELETE && <Error type='cancel' onClose={back} />}
+      {buildComponent(mode)}
     </article>
   );
 };
+
+Appointment.propTypes = {
+  id: PropTypes.number,
+  time: PropTypes.string.isRequired,
+  interviewers: PropTypes.array,
+  interview: PropTypes.object,
+  updateAppointment: PropTypes.func,
+};
+
+export default Appointment;

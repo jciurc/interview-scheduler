@@ -16,7 +16,7 @@ const Form = (props) => {
 
   // = helpers =
   const validate = () => {
-    if (student === '') return setError('Please enter your name');
+    if (student === '') return setError('Please enter a name');
     if (interviewerID === null) return setError('Please select an interviewer');
     setError('');
     props.onSave(student, interviewerID);

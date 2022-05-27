@@ -9,6 +9,7 @@ export const getScheduleInfoForDay = (state, day) => {
   };
 };
 
+// retrieves interview object from id
 export const getInterview = (state, interview) => {
   return !interview ? null :
     { ...interview, interviewer: state.interviewers[interview.interviewer] };
@@ -16,7 +17,7 @@ export const getInterview = (state, interview) => {
 
 
 // ----------
-// = old indidivual functions - only used for jest tests =
+// = old indidivual functions - kept for jest tests =
 export const getAppointmentsForDay = (state, day) => {
   const foundDay = state.days.find((item) => item.name === day);
   if (!foundDay) return [];
