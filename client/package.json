@@ -29,12 +29,17 @@
     "parser": "babel-eslint"
   },
   "dependencies": {
+    "@types/jest": "^28.1.4",
+    "@types/node": "^18.0.3",
+    "@types/react": "^18.0.15",
+    "@types/react-dom": "^18.0.6",
     "axios": "^0.27.2",
     "classnames": "^2.2.6",
     "normalize.css": "^8.0.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
-    "react-scripts": "3.0.0"
+    "react-scripts": "3.0.0",
+    "typescript": "^4.7.4"
   },
   "devDependencies": {
     "@babel/core": "^7.4.3",
