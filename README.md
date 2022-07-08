@@ -13,32 +13,30 @@ It simulates a web portal that allows students to view and book appointments wit
 
 ## Usage
 
-**Download or Clone the Project**  
+**Download or Clone the Project** \
 `git clone git@github.com:symphony/interview-scheduler.git && cd interview-scheduler`
 
-**Node Version**  
-This project has dependencies that require an older version of Node.  
-If using M1 Mac please switch to `Node 15.x`
-For Vagrant/WSL please use `Node 12.x`
+**Set up Server API** (cloned from: [@lighthouse-labs/scheduler-api](https://github.com/lighthouse-labs/scheduler-api)) 
+* `cd server`
+* `cp .env.development.example .env.development` (file is already configured with default values)
+* `cp .env.test.example .env.test`
+* `npm i`
+* `npm start`
 
-**Install Dependencies**  
-`npm i`
+Once running `curl` or visit `http://localhost:8001/api/debug/reset` to reseed the db. \
+Visit repo above for more information.
 
-**Clone and Run External Scheduler API** ([@lighthouse-labs/scheduler-api](https://github.com/lighthouse-labs/scheduler-api))  
-The Scheduler API repo will need to be cloned and set up. Visit link above and follow the instructions.  
-Once running curl or visit `http://localhost:8001/api/debug/reset` to reseed the db.
+**Set up Client in separate terminal** 
+* `cd client`
+* `cp .env.development.example .env.development` (file is already configured with default values)
+* `npm i`
+* `npm start`
 
-**Set up ENV variables**  
-Copy `.env.development.example` and rename to `.env.development` (file is already configured with default values)
-
-**Run the Server**  
-`npm start`
-
-**Visit Scheduler in Your Browser**  
+**Visit Scheduler in Your Browser** \
 `http://localhost:8000`  
 
-**Stop the Server**  
-Use hotkey `CTRL + C` in the terminal
+**Stop the Server or Client** \
+Use hotkey `ctrl + c` in respective terminal
 
 ### Dashboard 
 
@@ -91,8 +89,7 @@ Use hotkey `CTRL + C` in the terminal
 - react-test-renderer
 
 ## Troubleshooting
-- Node versions may vary from machine to machine. If you are having trouble running the project, some versions to try are 12, 14-16. The project was built and tested in a WSL2 environment on Windows 11 running Node v12.22.12
-- The (external) Scheduler API database data can be reset by visiting `http://localhost:8001/api/debug/reset` 
-- The Scheduler API can intentionally fail requests by running it with `npm run error`
+- The API database data can be reset by visiting `http://localhost:8001/api/debug/reset` or `running npm run reset`
+- The Scheduler API can intentionally reject requests by running it with `npm run error`
 - A test environment for the Scheduler API can be run with `NODE_ENV=test npm start` - this is used for Cypress E2E testing
 - More instructions for Scheduler API can be found here: https://github.com/lighthouse-labs/scheduler-api
