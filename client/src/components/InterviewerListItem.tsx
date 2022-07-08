@@ -6,7 +6,7 @@ interface Props {
   selected: boolean;
   name: Interviewer['name'];
   avatar: Interviewer['avatar'];
-  setInterviewer: Function;
+  setInterviewer: () => void;
 };
 
 
@@ -16,7 +16,7 @@ const InterviewerListItem: React.FC<Props> = (props) => {
   });
 
   return (
-    <li className={interviewerClass} selected={props.selected} onClick={props.setInterviewer}>
+    <li className={interviewerClass} onClick={props.setInterviewer}>
       <img className={'interviewers__item-image'} src={props.avatar} alt={props.name + ' profile picture'} />
       {props.selected && props.name}
     </li>

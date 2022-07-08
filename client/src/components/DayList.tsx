@@ -2,9 +2,7 @@ import DayListItem from './DayListItem';
 
 interface Props {
   days: Day[];
-  name: Day['name'];
   value: Day['name'];
-  spots: Day['spots'];
   setDay: (name: Day['name']) => void;
 };
 

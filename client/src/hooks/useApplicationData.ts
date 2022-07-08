@@ -42,7 +42,7 @@ export default () => {
   }, []);
 
   // = exported helpers =
-  const setDay = useCallback((day: Day) => { setState((prev) => ({ ...prev, day })); }, []);
+  const setDay = useCallback((day: Day['name']) => { setState((prev) => ({ ...prev, day })); }, []);
 
   /**
    * @param {number} id id of appointment component
