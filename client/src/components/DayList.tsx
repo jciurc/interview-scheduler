@@ -1,5 +1,13 @@
 import DayListItem from './DayListItem';
 
+interface Props {
+  days: Day[];
+  name: Day['name'];
+  value: Day['name'];
+  spots: Day['spots'];
+  setDay: (name: Day['name']) => void;
+};
+
 const DayList: React.FC<Props> = (props) => {
   const dayListItems = props.days.map((day) => (
     <DayListItem
@@ -7,7 +15,7 @@ const DayList: React.FC<Props> = (props) => {
       name={day.name}
       spots={day.spots}
       selected={day.name === props.value}
-      setDay={() => props.onChange(day.name)}
+      handleClick={() => props.setDay(day.name)}
     />)
   );
 

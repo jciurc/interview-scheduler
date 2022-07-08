@@ -21,7 +21,7 @@ const ERROR_SAVE = 'ERROR_SAVE';
 const ERROR_DELETE = 'ERROR_DELETE';
 
 
-// = type declarations =
+// = type definitions =
 interface Props {
   time: Appointment['time'];
   id: Appointment['id'];

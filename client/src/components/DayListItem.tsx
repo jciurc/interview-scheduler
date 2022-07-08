@@ -1,7 +1,15 @@
 import classNames from "classnames";
 import './styles/DayListItem.scss';
 
-const formatSpots = (spots) => {
+// = type definitions =
+interface Props {
+  name: Day['name'];
+  selected: boolean;
+  spots: Day['spots'];
+  handleClick: () => void;
+};
+
+const formatSpots = (spots?: number) => {
   if (spots === 0) return <>no spots remaining</>;
   if (spots === 1) return <>1 spot remaining</>;
   return <>{spots} spots remaining</>;
@@ -16,8 +24,7 @@ const DayListItem: React.FC<Props> = (props) => {
   return (
     <li
       className={buttonClass}
-      selected={props.selected}
-      onClick={props.setDay}
+      onClick={props.handleClick}
       data-testid={'day'}
     >
       <h2 className="text--regular">{props.name}</h2>

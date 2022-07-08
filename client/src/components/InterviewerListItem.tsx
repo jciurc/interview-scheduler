@@ -1,7 +1,7 @@
 import './styles/InterviewerListItem.scss';
 import classNames from 'classnames';
 
-// = type declarations =
+// = type definitions =
 interface Props {
   selected: boolean;
   name: Interviewer['name'];

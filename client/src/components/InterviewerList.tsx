@@ -1,12 +1,12 @@
 import InterviewerListItem from "./InterviewerListItem";
 import "./styles/InterviewerList.scss";
 
-// = type declarations =
+// = type definitions =
 interface Props {
   interviewers: Interviewer[];
   value: Interviewer['id'] | null;
   student?: Student;
-  onChange: (id: Interviewer['id']) => void;
+  handleChange: (id: Interviewer['id']) => void;
 };
 
 const InterviewerList: React.FC<Props> = (props) => {
@@ -16,7 +16,7 @@ const InterviewerList: React.FC<Props> = (props) => {
       name={interviewer.name}
       avatar={interviewer.avatar}
       selected={interviewer.id === props.value}
-      setInterviewer={() => props.onChange(interviewer.id)}
+      setInterviewer={() => props.handleChange(interviewer.id)}
     />)
   );
 

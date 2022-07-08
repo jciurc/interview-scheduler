@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-// = type declarations =
+// = type definitions =
 type Mode = string;
 
 // = main function =

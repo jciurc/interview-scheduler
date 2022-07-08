@@ -1,4 +1,4 @@
-// = type declarations =
+// = type definitions =
 declare global {
   type UpdateAppointment = (id: Appointment['id'], interview?: Interview | null) => Promise<Response | void>
 
@@ -10,7 +10,9 @@ declare global {
   };
 
   interface Day {
+    id: number;
     name: string;
+    spots?: number;
     appointments: Appointment.id[];
     interviewers: Interviewer.id[];
   };

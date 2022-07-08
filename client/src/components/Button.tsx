@@ -5,7 +5,7 @@ interface Props {
   confirm: boolean;
   danger: boolean;
   disabled: boolean;
-  onClick: () => void;
+  handleClick: () => void;
   children: string;
 };
 
@@ -18,7 +18,7 @@ const Button: React.FC<Props> = (props) => {
   return (
     <button
       className={buttonClass}
-      onClick={props.onClick}
+      onClick={props.handleClick}
       disabled={props.disabled}
     >
       {props.children}

@@ -39,7 +39,7 @@ const App: React.FC = () => {
           <DayList
             days={state.days}
             value={state.day}
-            onChange={setDay}
+            setDay={setDay}
           />
         </nav>
 

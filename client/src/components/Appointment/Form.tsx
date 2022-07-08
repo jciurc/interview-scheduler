@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Button from 'components/Button';
 import InterviewerList from 'components/InterviewerList';
 
-// = type declarations =
+// = type definitions =
 interface Props {
   interviewers: Interviewer[];
   student?: Student;
@@ -49,14 +49,14 @@ const Form = (props: Props) => {
         <InterviewerList
           interviewers={props.interviewers}
           value={interviewerID}
-          onChange={setInterviewer}
+          handleChange={setInterviewer}
         />
       </section>
 
       <section className='appointment__card-right'>
         <section className='appointment__actions'>
-          <Button danger onClick={() => { reset(props.onCancel); }}>Cancel</Button>
-          <Button confirm onClick={validate}>Save</Button>
+          <Button danger handleClick={() => { reset(props.onCancel); }}>Cancel</Button>
+          <Button confirm handleClick={validate}>Save</Button>
         </section>
       </section>
     </main>
