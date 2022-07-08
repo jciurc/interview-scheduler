@@ -1,30 +1,30 @@
 // = type declarations =
 declare global {
-  type State = {
+  interface State {
     day: Day.name
     days: Day[]
-    appointments: Appointment[]
-    interviewers: Interviewer[]
+    appointments: { [key: string]: Appointment }
+    interviewers: { [key: string]: Interviewer }
   };
 
-  type Day = {
+  interface Day {
     name: string
     appointments: Appointment.id[]
     interviewers: Interviewer.id[]
   };
 
-  type Appointment = {
+  interface Appointment {
     id: number
     interview: Interview
   };
 
-  type Interviewer = {
+  interface Interviewer {
     id: number
   };
 
   type Interview = {
-    interviewer: Interviewer.id;
+    interviewer: Interviewer.id
   } | null;
-}
+};
 
-export { };
+export {};

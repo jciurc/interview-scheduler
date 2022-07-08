@@ -1,7 +1,9 @@
 import { useState } from "react";
 
+// = type declarations =
 type Mode = string;
 
+// = main function =
 const useVisualMode = (initial: Mode) => {
   const [mode, setMode] = useState(initial);
   const [history, setHistory] = useState([initial]);

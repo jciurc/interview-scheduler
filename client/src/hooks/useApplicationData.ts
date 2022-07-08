@@ -2,20 +2,20 @@ import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 
 // = local helpers =
-const updateSpots = (state: State, appointments: Appointment[]) => {
+const updateSpots = (state: State, appointments: State['appointments']) => {
   // count null interviews for day
-  const day = state.days.find((day: Day) => day.name === state.day);
+  const day = state.days.find((day) => day.name === state.day);
   const spots = day?.appointments.filter((id) => !appointments[id].interview).length;
 
   // copy days array and update selected day spots
-  return state.days.map((day: Day) => day.name === state.day ? { ...day, spots } : { ...day });
+  return state.days.map((day) => day.name === state.day ? { ...day, spots } : { ...day });
 };
 
 
 // = main hook function =
 export default () => {
   // = App state =
-  const [state, setState] = useState({
+  const [state, setState] = useState(<State> {
     day: "Monday",
     days: [],
     appointments: {},
