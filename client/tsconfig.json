@@ -21,8 +21,12 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-
   "include": [
     "src"
-  ]
+  ],
+  "paths": {
+    "*": [
+      "types/*.d.ts"
+    ]
+  },
 }

@@ -1,6 +1,8 @@
 import { useState } from "react";
 
-const useVisualMode = (initial) => {
+type Mode = string;
+
+const useVisualMode = (initial: Mode) => {
   const [mode, setMode] = useState(initial);
   const [history, setHistory] = useState([initial]);
 
@@ -8,7 +10,7 @@ const useVisualMode = (initial) => {
    * @param {string} mode name of new mode
    * @param {boolean} replace if true, will replace last mode in history instead of appending
    * */
-  const transition = (mode, replace = false) => {
+  const transition = (mode: Mode, replace: boolean = false) => {
     setMode(mode);
     setHistory((prev) => (replace ? prev.slice(0, -1) : prev).concat(mode));
   };
