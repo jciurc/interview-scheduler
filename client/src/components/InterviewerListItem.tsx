@@ -3,7 +3,7 @@ import classNames from 'classnames';
 
 // = type declarations =
 interface Props {
-  selected: Interviewer['id'];
+  selected: boolean;
   name: Interviewer['name'];
   avatar: Interviewer['avatar'];
   setInterviewer: Function;

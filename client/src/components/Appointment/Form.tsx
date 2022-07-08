@@ -3,11 +3,19 @@ import Button from 'components/Button';
 import InterviewerList from 'components/InterviewerList';
 import PropTypes from 'prop-types';
 
-const Form = (props) => {
+
+// = type declarations =
+interface Props {
+  interviewer: Interviewer;
+  student: Student;
+  onSave: Function;
+};
+
+const Form = (props: Props) => {
   const [error, setError] = useState('');
-  const [student, setStudent] = useState(props.student || ''); // student name
-  const [interviewerID, setInterviewer] = useState((props.interviewer && props.interviewer.id) || null); // number
-  const reset = (cb) => {
+  const [student, setStudent] = useState(props.student || '');
+  const [interviewerID, setInterviewer] = useState((props.interviewer?.id) || null);
+  const reset = (cb: Function) => {
     setError('');
     setStudent('');
     setInterviewer(null);

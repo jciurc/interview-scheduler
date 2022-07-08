@@ -1,9 +1,16 @@
-import React from "react";
 import InterviewerListItem from "./InterviewerListItem";
 import "./styles/InterviewerList.scss";
 import PropTypes from 'prop-types';
 
-const InterviewerList = (props) => {
+// = type declarations =
+interface Props {
+  interviewers: Interviewer[];
+  value: Interviewer['id'];
+  student: Student;
+  onSave: Function;
+};
+
+const InterviewerList = (props: Props) => {
   const interviewers = props.interviewers.map((interviewer) => (
     <InterviewerListItem
       key={interviewer.id}

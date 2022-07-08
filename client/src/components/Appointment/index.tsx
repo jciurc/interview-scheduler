@@ -26,7 +26,7 @@ const ERROR_DELETE = 'ERROR_DELETE';
 interface Props {
   time: Appointment['time'],
   id?: Interview['id'],
-  interviewers?: Interviewer[],
+  interviewers?: State['interviewers'],
   interview?: Interview | null,
   updateAppointment?: Function,
 };
@@ -52,7 +52,7 @@ const Appointment = (props: Props) => {
     // submit information in put request
     transition(SAVING);
     const interview = { student, interviewer, };
-    props.updateAppointment(props.id, interview)
+    props.updateAppointment?.(props.id, interview)
       .then((res: Response) => { transition(SHOW); })
       .catch((err: Response) => { transition(ERROR_SAVE, true); });
   };
@@ -60,7 +60,7 @@ const Appointment = (props: Props) => {
   // submit delete request in app.js
   const confirmDelete = () => {
     transition(DELETING, true);
-    props.updateAppointment(props.id)
+    props.updateAppointment?.(props.id)
       .then((res: Response) => { transition(EMPTY); })
       .catch((err: Response) => { transition(ERROR_DELETE, true); });
   };
