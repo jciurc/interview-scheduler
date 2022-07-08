@@ -2,10 +2,9 @@
 
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,900");
 
-@import "styles/variables.scss";
-@import "styles/reset.scss";
-
-@import "styles/typography.scss";
+@import "./variables.scss";
+@import "./reset.scss";
+@import "./typography.scss";
 
 * {
   box-sizing: border-box;
