@@ -1,6 +1,7 @@
 // = type declarations =
 declare global {
   type State = {
+    day: Day.name
     days: Day[]
     appointments: Appointment[]
     interviewers: Interviewer[]
@@ -8,12 +9,13 @@ declare global {
 
   type Day = {
     name: string
-    appointments: number[]
-    interviewers: number[]
+    appointments: Appointment.id[]
+    interviewers: Interviewer.id[]
   };
 
   type Appointment = {
     id: number
+    interview: Interview
   };
 
   type Interviewer = {
@@ -21,8 +23,8 @@ declare global {
   };
 
   type Interview = {
-    interviewer: Interviewer['id'];
-  };
+    interviewer: Interviewer.id;
+  } | null;
 }
 
-export {};
+export { };
