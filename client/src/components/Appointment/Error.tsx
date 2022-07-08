@@ -1,6 +1,9 @@
-import PropTypes from 'prop-types';
+interface Props {
+  type: string;
+  onClose: Function;
+};
 
-const Error = (props) => {
+const Error: React.FC<Props> = (props) => {
   return (
     <main className="appointment__card appointment__card--error">
       <section className="appointment__error-message">
@@ -15,11 +18,6 @@ const Error = (props) => {
       />
     </main>
   );
-};
-
-Error.propTypes = {
-  type: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
 };
 
 export default Error;

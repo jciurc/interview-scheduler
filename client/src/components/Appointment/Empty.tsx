@@ -1,4 +1,8 @@
-export default (props) => {
+interface Props {
+  onAdd: Function;
+};
+
+const Empty: React.FC<Props> = (props) => {
   return (
     <main className="appointment__add">
       <img
@@ -10,3 +14,5 @@ export default (props) => {
     </main>
   );
 };
+
+export default Empty;

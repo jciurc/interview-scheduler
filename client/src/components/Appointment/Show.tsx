@@ -1,7 +1,5 @@
-import React from "react";
-import PropTypes from 'prop-types';
 
-const Show = (props) => {
+const Show: React.FC<Props> = (props) => {
   return (
     <main className="appointment__card appointment__card--show">
       <section className="appointment__card-left">

@@ -1,6 +1,8 @@
-import React from "react";
+interface Props {
+  status: string;
+};
 
-export default (props) => {
+const Status: React.FC<Props> = (props) => {
   return (
     <main className="appointment__card appointment__card--status">
       <img
@@ -12,3 +14,5 @@ export default (props) => {
     </main>
   );
 };
+
+export default Status;

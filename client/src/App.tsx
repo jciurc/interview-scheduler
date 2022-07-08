@@ -5,7 +5,7 @@ import Appointment from "components/Appointment";
 import DayList from "components/DayList";
 
 // = main component =
-const App = () => {
+const App: React.FC = () => {
   // get and set pre-render data
   const { state, setDay, updateAppointment } = useApplicationData();
 

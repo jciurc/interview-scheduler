@@ -10,7 +10,7 @@ interface Props {
   onSave: Function;
 };
 
-const InterviewerList = (props: Props) => {
+const InterviewerList: React.FC<Props> = (props) => {
   const interviewers = props.interviewers.map((interviewer) => (
     <InterviewerListItem
       key={interviewer.id}

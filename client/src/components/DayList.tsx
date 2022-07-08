@@ -1,6 +1,6 @@
 import DayListItem from './DayListItem';
 
-const DayList = (props) => {
+const DayList: React.FC<Props> = (props) => {
   const dayListItems = props.days.map((day) => (
     <DayListItem
       key={day.id}

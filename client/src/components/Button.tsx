@@ -1,15 +1,15 @@
 import classNames from "classnames";
 import './styles/Button.scss';
 
-type Props = {
-  confirm: string,
-  danger: string,
-  disabled: boolean,
-  onClick: Function,
-  children: [],
+interface Props {
+  confirm: string;
+  danger: string;
+  disabled: boolean;
+  onClick: Function;
+  children: [];
 };
 
-const Button = (props: Props) => {
+const Button: React.FC<Props> = (props) => {
   const buttonClass = classNames('button', {
     'button--confirm': props.confirm,
     'button--danger': props.danger,

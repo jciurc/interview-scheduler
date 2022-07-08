@@ -22,17 +22,17 @@ const ERROR_DELETE = 'ERROR_DELETE';
 
 
 // = type declarations =
-// 5pm appointment doesn't require all properties
 interface Props {
-  time: Appointment['time'],
-  id?: Interview['id'],
-  interviewers?: State['interviewers'],
-  interview?: Interview | null,
-  updateAppointment?: Function,
+  // 5pm appointment doesn't require all properties
+  time: Appointment['time'];
+  id?: Interview['id'];
+  interviewers?: State['interviewers'];
+  interview?: Interview | null;
+  updateAppointment?: Function;
 };
 
 // = main function =
-const Appointment = (props: Props) => {
+const Appointment: React.FC<Props> = (props) => {
   const { mode, transition, back } = useVisualMode(props.interview ? SHOW : EMPTY);
 
   // = helpers =

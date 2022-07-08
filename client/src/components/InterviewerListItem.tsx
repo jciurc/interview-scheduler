@@ -10,7 +10,7 @@ interface Props {
 };
 
 
-const InterviewerListItem = (props: Props) => {
+const InterviewerListItem: React.FC<Props> = (props) => {
   const interviewerClass = classNames('interviewers__item', {
     'interviewers__item--selected': props.selected,
   });

@@ -1,6 +1,11 @@
 import Button from "components/Button";
 
-export default (props) => {
+interface Props {
+  onCancel: Function;
+  onConfirm: Function;
+};
+
+const Confirm: React.FC<Props> = (props) => {
   return (
     <main className="appointment__card appointment__card--confirm">
       <h1 className="text--semi-bold">Delete the appointment?</h1>
@@ -11,3 +16,5 @@ export default (props) => {
     </main>
   );
 };
+
+export default Confirm;

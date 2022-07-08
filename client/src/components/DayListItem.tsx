@@ -7,7 +7,7 @@ const formatSpots = (spots) => {
   return <>{spots} spots remaining</>;
 };
 
-const DayListItem = (props) => {
+const DayListItem: React.FC<Props> = (props) => {
   const buttonClass = classNames('day-list__item', {
     'day-list__item--selected': props.selected,
     'day-list__item--full': props.spots === 0,
