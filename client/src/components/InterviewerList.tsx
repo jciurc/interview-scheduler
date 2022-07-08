@@ -5,7 +5,7 @@ import "./styles/InterviewerList.scss";
 interface Props {
   interviewers: Interviewer[];
   value: Interviewer['id'] | null;
-  student: Student;
+  student?: Student;
   onChange: (id: Interviewer['id']) => void;
 };
 

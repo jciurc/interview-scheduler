@@ -23,12 +23,11 @@ const ERROR_DELETE = 'ERROR_DELETE';
 
 // = type declarations =
 interface Props {
-  // 5pm appointment doesn't require all properties
   time: Appointment['time'];
-  id?: Appointment['id'];
-  interviewers?: Interviewer[];
-  interview?: Interview | null;
-  updateAppointment?: (id: Appointment['id'], interview?: Interview) => Promise<Response>;
+  id: Appointment['id'];
+  interviewers: Interviewer[];
+  interview: Interview | null;
+  updateAppointment?: UpdateAppointment;
 };
 
 // = main function =
@@ -40,7 +39,7 @@ const Appointment: React.FC<Props> = (props) => {
    * @param {string} student student name
    * @param {number} interviewer interviewer id
    */
-  const save = (student: Student, interviewer: Interviewer) => {
+  const save = (student: Student, interviewer: Interviewer['id']) => {
     // accept but don't make post request if no new changes
     if (props.interview && (
       student === props.interview.student &&
@@ -53,16 +52,16 @@ const Appointment: React.FC<Props> = (props) => {
     transition(SAVING);
     const interview = { student, interviewer, };
     props.updateAppointment?.(props.id, interview)
-      .then((res: Response) => { transition(SHOW); })
-      .catch((err: Response) => { transition(ERROR_SAVE, true); });
+      .then((res) => { transition(SHOW); })
+      .catch((err) => { transition(ERROR_SAVE, true); });
   };
 
   // submit delete request in app.js
   const confirmDelete = () => {
     transition(DELETING, true);
     props.updateAppointment?.(props.id)
-      .then((res: Response) => { transition(EMPTY); })
-      .catch((err: Response) => { transition(ERROR_DELETE, true); });
+      .then((res) => { transition(EMPTY); })
+      .catch((err) => { transition(ERROR_DELETE, true); });
   };
 
   // render component

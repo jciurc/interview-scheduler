@@ -1,6 +1,6 @@
 interface Props {
   type: string;
-  onClose: Function;
+  onClose: () => void;
 };
 
 const Error: React.FC<Props> = (props) => {

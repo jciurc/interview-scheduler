@@ -1,8 +1,8 @@
 import Button from "components/Button";
 
 interface Props {
-  onCancel: Function;
-  onConfirm: Function;
+  onCancel: () => void;
+  onConfirm: () => void;
 };
 
 const Confirm: React.FC<Props> = (props) => {

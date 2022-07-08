@@ -1,5 +1,5 @@
 interface Props {
-  onAdd: Function;
+  onAdd: () => void;
 };
 
 const Empty: React.FC<Props> = (props) => {

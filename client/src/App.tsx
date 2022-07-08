@@ -1,8 +1,8 @@
-import "styles/App.scss";
-import { getScheduleInfoForDay, getInterview } from "helpers/selectors";
-import useApplicationData from "hooks/useApplicationData";
-import Appointment from "components/Appointment";
-import DayList from "components/DayList";
+import 'styles/App.scss';
+import { getScheduleInfoForDay, getInterview } from 'helpers/selectors';
+import useApplicationData from 'hooks/useApplicationData';
+import Appointment from 'components/Appointment';
+import DayList from 'components/DayList';
 
 // = main component =
 const App: React.FC = () => {
@@ -26,16 +26,16 @@ const App: React.FC = () => {
 
   // = render component =
   return (
-    <main className="layout">
-      <section className="sidebar">
+    <main className='layout'>
+      <section className='sidebar'>
         <img
-          className="sidebar--centered"
-          src="images/logo.png"
-          alt="Interview Scheduler"
+          className='sidebar--centered'
+          src='images/logo.png'
+          alt='Interview Scheduler'
         />
-        <hr className="sidebar__separator sidebar--centered" />
+        <hr className='sidebar__separator sidebar--centered' />
 
-        <nav className="sidebar__menu">
+        <nav className='sidebar__menu'>
           <DayList
             days={state.days}
             value={state.day}
@@ -44,9 +44,9 @@ const App: React.FC = () => {
         </nav>
 
       </section>
-      <section className="schedule">
+      <section className='schedule'>
         {schedule}
-        <Appointment key="last" time="5pm" />
+        <Appointment key='last' time='5pm' id={0} interviewers={[]} interview={null} />
       </section>
     </main>
   );

@@ -1,5 +1,6 @@
 // = type declarations =
 declare global {
+  type UpdateAppointment = (id: Appointment['id'], interview?: Interview | null) => Promise<Response | void>
 
   interface State {
     day: Day.name;

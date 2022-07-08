@@ -2,11 +2,11 @@ import classNames from "classnames";
 import './styles/Button.scss';
 
 interface Props {
-  confirm: string;
-  danger: string;
+  confirm: boolean;
+  danger: boolean;
   disabled: boolean;
-  onClick: Function;
-  children: [];
+  onClick: () => void;
+  children: string;
 };
 
 const Button: React.FC<Props> = (props) => {
