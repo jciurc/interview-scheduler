@@ -9,7 +9,6 @@ type Props = {
   children: [],
 };
 
-
 const Button = (props: Props) => {
   const buttonClass = classNames('button', {
     'button--confirm': props.confirm,
@@ -19,7 +18,7 @@ const Button = (props: Props) => {
   return (
     <button
       className={buttonClass}
-      // onClick={props.onClick}
+      onClick={props.onClick}
       disabled={props.disabled}
     >
       {props.children}
