@@ -1,5 +1,3 @@
-import 'types/global.d.ts';
-
 // = functions =
 export const getScheduleInfoForDay = (state: State, day: Day['name']) => {
   const foundDay = state.days.find((item: Day) => item.name === day);

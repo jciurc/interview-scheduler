@@ -1,15 +1,6 @@
 import useVisualMode from 'hooks/useVisualMode';
 import './styles.scss';
 
-// 5pm appointment doesn't require all properties
-type Props = {
-  time: string,
-  id?: number,
-  interviewers?: [],
-  interview?: object,
-  updateAppointment?: Function,
-};
-
 // components
 import Confirm from './Confirm';
 import Empty from './Empty';
@@ -30,8 +21,18 @@ const ERROR_SAVE = 'ERROR_SAVE';
 const ERROR_DELETE = 'ERROR_DELETE';
 
 
+// = type declarations =
+// 5pm appointment doesn't require all properties
+interface Props {
+  time: Appointment['time'],
+  id?: Interview['id'],
+  interviewers?: Interviewer[],
+  interview?: Interview | null,
+  updateAppointment?: Function,
+};
+
 // = main function =
-const Appointment = (props) => {
+const Appointment = (props: Props) => {
   const { mode, transition, back } = useVisualMode(props.interview ? SHOW : EMPTY);
 
   // = helpers =
@@ -39,7 +40,7 @@ const Appointment = (props) => {
    * @param {string} student student name
    * @param {number} interviewer interviewer id
    */
-  const save = (student, interviewer) => {
+  const save = (student: Student, interviewer: Interviewer) => {
     // accept but don't make post request if no new changes
     if (props.interview && (
       student === props.interview.student &&
@@ -52,16 +53,16 @@ const Appointment = (props) => {
     transition(SAVING);
     const interview = { student, interviewer, };
     props.updateAppointment(props.id, interview)
-      .then((res) => { transition(SHOW); })
-      .catch((err) => { transition(ERROR_SAVE, true); });
+      .then((res: Response) => { transition(SHOW); })
+      .catch((err: Response) => { transition(ERROR_SAVE, true); });
   };
 
   // submit delete request in app.js
   const confirmDelete = () => {
     transition(DELETING, true);
     props.updateAppointment(props.id)
-      .then((res) => { transition(EMPTY); })
-      .catch((err) => { transition(ERROR_DELETE, true); });
+      .then((res: Response) => { transition(EMPTY); })
+      .catch((err: Response) => { transition(ERROR_DELETE, true); });
   };
 
   // render component

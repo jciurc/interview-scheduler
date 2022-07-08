@@ -48,7 +48,7 @@ export default () => {
    * @param {number} id id of appointment component
    * @param {object?} interview if no interview is given a delete request will be made, otherwise a put request will be made to update the existing appointment
    */
-  const updateAppointment = useCallback(async (id: Appointment['id'], interview: Interview = null) => {
+  const updateAppointment = useCallback(async (id: Appointment['id'], interview: Interview | null = null) => {
     // update db with new interview or delete interview
     return await (interview
       ? axios.put('/api/appointments/' + id, { interview })

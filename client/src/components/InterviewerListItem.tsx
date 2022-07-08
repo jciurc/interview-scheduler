@@ -1,8 +1,16 @@
-import React from 'react';
 import './styles/InterviewerListItem.scss';
 import classNames from 'classnames';
 
-const InterviewerListItem = (props) => {
+// = type declarations =
+interface Props {
+  selected: Interviewer['id'];
+  name: Interviewer['name'];
+  avatar: Interviewer['avatar'];
+  setInterviewer: Function;
+};
+
+
+const InterviewerListItem = (props: Props) => {
   const interviewerClass = classNames('interviewers__item', {
     'interviewers__item--selected': props.selected,
   });
