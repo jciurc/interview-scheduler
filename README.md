@@ -16,7 +16,7 @@ It simulates a web portal that allows students to view and book appointments wit
 **Download or Clone the Project** \
 `git clone git@github.com:symphony/interview-scheduler.git && cd interview-scheduler`
 
-**Set up Server API** (cloned from: [@lighthouse-labs/scheduler-api](https://github.com/lighthouse-labs/scheduler-api)) 
+**Set up Server API** (Cloned from: [@lighthouse-labs/scheduler-api](https://github.com/lighthouse-labs/scheduler-api)) 
 * `cd server`
 * `cp .env.development.example .env.development` (file is already configured with default values)
 * `cp .env.test.example .env.test`
@@ -26,9 +26,9 @@ It simulates a web portal that allows students to view and book appointments wit
 Once running `curl` or visit `http://localhost:8001/api/debug/reset` to reseed the db. \
 Visit repo above for more information.
 
-**Set up Client in separate terminal** 
+**Set up Client in Separate Terminal** 
 * `cd client`
-* `cp .env.development.example .env.development` (file is already configured with default values)
+* `cp .env.development.example .env.development`
 * `npm i`
 * `npm start`
 
