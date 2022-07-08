@@ -1,4 +1,9 @@
-
+interface Props {
+  student: Student;
+  interviewer: Interviewer;
+  onEdit: () => void;
+  onDelete: () => void;
+};
 const Show: React.FC<Props> = (props) => {
   return (
     <main className="appointment__card appointment__card--show">
@@ -27,13 +32,6 @@ const Show: React.FC<Props> = (props) => {
       </section>
     </main>
   );
-};
-
-Show.propTypes = {
-  onEdit: PropTypes.func.isRequired,
-  onDelete: PropTypes.func.isRequired,
-  student: PropTypes.string.isRequired,
-  interviewer: PropTypes.object.isRequired,
 };
 
 export default Show;

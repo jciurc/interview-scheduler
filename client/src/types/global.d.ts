@@ -27,11 +27,10 @@ declare global {
   };
 
   interface Interview {
-    id: number;
+    id?: number;
     interviewer: Interviewer.id;
     student: Student;
   };
-
 
   type Student = string;
 };

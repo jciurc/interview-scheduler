@@ -25,10 +25,10 @@ const ERROR_DELETE = 'ERROR_DELETE';
 interface Props {
   // 5pm appointment doesn't require all properties
   time: Appointment['time'];
-  id?: Interview['id'];
-  interviewers?: State['interviewers'];
+  id?: Appointment['id'];
+  interviewers?: Interviewer[];
   interview?: Interview | null;
-  updateAppointment?: Function;
+  updateAppointment?: (id: Appointment['id'], interview?: Interview) => Promise<Response>;
 };
 
 // = main function =

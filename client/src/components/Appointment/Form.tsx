@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import Button from 'components/Button';
 import InterviewerList from 'components/InterviewerList';
-import PropTypes from 'prop-types';
-
 
 // = type declarations =
 interface Props {
-  interviewer: Interviewer;
-  student: Student;
-  onSave: Function;
+  interviewers: Interviewer[];
+  student?: Student;
+  interviewer?: Interviewer;
+  onCancel: () => void;
+  onSave: (student: Student, interviewerID: number) => void;
 };
 
 const Form = (props: Props) => {
@@ -61,14 +61,6 @@ const Form = (props: Props) => {
       </section>
     </main>
   );
-};
-
-Form.propTypes = {
-  interviewers: PropTypes.array.isRequired,
-  onCancel: PropTypes.func.isRequired,
-  onSave: PropTypes.func.isRequired,
-  student: PropTypes.string,
-  interviewer: PropTypes.object,
 };
 
 export default Form;

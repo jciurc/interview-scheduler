@@ -1,13 +1,12 @@
 import InterviewerListItem from "./InterviewerListItem";
 import "./styles/InterviewerList.scss";
-import PropTypes from 'prop-types';
 
 // = type declarations =
 interface Props {
   interviewers: Interviewer[];
-  value: Interviewer['id'];
+  value: Interviewer['id'] | null;
   student: Student;
-  onSave: Function;
+  onChange: (id: Interviewer['id']) => void;
 };
 
 const InterviewerList: React.FC<Props> = (props) => {
@@ -29,11 +28,6 @@ const InterviewerList: React.FC<Props> = (props) => {
       </ul>
     </section>
   );
-};
-
-InterviewerList.propTypes = {
-  interviewers: PropTypes.array.isRequired,
-  onChange: PropTypes.func.isRequired,
 };
 
 export default InterviewerList;
