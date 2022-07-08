@@ -1,16 +1,41 @@
-// combined functions
-export const getScheduleInfoForDay = (state, day) => {
-  const foundDay = state.days.find((item) => item.name === day);
-  if (!foundDay) return {appointments: [], interviewers: []};
+// = type declarations =
+type State = {
+  days: Day[]
+  appointments: Appointment[]
+  interviewers: Interviewer[]
+};
+
+type Day = {
+  name: string
+  appointments: number[]
+  interviewers: number[]
+};
+
+type Appointment = {
+  id: number
+};
+
+type Interviewer = {
+  id: number
+};
+
+type Interview = {
+  interviewer: Interviewer['id'];
+};
+
+
+// = functions =
+export const getScheduleInfoForDay = (state: State, day: Day['name']) => {
+  const foundDay = state.days.find((item: Day) => item.name === day);
 
   return {
-    appointments: foundDay.appointments.map((id) => state.appointments[id]),
-    interviewers: foundDay.interviewers.map((id) => state.interviewers[id]),
+    appointments: foundDay?.appointments.map((id) => state.appointments[id]) ?? [],
+    interviewers: foundDay?.interviewers.map((id) => state.interviewers[id]) ?? [],
   };
 };
 
 // retrieves interview object from id
-export const getInterview = (state, interview) => {
+export const getInterview = (state: State, interview: Interview) => {
   return !interview ? null :
     { ...interview, interviewer: state.interviewers[interview.interviewer] };
 };
@@ -18,14 +43,14 @@ export const getInterview = (state, interview) => {
 
 // ----------
 // = old indidivual functions - kept for jest tests =
-export const getAppointmentsForDay = (state, day) => {
+export const getAppointmentsForDay = (state: State, day: Day['name']) => {
   const foundDay = state.days.find((item) => item.name === day);
   if (!foundDay) return [];
 
   return foundDay.appointments.map((id) => state.appointments[id]);
 };
 
-export const getInterviewersForDay = (state, day) => {
+export const getInterviewersForDay = (state: State, day: Day['name']) => {
   const foundDay = state.days.find((item) => item.name === day);
   if (!foundDay) return [];
 
