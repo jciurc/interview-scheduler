@@ -1,5 +1,7 @@
 import "./styles/App.scss";
 
+import Appointment from "components/Appointment";
+
 // = main component =
 const App = () => {
 
@@ -19,6 +21,7 @@ const App = () => {
 
       </section>
       <section className="schedule">
+        <Appointment key="last" time="5pm" />
       </section>
     </main>
   );
