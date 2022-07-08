@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 
 // = local helpers =
@@ -13,9 +13,9 @@ const updateSpots = (state: State, appointments: State['appointments']) => {
 
 
 // = main hook function =
-export default () => {
+const useApplicationData = () => {
   // = App state =
-  const [state, setState] = useState(<State>{
+  const [state, setState] = useState<State>({
     day: "Monday",
     days: [],
     appointments: {},
@@ -66,3 +66,5 @@ export default () => {
 
   return { state, setDay, updateAppointment };
 };
+
+export default useApplicationData;
