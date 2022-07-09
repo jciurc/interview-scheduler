@@ -67,6 +67,7 @@ Use hotkey `ctrl + c` in respective terminal
 - react
 - react-dom
 - react-scripts
+- typescript
 - axios
 - classnames
 - normalize.css
@@ -84,8 +85,7 @@ Use hotkey `ctrl + c` in respective terminal
 - @testing-library/react-hooks
 - babel-loader
 - cypress
-- node-sass
-- prop-types
+- sass
 - react-test-renderer
 
 ## Troubleshooting
