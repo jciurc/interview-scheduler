@@ -1,5 +1,5 @@
+import './styles/interviewerListItem.scss';
 import classNames from 'classnames';
-import './styles/InterviewerListItem.scss';
 
 // = type definitions =
 interface Props {

@@ -1,4 +1,4 @@
-import "./styles/InterviewerList.scss";
+import "./styles/interviewerList.scss";
 import InterviewerListItem from "./InterviewerListItem";
 
 // = type definitions =

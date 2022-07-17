@@ -1,5 +1,5 @@
+import './styles/button.scss';
 import classNames from "classnames";
-import './styles/Button.scss';
 
 interface Props {
   confirm?: boolean;

@@ -1,4 +1,4 @@
-import 'styles/App.scss';
+import 'styles/app.scss';
 import { getScheduleInfoForDay, getInterview } from 'helpers/selectors';
 import useApplicationData from 'hooks/useApplicationData';
 import Appointment from 'components/Appointment';

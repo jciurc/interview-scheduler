@@ -1,5 +1,5 @@
+import './styles/dayListItem.scss';
 import classNames from "classnames";
-import './styles/DayListItem.scss';
 
 // = type definitions =
 interface Props {
