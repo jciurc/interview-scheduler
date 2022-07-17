@@ -1,7 +1,13 @@
 // = type definitions =
 declare global {
+  // functions
   type UpdateAppointment = (id: Appointment['id'], interview?: Interview | null) => Promise<Response | void>
 
+  // variables
+  type Student = string;
+  type cssClass = string;
+
+  // state
   interface State {
     day: Day.name;
     days: Day[];
@@ -34,8 +40,6 @@ declare global {
     interviewer: Interviewer.id;
     student: Student;
   };
-
-  type Student = string;
 };
 
 export { };

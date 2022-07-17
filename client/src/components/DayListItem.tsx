@@ -1,5 +1,4 @@
 import './styles/dayListItem.scss';
-import classNames from "classnames";
 
 // = type definitions =
 interface Props {
@@ -16,10 +15,11 @@ const formatSpots = (spots?: number) => {
 };
 
 const DayListItem: React.FC<Props> = (props) => {
-  const buttonClass = classNames('day-list__item', {
-    'day-list__item--selected': props.selected,
-    'day-list__item--full': props.spots === 0,
-  });
+  const buttonClass: cssClass = (
+    'day-list__item '
+    + (props.selected ? 'day-list__item--selected ' : '')
+    + (props.spots === 0 ? ' day-list__item--full ' : '')
+  );
 
   return (
     <li

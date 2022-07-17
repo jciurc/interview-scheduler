@@ -69,7 +69,6 @@ Use hotkey `ctrl + c` in respective terminal
 - react-scripts
 - typescript
 - axios
-- classnames
 - normalize.css
 
 ## Dev Dependencies
