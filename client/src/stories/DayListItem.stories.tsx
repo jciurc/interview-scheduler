@@ -7,26 +7,28 @@ export default {
   component: DayListItem,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
-    handleClick: { action: 'clicked' }
+    setDay: { action: 'setDay' }
   },
 } as ComponentMeta<typeof DayListItem>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: ComponentStory<typeof DayListItem> = (args) => <DayListItem {...args} />;
 
-
-export const Base = Template.bind({});
-Base.args = {
+export const Unselected = Template.bind({});
+Unselected.args = {
+  name: 'Monday',
+  spots: 5,
 };
 
-export const Confirm = Template.bind({});
-Confirm.args = {
+export const Selected = Template.bind({});
+Selected.args = {
+  name: 'Monday',
+  spots: 5,
+  selected: true,
 };
 
-export const Danger = Template.bind({});
-Danger.args = {
-};
-
-export const Disabled = Template.bind({});
-Disabled.args = {
+export const Full = Template.bind({});
+Full.args = {
+  name: 'Monday',
+  spots: 0,
 };

@@ -9,11 +9,11 @@ export default {
   argTypes: {
     handleClick: { action: 'clicked' }
   },
+
 } as ComponentMeta<typeof Button>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
-
 
 export const Base = Template.bind({});
 Base.args = {
@@ -34,7 +34,6 @@ Danger.args = {
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-
   disabled: true,
   children: 'Disabled'
 };

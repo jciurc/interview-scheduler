@@ -15,7 +15,7 @@ const formatSpots = (spots?: number) => {
 };
 
 const DayListItem: React.FC<Props> = (props) => {
-  const buttonClass: cssClass = (
+  const dayListItemClass: cssClass = (
     'day-list__item '
     + (props.selected ? 'day-list__item--selected ' : '')
     + (props.spots === 0 ? ' day-list__item--full ' : '')
@@ -23,7 +23,7 @@ const DayListItem: React.FC<Props> = (props) => {
 
   return (
     <li
-      className={buttonClass}
+      className={dayListItemClass}
       onClick={props.handleClick}
       data-testid={'day'}
     >

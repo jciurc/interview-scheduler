@@ -35,8 +35,6 @@ storiesOf("Button", module)
   ));
 
 
-
-
 // = day list item =
 storiesOf("DayListItem", module) //Initiates Storybook and registers our DayListItem component
   .addParameters({
