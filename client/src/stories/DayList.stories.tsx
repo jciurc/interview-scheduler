@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import DayList from 'components/DayListItem';
+import DayList from 'components/DayList';
 
 // fixtures
 const days = [
@@ -19,34 +19,29 @@ const days = [
     name: "Wednesday",
     spots: 0,
   },
-];
+] as Day[];
 
 export default {
   component: DayList,
   argTypes: {
-    days,
     setDay: { action: 'setDay' },
   },
 } as ComponentMeta<typeof DayList>;
 
-const Template: ComponentStory<typeof DayList> = (args) => <DayList {...args} />;
+const Template: ComponentStory<typeof DayList> = (args) => <DayList {...args} days={days} />;
 
 // variations
 export const Monday = Template.bind({});
 Monday.args = {
-  name: 'Monday',
-  spots: 3,
-  selected: true,
+  value: 'Monday',
 };
 
 export const Tuesday = Template.bind({});
 Tuesday.args = {
-  name: 'Tuesday',
-  spots: 2,
+  value: 'Tuesday',
 };
 
 export const Wednesday = Template.bind({});
 Wednesday.args = {
-  name: 'Wednesday',
-  spots: 0,
+  value: 'Wednesday',
 };
