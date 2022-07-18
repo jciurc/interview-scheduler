@@ -150,7 +150,6 @@ storiesOf("InterviewerList", module)
   ));
 
 
-
 // = Appointment =
 storiesOf("Appointment", module)
   .addParameters({
