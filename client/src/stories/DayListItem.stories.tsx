@@ -2,22 +2,21 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import DayListItem from 'components/DayListItem';
 
-// More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
   component: DayListItem,
-  // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
-    handleClick: { action: 'handleClick' }
+    handleClick: { action: 'handleClick' },
   },
 } as ComponentMeta<typeof DayListItem>;
 
-// More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: ComponentStory<typeof DayListItem> = (args) => <DayListItem {...args} />;
 
+// variations
 export const Unselected = Template.bind({});
 Unselected.args = {
   name: 'Monday',
   spots: 5,
+  selected: false,
 };
 
 export const Selected = Template.bind({});

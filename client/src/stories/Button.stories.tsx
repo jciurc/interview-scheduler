@@ -7,7 +7,7 @@ export default {
   component: Button,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
-    handleClick: { action: 'clicked' }
+    handleClick: { action: 'clicked' },
   },
 
 } as ComponentMeta<typeof Button>;
@@ -15,6 +15,7 @@ export default {
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 
+// variations
 export const Base = Template.bind({});
 Base.args = {
   children: 'Base'

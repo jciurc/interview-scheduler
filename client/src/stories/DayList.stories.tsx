@@ -21,19 +21,17 @@ const days = [
   },
 ];
 
-// More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
   component: DayList,
-  // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
     days,
-    setDay: { action: 'setDay' }
+    setDay: { action: 'setDay' },
   },
 } as ComponentMeta<typeof DayList>;
 
-// More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: ComponentStory<typeof DayList> = (args) => <DayList {...args} />;
 
+// variations
 export const Monday = Template.bind({});
 Monday.args = {
   name: 'Monday',

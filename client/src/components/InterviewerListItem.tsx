@@ -10,7 +10,8 @@ interface Props {
 
 
 const InterviewerListItem: React.FC<Props> = (props) => {
-  const interviewerClass: cssClass = 'interviewers__item ' + (props.selected ? 'interviewers__item--selected ' : '');
+  const interviewerClass: cssClass = 'interviewers__item '
+    + (props.selected ? 'interviewers__item--selected ' : '');
 
   return (
     <li className={interviewerClass} onClick={props.setInterviewer}>
