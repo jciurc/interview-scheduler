@@ -26,19 +26,33 @@ export default {
     onDelete: { action: 'onDelete' },
     onCancel: { action: 'onCancel' },
     onConfirm: { action: 'onConfirm' },
+    onClose: { action: 'onClose' },
   },
 } as ComponentMeta<typeof Appointment>;
 
 const Template: ComponentStory<typeof Appointment> = (args) => <Appointment {...args} interviewers={interviewers} />;
 
 // variations
-export const Default = Template.bind({});
-Default.args = {
+export const View = Template.bind({});
+View.args = {
 };
 
-export const WithTime = Template.bind({});
-WithTime.args = {
+export const ViewWithTime = Template.bind({});
+ViewWithTime.args = {
   time: '12pm',
 };
 
-export const HeaderTest: ComponentStory<typeof Header> = (args) => <Header time='12pm' />;
+export const HeaderShow: ComponentStory<typeof Header> = (args) => <Header {...args} time='12pm' />;
+
+export const EmptyMode: ComponentStory<typeof Empty> = (args) => <Empty {...args} />;
+
+export const ShowMode: ComponentStory<typeof Show> = (args) => (<Show {...args}
+  student='hello'
+  interviewer={interviewers[0]}
+/>);
+
+export const ConfirmMode: ComponentStory<typeof Confirm> = (args) => <Confirm {...args} />;
+
+export const StatusMode: ComponentStory<typeof Status> = (args) => <Status {...args} />;
+
+export const ErrorMode: ComponentStory<typeof Error> = (args) => <Error {...args} />;
