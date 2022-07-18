@@ -7,7 +7,7 @@ export default {
   component: DayListItem,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
-    setDay: { action: 'setDay' }
+    handleClick: { action: 'handleClick' }
   },
 } as ComponentMeta<typeof DayListItem>;
 
