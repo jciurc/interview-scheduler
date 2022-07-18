@@ -7,7 +7,6 @@ import Show from "components/Appointment/Show";
 import Confirm from "components/Appointment/Confirm";
 import Status from "components/Appointment/Status";
 import Error from "components/Appointment/Error";
-import Form from "components/Appointment/Form";
 
 // fixtures
 const interviewers = [
@@ -21,6 +20,7 @@ const interviewers = [
 export default {
   component: Appointment,
   argTypes: {
+    updateAppointment: { action: 'updateAppointment' },
     onAdd: { action: 'onAdd' },
     onEdit: { action: 'onEdit' },
     onDelete: { action: 'onDelete' },
@@ -33,15 +33,24 @@ export default {
 const Template: ComponentStory<typeof Appointment> = (args) => <Appointment {...args} interviewers={interviewers} />;
 
 // variations
-export const View = Template.bind({});
-View.args = {
+export const AppointmentBlank = Template.bind({});
+AppointmentBlank.args = {
 };
 
-export const ViewWithTime = Template.bind({});
-ViewWithTime.args = {
+export const AppointmentEmpty = Template.bind({});
+AppointmentEmpty.args = {
+  id: 1,
   time: '12pm',
 };
 
+export const AppointmentBooked = Template.bind({});
+AppointmentBooked.args = {
+  id: 1,
+  time: '4pm',
+  interview: { id: 1, student: "Lydia Miller-Jones", interviewer: interviewers[0] },
+};
+
+// individual modes
 export const HeaderShow: ComponentStory<typeof Header> = (args) => <Header {...args} time='12pm' />;
 
 export const EmptyMode: ComponentStory<typeof Empty> = (args) => <Empty {...args} />;
@@ -53,6 +62,8 @@ export const ShowMode: ComponentStory<typeof Show> = (args) => (<Show {...args}
 
 export const ConfirmMode: ComponentStory<typeof Confirm> = (args) => <Confirm {...args} />;
 
-export const StatusMode: ComponentStory<typeof Status> = (args) => <Status {...args} />;
+export const StatusSaving: ComponentStory<typeof Status> = (args) => <Status {...args} status='Saving' />;
+export const StatusDeleting: ComponentStory<typeof Status> = (args) => <Status {...args} status='Deleting' />;
 
-export const ErrorMode: ComponentStory<typeof Error> = (args) => <Error {...args} />;
+export const ErrorSave: ComponentStory<typeof Error> = (args) => <Error {...args} type='save' />;
+export const ErrorDelete: ComponentStory<typeof Error> = (args) => <Error {...args} type='cancel' />;
