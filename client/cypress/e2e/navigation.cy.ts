@@ -1,9 +1,3 @@
-describe('empty spec', () => {
-  it('passes', () => {
-    cy.visit('https://example.cypress.io')
-  })
-})
-
 describe('Navigation', () => {
   it('should visit root', () => {
     cy.visit('/');
