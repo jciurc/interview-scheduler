@@ -62,7 +62,11 @@ Use hotkey `CTRL + C` in the terminal
 
 * `npm test` for Jest tests
 * `npm run storybook` and visit http://localhost:9009
-* `npm run cypress` and restart Scheduler API in test environment with `NODE_ENV=test npm start`
+
+## Running Cypress Tests
+
+* Restart Scheduler API in test environment with `NODE_ENV=test npm start`
+* `npm run cypress`
 
 ## Dependencies
 
@@ -95,4 +99,5 @@ Use hotkey `CTRL + C` in the terminal
 - The (external) Scheduler API database data can be reset by visiting `http://localhost:8001/api/debug/reset` 
 - The Scheduler API can intentionally fail requests by running it with `npm run error`
 - A test environment for the Scheduler API can be run with `NODE_ENV=test npm start` - this is used for Cypress E2E testing
+- Cypress may need an external server to be running (such as X-Server on WSL Machines)
 - More instructions for Scheduler API can be found here: https://github.com/lighthouse-labs/scheduler-api
