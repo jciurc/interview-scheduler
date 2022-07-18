@@ -30,25 +30,6 @@ export default {
   },
 } as ComponentMeta<typeof Appointment>;
 
-const Template: ComponentStory<typeof Appointment> = (args) => <Appointment {...args} interviewers={interviewers} />;
-
-// variations
-export const AppointmentBlank = Template.bind({});
-AppointmentBlank.args = {
-};
-
-export const AppointmentEmpty = Template.bind({});
-AppointmentEmpty.args = {
-  id: 1,
-  time: '12pm',
-};
-
-export const AppointmentBooked = Template.bind({});
-AppointmentBooked.args = {
-  id: 1,
-  time: '4pm',
-  interview: { id: 1, student: "Lydia Miller-Jones", interviewer: interviewers[0] },
-};
 
 // individual modes
 export const HeaderShow: ComponentStory<typeof Header> = (args) => <Header {...args} time='12pm' />;
