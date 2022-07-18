@@ -1,40 +1,32 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import Button from 'components/Button';
+import DayListItem from 'components/DayListItem';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  component: Button,
+  component: DayListItem,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
     handleClick: { action: 'clicked' }
   },
-} as ComponentMeta<typeof Button>;
+} as ComponentMeta<typeof DayListItem>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
+const Template: ComponentStory<typeof DayListItem> = (args) => <DayListItem {...args} />;
 
 
 export const Base = Template.bind({});
 Base.args = {
-  children: 'Base'
 };
 
 export const Confirm = Template.bind({});
 Confirm.args = {
-  confirm: true,
-  children: 'Confirm'
 };
 
 export const Danger = Template.bind({});
 Danger.args = {
-  danger: true,
-  children: 'Danger'
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-
-  disabled: true,
-  children: 'Disabled'
 };

@@ -9,7 +9,10 @@ interface Props {
 };
 
 const Button: React.FC<Props> = (props) => {
-  const buttonClass: cssClass = `button ${props.confirm ? 'button--confirm' : ''} ${props.danger ? 'button--danger' : ''}`;
+  const buttonClass: cssClass = ('button '
+    + (props.confirm ? 'button--confirm ' : '')
+    + (props.danger ? 'button--danger ' : '')
+  );
 
   return (
     <button
