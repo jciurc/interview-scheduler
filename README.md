@@ -73,7 +73,6 @@ Use hotkey `ctrl + c` in respective terminal
 
 ## Dev Dependencies
 
-- @babel/core
 - @storybook/addon-actions
 - @storybook/addon-backgrounds
 - @storybook/addon-links
@@ -82,10 +81,25 @@ Use hotkey `ctrl + c` in respective terminal
 - @testing-library/jest-dom
 - @testing-library/react
 - @testing-library/react-hooks
-- babel-loader
+- @types/node
+- @types/react
+- @types/react-dom
+- babel-plugin-named-exports-order
 - cypress
 - sass
-- react-test-renderer
+- webpack
+
+## Server Dependencies
+- body-parser
+- cors
+- dotenv
+- express
+- helmet
+- pg
+- socket.io
+- ws
+- jest
+- supertest
 
 ## Troubleshooting
 - The API database data can be reset by visiting `http://localhost:8001/api/debug/reset` or `running npm run reset`
