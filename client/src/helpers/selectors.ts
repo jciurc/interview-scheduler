@@ -9,7 +9,7 @@ export const getScheduleInfoForDay = (state: State, day: Day['name']) => {
 };
 
 // retrieves interview object from id
-export const getInterview = (state: State, interview: Interview) => {
+export const getInterview = (state: State, interview: Interview | null) => {
   return !interview ? null :
     { ...interview, interviewer: state.interviewers[interview.interviewer] };
 };

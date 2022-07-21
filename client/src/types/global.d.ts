@@ -12,7 +12,7 @@ declare global {
     day: Day.name;
     days: Day[];
     appointments: { [id: string]: Appointment };
-    interviewers: { [id: string]: Interviewer };
+    interviewers: { [id: string]: Interviewer};
   };
 
   interface Day {
@@ -26,7 +26,7 @@ declare global {
   interface Appointment {
     id: number;
     time: string;
-    interview: Interview;
+    interview: Interview | null;
   };
 
   interface Interviewer {
