@@ -1,3 +1,4 @@
 export const parameters = {
-  backgrounds: { defaultBackground: 'dark' }
+  backgrounds: { defaultBackground: 'dark' },
+  styles: ['../styles/index.scss'],
 };
