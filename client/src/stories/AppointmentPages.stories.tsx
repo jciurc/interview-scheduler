@@ -28,7 +28,8 @@ export default {
 
 const Template: ComponentStory<typeof Appointment> = (args) => <>
   <Appointment {...args} interviewers={interviewers} />
-  <Appointment {...args} time="5pm" />
+  {/* // todo intercept onsave and ondelete handlers */}
+  {/* <Appointment {...args} time="5pm" /> */}
 </>;
 
 // variations
@@ -44,5 +45,3 @@ AppointmentBooked.args = {
   time: '4pm',
   interview: { id: 1, student: "Lydia Miller-Jones", interviewer: interviewers[0] },
 };
-
-// todo intercept onsave and ondelete handlers
