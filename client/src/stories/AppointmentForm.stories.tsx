@@ -1,3 +1,4 @@
+import '../styles/index.scss';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import Form from "components/Appointment/Form";

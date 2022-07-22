@@ -1,3 +1,4 @@
+import '../styles/index.scss';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import InterviewerList from 'components/InterviewerList';
