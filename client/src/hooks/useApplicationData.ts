@@ -2,10 +2,10 @@ import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 
 // = local helpers =
-const updateSpots = (state, appointments) => {
+const updateSpots = (state: State, appointments: State['appointments']) => {
   // count null interviews for day
   const day = state.days.find((day) => day.name === state.day);
-  const spots = day.appointments.filter((id) => !appointments[id].interview).length;
+  const spots = day?.appointments.filter((id) => !appointments[id].interview).length;
 
   // copy days array and update selected day spots
   return state.days.map((day) => day.name === state.day ? { ...day, spots } : { ...day });
@@ -13,9 +13,9 @@ const updateSpots = (state, appointments) => {
 
 
 // = main hook function =
-export default () => {
+const useApplicationData = () => {
   // = App state =
-  const [state, setState] = useState({
+  const [state, setState] = useState<State>({
     day: "Monday",
     days: [],
     appointments: {},
@@ -42,13 +42,13 @@ export default () => {
   }, []);
 
   // = exported helpers =
-  const setDay = useCallback((day) => { setState((prev) => ({ ...prev, day })); }, []);
+  const setDay = useCallback((day: Day['name']) => { setState((prev) => ({ ...prev, day })); }, []);
 
   /**
    * @param {number} id id of appointment component
    * @param {object?} interview if no interview is given a delete request will be made, otherwise a put request will be made to update the existing appointment
-   * */
-  const updateAppointment = useCallback(async (id, interview = null) => {
+   */
+  const updateAppointment: UpdateAppointment = useCallback(async (id, interview) => {
     // update db with new interview or delete interview
     return await (interview
       ? axios.put('/api/appointments/' + id, { interview })
@@ -66,3 +66,5 @@ export default () => {
 
   return { state, setDay, updateAppointment };
 };
+
+export default useApplicationData;

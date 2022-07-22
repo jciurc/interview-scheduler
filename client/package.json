@@ -1,16 +1,31 @@
 {
-  "name": "scheduler",
-  "version": "0.1.0",
+  "name": "interview-scheduler",
+  "version": "1.1.0",
   "private": true,
   "proxy": "http://localhost:8001",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --verbose",
-    "eject": "react-scripts eject",
-    "storybook": "start-storybook -p 9009 -s public --ci",
+    "test": "react-scripts test",
+    "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook -s public",
     "cypress": "./node_modules/.bin/cypress open -P ."
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ],
+    "overrides": [
+      {
+        "files": [
+          "**/*.stories.*"
+        ],
+        "rules": {
+          "import/no-anonymous-default-export": "off"
+        }
+      }
+    ]
   },
   "browserslist": {
     "production": [
@@ -24,38 +39,36 @@
       "last 1 safari version"
     ]
   },
-  "eslintConfig": {
-    "extends": "react-app",
-    "parser": "babel-eslint"
-  },
   "dependencies": {
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.3.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.11.43",
+    "@types/react": "^18.0.15",
+    "@types/react-dom": "^18.0.6",
     "axios": "^0.27.2",
-    "classnames": "^2.2.6",
     "normalize.css": "^8.0.1",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
-    "react-scripts": "3.0.0"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "typescript": "^4.7.4"
   },
   "devDependencies": {
-    "@babel/core": "^7.4.3",
-    "@storybook/addon-actions": "^5.0.10",
-    "@storybook/addon-backgrounds": "^5.0.10",
-    "@storybook/addon-links": "^5.0.10",
-    "@storybook/addons": "^5.0.10",
-    "@storybook/react": "^5.0.10",
-    "@testing-library/jest-dom": "^4.0.0",
-    "@testing-library/react": "^8.0.9",
-    "@testing-library/react-hooks": "^8.0.0",
-    "babel-loader": "^8.0.5",
-    "cypress": "^9.7.0",
-    "node-sass": "^4.14.0",
+    "@storybook/addon-actions": "^6.5.9",
+    "@storybook/addon-essentials": "^6.5.9",
+    "@storybook/addon-interactions": "^6.5.9",
+    "@storybook/addon-links": "^6.5.9",
+    "@storybook/builder-webpack5": "^6.5.9",
+    "@storybook/manager-webpack5": "^6.5.9",
+    "@storybook/node-logger": "^6.5.9",
+    "@storybook/preset-create-react-app": "^4.1.2",
+    "@storybook/react": "^6.5.9",
+    "@storybook/testing-library": "^0.0.13",
+    "babel-plugin-named-exports-order": "^0.0.2",
+    "cypress": "^10.3.0",
     "prop-types": "^15.8.1",
-    "react-test-renderer": "^16.9.0"
-  },
-  "jest": {
-    "watchPathIgnorePatterns": [
-      "<rootDir>/node_modules/",
-      "<rootDir>/.git/"
-    ]
+    "sass": "^1.53.0",
+    "webpack": "^5.73.0"
   }
 }
