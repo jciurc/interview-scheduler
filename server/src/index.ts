@@ -4,8 +4,8 @@ const ENV = require("./environment");
 const app = require("./application")(ENV, { updateAppointment });
 const server = require("http").Server(app);
 
-const WebSocket = require("ws");
-const wss = new WebSocket.Server({ server });
+const WebSocket1 = require("ws");
+const wss = new WebSocket1.Server({ server });
 
 wss.on("connection", socket => {
   socket.onmessage = event => {
@@ -19,7 +19,7 @@ wss.on("connection", socket => {
 
 function updateAppointment(id, interview) {
   wss.clients.forEach(function eachClient(client) {
-    if (client.readyState === WebSocket.OPEN) {
+    if (client.readyState === WebSocket1.OPEN) {
       client.send(
         JSON.stringify({
           type: "SET_INTERVIEW",
