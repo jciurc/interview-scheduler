@@ -25,25 +25,25 @@
 }
 
 .button--danger {
-  color: $danger-color;
-  border-color: $danger-color;
+  color: $danger;
+  border-color: $danger;
   background-color: transparent;
 }
 
 .button--confirm {
-  color: $confirm-color;
-  border-color: $confirm-color;
+  color: $confirm;
+  border-color: $confirm;
   background-color: transparent;
 }
 
 .button--danger:hover {
   color: $white;
-  background-color: $danger-color;
+  background-color: $danger;
 }
 
 .button--confirm:hover {
   color: $white;
-  background-color: $confirm-color;
+  background-color: $confirm;
 }
 
 .button:last-of-type {

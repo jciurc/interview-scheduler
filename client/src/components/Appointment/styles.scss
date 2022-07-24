@@ -62,18 +62,18 @@ $appointment-height: 11rem;
     }
 
     &--show {
-      color: rgba($booked-color, $active-opacity);
-      background: linear-gradient(
+      color: rgba($booked, $active-opacity);
+      background-color: linear-gradient(
         90deg,
-        rgba($booked-color, $active-opacity),
-        rgba($booked-color, $active-opacity) 8px,
-        rgba($booked-color, $inactive-opacity) 0,
-        rgba($booked-color, $inactive-opacity)
+        rgba($booked, $active-opacity),
+        rgba($booked, $active-opacity) 8px,
+        rgba($booked, $inactive-opacity) 0,
+        rgba($booked, $inactive-opacity)
       );
 
       &:hover {
-        color: darken($white, 5%);
-        background-color: rgba($booked-color, $active-opacity);
+        color: lighten($black, 5%);
+        background-color: rgba($booked, $active-opacity);
       }
     }
 
@@ -85,7 +85,7 @@ $appointment-height: 11rem;
     }
 
     &--confirm {
-      @include border-card($danger-color);
+      @include border-card($danger);
 
       display: flex;
       flex-direction: column;
@@ -94,7 +94,7 @@ $appointment-height: 11rem;
     }
 
     &--error {
-      @include border-card($error-color);
+      @include border-card($error);
 
       display: flex;
       justify-content: space-between;
@@ -166,7 +166,7 @@ $appointment-height: 11rem;
   }
 
   &__validation {
-    color: $danger-color;
+    color: $danger;
     margin-bottom: 1rem;
   }
 }

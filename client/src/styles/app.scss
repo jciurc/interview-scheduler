@@ -1,5 +1,10 @@
 @import "styles/variables.scss";
 
+body {
+  background-color: $bg2;
+  color: $white;
+}
+
 .sidebar {
   background-color: $dark-background;
   box-shadow: 0px 4px 8px rgba($dark-background, 0.5);
@@ -16,7 +21,7 @@
     width: 90%;
     margin: $spacing 0;
     border: solid 1px;
-    color: darken($white, 5%);
+    color: darken($white, 20%);
   }
 
   &__menu {
@@ -35,4 +40,5 @@
   margin: 2rem 0;
   padding: 0 $spacing;
   width: 100%;
+  color: $text2;
 }
