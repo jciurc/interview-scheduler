@@ -38,9 +38,9 @@ Visit repo above for more information.
 **Stop the Server or Client** \
 Use hotkey `ctrl + c` in respective terminal
 
-### Dashboard 
+### Dashboard (Updated Colours) 
 
-<img alt="Screenshot of Scheduler's Dashboard" src="docs/dashboard.png?raw=true" name="Dashboard" width="1000"></img>
+<img alt="Screenshot of Scheduler's Dashboard" src="docs/05-dark.png?raw=true" name="Dashboard" width="1000"></img>
 
 ### Create or Update Appointments 
 
