@@ -61,3 +61,23 @@
   background-color: transparent;
   opacity: 0.7;
 }
+
+
+// dark mode
+.button--danger.dark {
+  color: $danger--dark;
+  border-color: $danger--dark;
+}
+
+.button--confirm.dark {
+  color: $confirm--dark;
+  border-color: $confirm--dark;
+}
+
+.button--danger:hover.dark {
+  background-color: $danger--dark;
+}
+
+.button--confirm:hover.dark {
+  background-color: $confirm--dark;
+}

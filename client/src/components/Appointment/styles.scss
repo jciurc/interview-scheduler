@@ -63,14 +63,14 @@ $appointment-height: 11rem;
 
     &--show {
       color: rgba($booked, $active-opacity);
-      background:  linear-gradient(90deg,
+      background: linear-gradient(90deg,
           rgba($booked, $active-opacity) 0,
           rgba($booked, $active-opacity) 8px,
           rgba($booked, $inactive-opacity) 0,
-          rgba($booked, $inactive-opacity)0 );
+          rgba($booked, $inactive-opacity)0);
 
       &:hover {
-        color: lighten($black, 5%);
+        color: darken($white, 5%);
         background-color: rgba($booked, $active-opacity);
       }
     }
@@ -125,7 +125,6 @@ $appointment-height: 11rem;
 
   &__card:hover &__actions-button {
     display: inline;
-    filter: brightness(0.05); // make action icons black
   }
 
   &__create-input {
@@ -168,5 +167,50 @@ $appointment-height: 11rem;
   &__validation {
     color: $danger;
     margin-bottom: 1rem;
+  }
+
+  // dark mode overrides
+  &.dark {
+    &--create {
+      background-color: $dark-background--dark;
+    }
+
+    &--show {
+      color: rgba($booked--dark, $active-opacity);
+      background: linear-gradient(90deg,
+          rgba($booked--dark, $active-opacity) 0,
+          rgba($booked--dark, $active-opacity) 8px,
+          rgba($booked--dark, $inactive-opacity) 0,
+          rgba($booked--dark, $inactive-opacity)0);
+
+      &:hover {
+        color: lighten($black, 5%);
+        background-color: rgba($booked--dark, $active-opacity);
+      }
+    }
+
+    &--status {
+      background-color: $dark-background--dark;
+    }
+
+    &--confirm {
+      @include border-card($danger--dark);
+    }
+
+    &--error {
+      @include border-card($error--dark);
+    }
+
+    &__card:hover &__actions-button {
+      filter: brightness(0.05); // make action icons black
+    }
+
+    &__create-input {
+      background-color: $dark-background--dark;
+    }
+
+    &__validation {
+      color: $danger--dark;
+    }
   }
 }

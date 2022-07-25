@@ -32,3 +32,12 @@
     }
   }
 }
+
+// dark mode
+.day-list__item.dark {
+  color: $text1--dark;
+
+  &:hover {
+    background-color: $danger--dark;
+  }
+}
