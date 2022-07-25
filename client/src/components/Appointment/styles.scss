@@ -63,13 +63,11 @@ $appointment-height: 11rem;
 
     &--show {
       color: rgba($booked, $active-opacity);
-      background-color: linear-gradient(
-        90deg,
-        rgba($booked, $active-opacity),
-        rgba($booked, $active-opacity) 8px,
-        rgba($booked, $inactive-opacity) 0,
-        rgba($booked, $inactive-opacity)
-      );
+      background-color: linear-gradient(90deg,
+          rgba($booked, $active-opacity) 0,
+          rgba($booked, $active-opacity) 8px,
+          rgba($booked, $inactive-opacity) 0,
+          rgba($booked, $inactive-opacity)0 );
 
       &:hover {
         color: lighten($black, 5%);
@@ -127,6 +125,7 @@ $appointment-height: 11rem;
 
   &__card:hover &__actions-button {
     display: inline;
+    filter: brightness(0.05); // make action icons black
   }
 
   &__create-input {
@@ -159,6 +158,7 @@ $appointment-height: 11rem;
       @include button-inactive--opacity;
 
       align-self: flex-start;
+
       &:hover {
         @include button-active--opacity;
       }
