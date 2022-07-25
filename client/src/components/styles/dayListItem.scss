@@ -34,7 +34,7 @@
 }
 
 // dark mode
-ul.--dark .day-list {
+.layout.dark .day-list {
   &__item {
     color: $text1--dark;
 

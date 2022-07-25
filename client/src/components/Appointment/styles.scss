@@ -169,50 +169,51 @@ $appointment-height: 11rem;
     margin-bottom: 1rem;
   }
 
-  // dark mode overrides
-  &--dark .appointment {
-    &__card {
-      &--create {
-        background-color: $dark-background--dark;
-      }
+}
 
-      &--show {
-        color: rgba($booked--dark, $active-opacity);
-        background: linear-gradient(90deg,
-            rgba($booked--dark, $active-opacity) 0,
-            rgba($booked--dark, $active-opacity) 8px,
-            rgba($booked--dark, $inactive-opacity) 0,
-            rgba($booked--dark, $inactive-opacity)0);
-
-        &:hover {
-          color: lighten($black, 5%);
-          background-color: rgba($booked--dark, $active-opacity);
-        }
-      }
-    }
-
-    &--status {
+// dark mode overrides
+.layout.dark .appointment {
+  &__card {
+    &--create {
       background-color: $dark-background--dark;
     }
 
-    &--confirm {
-      @include border-card($danger--dark);
-    }
+    &--show {
+      color: rgba($booked--dark, $active-opacity);
+      background: linear-gradient(90deg,
+          rgba($booked--dark, $active-opacity) 0,
+          rgba($booked--dark, $active-opacity) 8px,
+          rgba($booked--dark, $inactive-opacity) 0,
+          rgba($booked--dark, $inactive-opacity)0);
 
-    &--error {
-      @include border-card($error--dark);
+      &:hover {
+        color: lighten($black, 5%);
+        background-color: rgba($booked--dark, $active-opacity);
+      }
     }
+  }
 
-    &__card:hover &__actions-button {
-      filter: brightness(0.05); // make action icons black
-    }
+  &--status {
+    background-color: $dark-background--dark;
+  }
 
-    &__create-input {
-      background-color: $dark-background--dark;
-    }
+  &--confirm {
+    @include border-card($danger--dark);
+  }
 
-    &__validation {
-      color: $danger--dark;
-    }
+  &--error {
+    @include border-card($error--dark);
+  }
+
+  &__card:hover .appointment__actions-button {
+    filter: brightness(0.05); // make action icons black
+  }
+
+  &__create-input {
+    background-color: $dark-background--dark;
+  }
+
+  &__validation {
+    color: $danger--dark;
   }
 }

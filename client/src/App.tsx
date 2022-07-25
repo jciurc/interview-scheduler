@@ -20,15 +20,14 @@ const App: React.FC = () => {
         interviewers={interviewers}
         interview={getInterview(state, appointment.interview)}
         updateAppointment={updateAppointment}
-        classes={classes}
       />
     );
   });
 
   // = render component =
   return (
-    <main className='layout'>
-      <section className={`sidebar ${classes}`}>
+    <main className={`layout ${classes}`}>
+      <section className={`sidebar`}>
         <img
           className='sidebar--centered'
           src='images/logo.png'
@@ -41,14 +40,13 @@ const App: React.FC = () => {
             days={state.days}
             value={state.day}
             setDay={setDay}
-            classes={classes}
           />
         </nav>
 
       </section>
-      <section className='schedule'>
+      <section className={`schedule`}>
         {schedule}
-        <Appointment key='last' time='5pm' id={0} interviewers={[]} interview={null} classes={classes} />
+        <Appointment key='last' time='5pm' id={0} interviewers={[]} interview={null} />
       </section>
     </main>
   );

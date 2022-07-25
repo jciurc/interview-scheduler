@@ -27,7 +27,6 @@ interface Props {
   id: Appointment['id'];
   interviewers: Interviewer[];
   interview: Interview | null;
-  classes: string;
   updateAppointment?: UpdateAppointment;
 };
 
@@ -67,7 +66,7 @@ const Appointment: React.FC<Props> = (props) => {
 
   // render component
   return (
-    <article className={`appointment${props.classes}`}>
+    <article className={'appointment'}>
       {props.time && <Header time={props.time} />}
 
       {(() => {

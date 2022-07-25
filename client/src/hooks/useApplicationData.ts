@@ -43,7 +43,7 @@ const useApplicationData = () => {
       .catch((e) => { console.error(e); });
   }, []);
 
-  const classes = useMemo((() => dark ? '--dark' : ''), [dark])
+  const classes = useMemo((() => dark ? 'dark' : ''), [dark])
 
   // = exported helpers =
   const setDay = useCallback((day: Day['name']) => { setState((prev) => ({ ...prev, day })); }, []);

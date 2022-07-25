@@ -31,12 +31,6 @@ body {
   &__lhl {
     margin-top: 2rem;
   }
-
-  // dark mode
-  &.--dark {
-    background-color: $dark-background--dark;
-    box-shadow: 0px 4px 8px rgba($dark-background--dark, 0.5);
-  }
 }
 
 .schedule {
@@ -47,4 +41,18 @@ body {
   padding: 0 $spacing;
   width: 100%;
   color: $black;
+}
+
+// dark mode
+.layout.dark {
+  background-color: $bg2--dark;
+
+  .schedule {
+    color: $text2--dark;
+  }
+
+  .sidebar {
+    background-color: $dark-background--dark;
+    box-shadow: 0px 4px 8px rgba($dark-background--dark, 0.5);
+  }
 }
