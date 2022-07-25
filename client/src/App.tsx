@@ -7,7 +7,7 @@ import DayList from 'components/DayList';
 // = main component =
 const App: React.FC = () => {
   // get and set pre-render data
-  const { state, setDay, updateAppointment } = useApplicationData();
+  const { state, classes, toggleDark, setDay, updateAppointment } = useApplicationData();
 
   // = selectors =
   const { appointments, interviewers } = getScheduleInfoForDay(state, state.day);
@@ -20,6 +20,7 @@ const App: React.FC = () => {
         interviewers={interviewers}
         interview={getInterview(state, appointment.interview)}
         updateAppointment={updateAppointment}
+        classes={classes}
       />
     );
   });
@@ -46,7 +47,7 @@ const App: React.FC = () => {
       </section>
       <section className='schedule'>
         {schedule}
-        <Appointment key='last' time='5pm' id={0} interviewers={[]} interview={null} />
+        <Appointment key='last' time='5pm' id={0} interviewers={[]} interview={null} classes={classes} />
       </section>
     </main>
   );

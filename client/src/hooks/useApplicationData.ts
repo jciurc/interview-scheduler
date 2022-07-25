@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import axios from "axios";
 
 // = local helpers =
@@ -22,6 +22,8 @@ const useApplicationData = () => {
     interviewers: {},
   });
 
+  const [dark, setDark] = useState(true);
+
   // = effects =
   // get interview data from database on initial page load
   useEffect(() => {
@@ -41,8 +43,11 @@ const useApplicationData = () => {
       .catch((e) => { console.error(e); });
   }, []);
 
+  const classes = useMemo((() => dark ? '--dark' : ''), [dark])
+
   // = exported helpers =
   const setDay = useCallback((day: Day['name']) => { setState((prev) => ({ ...prev, day })); }, []);
+  const toggleDark = useCallback(() => { setDark((prev) => !prev) }, []);
 
   /**
    * @param {number} id id of appointment component
@@ -64,7 +69,7 @@ const useApplicationData = () => {
       });
   }, [state]);
 
-  return { state, setDay, updateAppointment };
+  return { state, classes, toggleDark, setDay, updateAppointment };
 };
 
 export default useApplicationData;

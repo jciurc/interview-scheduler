@@ -170,22 +170,24 @@ $appointment-height: 11rem;
   }
 
   // dark mode overrides
-  &.dark {
-    &--create {
-      background-color: $dark-background--dark;
-    }
+  &--dark .appointment {
+    &__card {
+      &--create {
+        background-color: $dark-background--dark;
+      }
 
-    &--show {
-      color: rgba($booked--dark, $active-opacity);
-      background: linear-gradient(90deg,
-          rgba($booked--dark, $active-opacity) 0,
-          rgba($booked--dark, $active-opacity) 8px,
-          rgba($booked--dark, $inactive-opacity) 0,
-          rgba($booked--dark, $inactive-opacity)0);
+      &--show {
+        color: rgba($booked--dark, $active-opacity);
+        background: linear-gradient(90deg,
+            rgba($booked--dark, $active-opacity) 0,
+            rgba($booked--dark, $active-opacity) 8px,
+            rgba($booked--dark, $inactive-opacity) 0,
+            rgba($booked--dark, $inactive-opacity)0);
 
-      &:hover {
-        color: lighten($black, 5%);
-        background-color: rgba($booked--dark, $active-opacity);
+        &:hover {
+          color: lighten($black, 5%);
+          background-color: rgba($booked--dark, $active-opacity);
+        }
       }
     }
 
