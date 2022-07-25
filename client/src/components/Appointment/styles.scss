@@ -63,7 +63,7 @@ $appointment-height: 11rem;
 
     &--show {
       color: rgba($booked, $active-opacity);
-      background-color: linear-gradient(90deg,
+      background:  linear-gradient(90deg,
           rgba($booked, $active-opacity) 0,
           rgba($booked, $active-opacity) 8px,
           rgba($booked, $inactive-opacity) 0,
