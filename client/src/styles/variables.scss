@@ -6,17 +6,41 @@ $inactive-opacity: 0.15;
 $white: #fff;
 $black: #000;
 
-$dark-background: #090f18;
+$dark-background: #222f3e;
+
+$font-family: "Source Sans Pro", sans-serif;
+
+$active-opacity: 1;
+$inactive-opacity: 0.15;
+
+$spacing: 2rem;
+
+
+// light mode
+$dark-background: #222f3e;
 $bg1: #1f142b;
 $bg2: #172135;
 
 $text1: #34d9df;
 $text2: #f8e17c;
 
-$weeks: #54c9ff, #48f5fb, #1dd195, #8227cd;
-$booked: #89e7a8;
-$danger: #ff8c5f;
-$error: #f3a965;
-$confirm: #0ecccc;
+$weeks: #54a0ff, #48dbfb, #1dd1a1, #5f27cd;
+$booked: #54a0ff;
+$danger: #ee5253;
+$error: #ff9f43;
+$confirm: #10ac84;
 
-$spacing: 2rem;
+
+// dark mode colours
+$dark-background--dark: #090f18;
+$bg1--dark: #1f142b;
+$bg2--dark: #172135;
+
+$text1--dark: #34d9df;
+$text2--dark: #f8e17c;
+
+$weeks--dark: #54c9ff, #48f5fb, #1dd195, #8227cd;
+$booked--dark: #89e7a8;
+$danger--dark: #ff8c5f;
+$error--dark: #f3a965;
+$confirm--dark: #0ecccc;
