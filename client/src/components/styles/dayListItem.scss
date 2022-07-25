@@ -34,10 +34,17 @@
 }
 
 // dark mode
-.day-list__item.dark {
-  color: $text1--dark;
+ul.--dark .day-list {
+  &__item {
+    color: $text1--dark;
 
-  &:hover {
-    background-color: $danger--dark;
+    &:hover:not(&--selected) {
+      background-color: $danger--dark;
+      color: $dark-background--dark;
+    }
+
+    &--selected {
+      color: $dark-background--dark;
+    }
   }
 }

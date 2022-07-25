@@ -4,6 +4,7 @@ interface Props {
   days: Day[];
   value: Day['name'];
   setDay: (name: Day['name']) => void;
+  classes: string;
 };
 
 const DayList: React.FC<Props> = (props) => {
@@ -18,7 +19,7 @@ const DayList: React.FC<Props> = (props) => {
   );
 
   return (
-    <ul>
+    <ul className={props.classes}>
       {dayListItems}
     </ul>
   );

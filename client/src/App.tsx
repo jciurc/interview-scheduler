@@ -28,7 +28,7 @@ const App: React.FC = () => {
   // = render component =
   return (
     <main className='layout'>
-      <section className='sidebar'>
+      <section className={`sidebar ${classes}`}>
         <img
           className='sidebar--centered'
           src='images/logo.png'
@@ -41,6 +41,7 @@ const App: React.FC = () => {
             days={state.days}
             value={state.day}
             setDay={setDay}
+            classes={classes}
           />
         </nav>
 
