@@ -23,8 +23,8 @@ It simulates a web portal that allows students to view and book appointments wit
 * `npm i`
 * `npm start`
 
-Once running `curl` or visit `http://localhost:8001/api/debug/reset` to reseed the db. \
-Visit repo above for more information.
+Once running, `curl` or visit `http://localhost:8001/api/debug/reset` to reseed the db. \
+Visit Lighthouse Labs repo above for more information.
 
 **Set up Client in Separate Terminal** 
 * `cd client`
