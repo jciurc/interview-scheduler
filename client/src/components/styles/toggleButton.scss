@@ -6,9 +6,9 @@
   position: relative;
   border-radius: 1rem;
   font-size: 1.5rem;
-  height: 2.2rem;
+  height: 2rem;
   margin: 2rem;
-  width: 6rem;
+  width: 4rem;
   border-width: 2px;
   border-style: solid;
   border-color: $text1;
@@ -31,20 +31,24 @@
 
   .fa-moon,
   .fa-sun {
-    height: 100%;
-    width: 100%;
+    display: block;
     position: absolute;
+
+    // center vertically
+    top: 0;
+    bottom: 0;
+    margin: auto;
   }
 
   .fa-moon {
     opacity: 0;
-    left: auto;
-    right: 20%;
+    left: 10%;
+    right: auto;
   }
 
   .fa-sun {
-    left: 20%;
-    right: auto;
+    left: auto;
+    right: 10%;
   }
 }
 
