@@ -15,8 +15,8 @@ export default class ToggleButton extends React.Component<IToggleProps> {
 
   render(): React.ReactNode {
     return (<section className='toggle' onClick={this.props.toggleDark}>
-      <FontAwesomeIcon icon={faMoon} className='fa-moon'/>
-      <FontAwesomeIcon icon={faSun} className='fa-sun'/>
+      <FontAwesomeIcon icon={faMoon} className='fa-moon' />
+      <FontAwesomeIcon icon={faSun} className='fa-sun' />
     </section>)
   }
 };

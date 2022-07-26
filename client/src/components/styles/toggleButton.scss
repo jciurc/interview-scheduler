@@ -29,34 +29,32 @@
     background-color: transparent;
   }
 
-  .fa-moon {
-    opacity: 0;
-  }
-
   .fa-moon,
   .fa-sun {
     height: 100%;
     width: 100%;
+    position: absolute;
+  }
+
+  .fa-moon {
+    opacity: 0;
+    left: auto;
+    right: 20%;
+  }
+
+  .fa-sun {
     left: 20%;
     right: auto;
-    position: absolute;
   }
 }
 
 .dark .toggle {
-
   .fa-moon {
     opacity: 1;
   }
 
   .fa-sun {
     opacity: 0;
-  }
-
-  .fa-moon,
-  .fa-sun {
-    left: auto;
-    right: 20%;
   }
 
   &:hover {
