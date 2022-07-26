@@ -9,6 +9,7 @@ It simulates a web portal that allows students to view and book appointments wit
 * `View and Book Appointments`
 * `Update or Cancel Appointments`
 * `Mobile and Desktop View`
+* `Dark & Light Mode`
 * `Automated Testing`
 
 ## Usage
@@ -38,7 +39,7 @@ Visit Lighthouse Labs repo above for more information.
 **Stop the Server or Client** \
 Use hotkey `ctrl + c` in respective terminal
 
-### Dashboard (Updated Colours) 
+### Dashboard (Dark) 
 
 <img alt="Screenshot of Scheduler's Dashboard" src="docs/05-dashboard-dark.png?raw=true" name="Dashboard" width="1000"></img>
 

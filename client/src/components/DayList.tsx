@@ -1,4 +1,5 @@
 import DayListItem from './DayListItem';
+import ToggleButton from './ToggleButton';
 
 interface Props {
   days: Day[];
@@ -20,6 +21,7 @@ const DayList: React.FC<Props> = (props) => {
   return (
     <ul>
       {dayListItems}
+      <ToggleButton />
     </ul>
   );
 };
