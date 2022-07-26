@@ -31,27 +31,25 @@
 
   .fa-moon,
   .fa-sun {
-    display: block;
     position: absolute;
-
-    // center vertically
+    display: block;
     top: 0;
     bottom: 0;
     margin: auto;
   }
 
   .fa-moon {
-    opacity: 0;
     left: 10%;
-    right: auto;
+    opacity: 0;
   }
 
   .fa-sun {
-    left: auto;
     right: 10%;
+    opacity: 1;
   }
 }
 
+// dark mode
 .dark .toggle {
   .fa-moon {
     opacity: 1;
