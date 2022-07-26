@@ -2,32 +2,65 @@
 @import "styles/variables.scss";
 
 .toggle {
+  transition: 600ms;
+  position: relative;
   border-radius: 1rem;
-  border: 0;
   font-size: 1.5rem;
-  height: 2rem;
-  line-height: 1.2rem;
-  margin: auto;
-  text-align: center;
-  vertical-align: middle;
-  width: 8rem;
+  height: 2.2rem;
+  margin: 2rem;
+  width: 6rem;
   border-width: 2px;
   border-style: solid;
-  border-color: $white;
-  color: $white;
+  border-color: $text1;
+  color: $text1;
   background-color: transparent;
+  user-select: none;
+
+  &:hover {
+    @include button-active;
+    color: $black;
+    background-color: $text1;
+    border: 2px solid transparent;
+  }
+
+  &--danger {
+    color: $danger;
+    border-color: $danger;
+    background-color: transparent;
+  }
+
+  .fa-moon {
+    opacity: 0;
+  }
+
+  .fa-moon,
+  .fa-sun {
+    height: 100%;
+    width: 100%;
+    left: 20%;
+    right: auto;
+    position: absolute;
+  }
 }
 
-.toggle:hover {
-  @include button-active;
+.dark .toggle {
 
-  color: $black;
-  background-color: $white;
-  border: 2px solid transparent;
-}
+  .fa-moon {
+    opacity: 1;
+  }
 
-.toggle--danger {
-  color: $danger;
-  border-color: $danger;
-  background-color: transparent;
+  .fa-sun {
+    opacity: 0;
+  }
+
+  .fa-moon,
+  .fa-sun {
+    left: auto;
+    right: 20%;
+  }
+
+  &:hover {
+    color: $black;
+    background-color: $text2--dark;
+  }
 }

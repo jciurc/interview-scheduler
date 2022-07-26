@@ -3,14 +3,14 @@
 
 .day-list {
   &__item {
-    @include fade;
-
+    // @include fade;
     color: $text1;
     height: 5rem;
     padding-left: 2rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    background-color: transparent;
 
     &:hover {
       background-color: $danger;
