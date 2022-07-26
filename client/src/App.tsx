@@ -40,6 +40,7 @@ const App: React.FC = () => {
             days={state.days}
             value={state.day}
             setDay={setDay}
+            toggleDark={toggleDark}
           />
         </nav>
 

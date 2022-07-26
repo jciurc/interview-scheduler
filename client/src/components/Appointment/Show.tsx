@@ -1,6 +1,6 @@
 interface Props {
   student?: Student;
-  interviewer?: Interviewer;
+  interviewer?: IInterviewer;
   onEdit: () => void;
   onDelete: () => void;
 };

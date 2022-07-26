@@ -3,10 +3,10 @@ import InterviewerListItem from "./InterviewerListItem";
 
 // = type definitions =
 interface Props {
-  interviewers: Interviewer[];
-  value: Interviewer['id'] | null;
+  interviewers: IInterviewer[];
+  value: IInterviewer['id'] | null;
   student?: Student;
-  handleChange: (id: Interviewer['id']) => void;
+  handleChange: (id: IInterviewer['id']) => void;
 };
 
 const InterviewerList: React.FC<Props> = (props) => {

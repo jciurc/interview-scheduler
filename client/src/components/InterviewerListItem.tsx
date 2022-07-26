@@ -3,8 +3,8 @@ import './styles/interviewerListItem.scss';
 // = type definitions =
 interface Props {
   selected: boolean;
-  name: Interviewer['name'];
-  avatar: Interviewer['avatar'];
+  name: IInterviewer['name'];
+  avatar: IInterviewer['avatar'];
   setInterviewer: () => void;
 };
 

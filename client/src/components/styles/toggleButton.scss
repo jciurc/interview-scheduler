@@ -1,0 +1,33 @@
+@import "styles/mixins.scss";
+@import "styles/variables.scss";
+
+.toggle {
+  border-radius: 1rem;
+  border: 0;
+  font-size: 1.5rem;
+  height: 2rem;
+  line-height: 1.2rem;
+  margin: auto;
+  text-align: center;
+  vertical-align: middle;
+  width: 8rem;
+  border-width: 2px;
+  border-style: solid;
+  border-color: $white;
+  color: $white;
+  background-color: transparent;
+}
+
+.toggle:hover {
+  @include button-active;
+
+  color: $black;
+  background-color: $white;
+  border: 2px solid transparent;
+}
+
+.toggle--danger {
+  color: $danger;
+  border-color: $danger;
+  background-color: transparent;
+}

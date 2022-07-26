@@ -23,10 +23,10 @@ const ERROR_DELETE = 'ERROR_DELETE';
 
 // = type definitions =
 interface Props {
-  time: Appointment['time'];
-  id: Appointment['id'];
-  interviewers: Interviewer[];
-  interview: Interview | null;
+  time: IAppointment['time'];
+  id: IAppointment['id'];
+  interviewers: IInterviewer[];
+  interview: IInterview | null;
   updateAppointment?: UpdateAppointment;
 };
 
@@ -39,7 +39,7 @@ const Appointment: React.FC<Props> = (props) => {
    * @param {string} student student name
    * @param {number} interviewer interviewer id
    */
-  const save = (student: Student, interviewer: Interviewer['id']) => {
+  const save = (student: Student, interviewer: IInterviewer['id']) => {
     // accept but don't make post request if no new changes
     if (props.interview && (
       student === props.interview.student &&

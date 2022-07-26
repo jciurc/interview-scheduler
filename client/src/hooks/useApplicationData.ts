@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback, useMemo } from "react";
 import axios from "axios";
 
 // = local helpers =
-const updateSpots = (state: State, appointments: State['appointments']) => {
+const updateSpots = (state: IState, appointments: IState['appointments']) => {
   // count null interviews for day
   const day = state.days.find((day) => day.name === state.day);
   const spots = day?.appointments.filter((id) => !appointments[id].interview).length;
@@ -15,7 +15,7 @@ const updateSpots = (state: State, appointments: State['appointments']) => {
 // = main hook function =
 const useApplicationData = () => {
   // = App state =
-  const [state, setState] = useState<State>({
+  const [state, setState] = useState<IState>({
     day: "Monday",
     days: [],
     appointments: {},
@@ -46,7 +46,7 @@ const useApplicationData = () => {
   const classes = useMemo((() => dark ? 'dark' : ''), [dark])
 
   // = exported helpers =
-  const setDay = useCallback((day: Day['name']) => { setState((prev) => ({ ...prev, day })); }, []);
+  const setDay = useCallback((day: IDay['name']) => { setState((prev) => ({ ...prev, day })); }, []);
   const toggleDark = useCallback(() => { setDark((prev) => !prev) }, []);
 
   /**

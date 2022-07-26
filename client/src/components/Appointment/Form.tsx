@@ -4,9 +4,9 @@ import InterviewerList from 'components/InterviewerList';
 
 // = type definitions =
 interface Props {
-  interviewers: Interviewer[];
+  interviewers: IInterviewer[];
   student?: Student;
-  interviewer?: Interviewer;
+  interviewer?: IInterviewer;
   onCancel: () => void;
   onSave: (student: Student, interviewerID: number) => void;
 };

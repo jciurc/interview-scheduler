@@ -6,7 +6,7 @@ import {
 } from 'helpers/selectors';
 
 // test data
-const state: State = {
+const state: IState = {
   day: undefined,
   days: [
     {
@@ -51,7 +51,7 @@ const state: State = {
   },
 };
 
-const emptyDays: State = {
+const emptyDays: IState = {
   day: undefined,
   days: [],
   appointments: {},

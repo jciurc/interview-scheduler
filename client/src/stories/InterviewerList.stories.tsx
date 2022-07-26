@@ -10,7 +10,7 @@ const interviewers = [
   { id: 3, name: "Mildred Nazir", avatar: "https://i.imgur.com/T2WwVfS.png" },
   { id: 4, name: "Cohana Roy", avatar: "https://i.imgur.com/FK8V841.jpg" },
   { id: 5, name: "Sven Jones", avatar: "https://i.imgur.com/twYrpay.jpg" }
-] as Interviewer[];
+] as IInterviewer[];
 
 export default {
   component: InterviewerList,

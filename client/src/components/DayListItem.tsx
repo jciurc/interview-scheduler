@@ -2,9 +2,9 @@ import './styles/dayListItem.scss';
 
 // = type definitions =
 interface Props {
-  name: Day['name'];
+  name: IDay['name'];
   selected: boolean;
-  spots: Day['spots'];
+  spots: IDay['spots'];
   handleClick: () => void;
 };
 

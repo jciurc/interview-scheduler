@@ -1,21 +1,22 @@
 // = type definitions =
 declare global {
   // functions
-  type UpdateAppointment = (id: Appointment['id'], interview?: Interview | null) => Promise<Response | void>
+  type UpdateAppointment = (id: IAppointment['id'], interview?: IInterview | null) => Promise<Response | void>
+  type ToggleDark = () => void;
 
   // variables
   type Student = string;
   type cssClass = string;
 
   // state
-  interface State {
+  interface IState {
     day: Day.name;
-    days: Day[];
-    appointments: { [id: string]: Appointment };
-    interviewers: { [id: string]: Interviewer};
+    days: IDay[];
+    appointments: { [id: string]: IAppointment };
+    interviewers: { [id: string]: IInterviewer };
   };
 
-  interface Day {
+  interface IDay {
     id: number;
     name: string;
     spots?: number;
@@ -23,19 +24,19 @@ declare global {
     interviewers: Interviewer.id[];
   };
 
-  interface Appointment {
+  interface IAppointment {
     id: number;
     time: string;
-    interview: Interview | null;
+    interview: IInterview | null;
   };
 
-  interface Interviewer {
+  interface IInterviewer {
     id: number;
     name: string;
     avatar: string;
   };
 
-  interface Interview {
+  interface IInterview {
     id?: number;
     interviewer: Interviewer.id;
     student: Student;

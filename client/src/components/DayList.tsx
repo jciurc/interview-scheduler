@@ -2,9 +2,10 @@ import DayListItem from './DayListItem';
 import ToggleButton from './ToggleButton';
 
 interface Props {
-  days: Day[];
-  value: Day['name'];
-  setDay: (name: Day['name']) => void;
+  days: IDay[];
+  value: IDay['name'];
+  setDay: (name: IDay['name']) => void;
+  toggleDark: ToggleDark;
 };
 
 const DayList: React.FC<Props> = (props) => {
@@ -21,7 +22,7 @@ const DayList: React.FC<Props> = (props) => {
   return (
     <ul>
       {dayListItems}
-      <ToggleButton />
+      <ToggleButton toggleDark={props.toggleDark} />
     </ul>
   );
 };

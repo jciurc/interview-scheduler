@@ -1,6 +1,6 @@
 // = functions =
-export const getScheduleInfoForDay = (state: State, day: Day['name']) => {
-  const foundDay = state.days.find((item: Day) => item.name === day);
+export const getScheduleInfoForDay = (state: IState, day: IDay['name']) => {
+  const foundDay = state.days.find((item: IDay) => item.name === day);
 
   return {
     appointments: foundDay?.appointments.map((id) => state.appointments[id]) ?? [],
@@ -9,7 +9,7 @@ export const getScheduleInfoForDay = (state: State, day: Day['name']) => {
 };
 
 // retrieves interview object from id
-export const getInterview = (state: State, interview: Interview | null) => {
+export const getInterview = (state: IState, interview: IInterview | null) => {
   return !interview ? null :
     { ...interview, interviewer: state.interviewers[interview.interviewer] };
 };
@@ -17,14 +17,14 @@ export const getInterview = (state: State, interview: Interview | null) => {
 
 // ----------
 // = old indidivual functions - kept for jest tests =
-export const getAppointmentsForDay = (state: State, day: Day['name']) => {
+export const getAppointmentsForDay = (state: IState, day: IDay['name']) => {
   const foundDay = state.days.find((item) => item.name === day);
   if (!foundDay) return [];
 
   return foundDay.appointments.map((id) => state.appointments[id]);
 };
 
-export const getInterviewersForDay = (state: State, day: Day['name']) => {
+export const getInterviewersForDay = (state: IState, day: IDay['name']) => {
   const foundDay = state.days.find((item) => item.name === day);
   if (!foundDay) return [];
 

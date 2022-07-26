@@ -20,7 +20,7 @@ const days = [
     name: "Wednesday",
     spots: 0,
   },
-] as Day[];
+] as IDay[];
 
 export default {
   component: DayList,
