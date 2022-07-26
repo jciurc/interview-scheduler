@@ -41,7 +41,7 @@ Use hotkey `ctrl + c` in respective terminal
 
 ### Dashboard (Dark) 
 
-<img alt="Screenshot of Scheduler's Dashboard" src="docs/06-dashboard-dark.gif?raw=true" name="Dashboard" width="1000"></img>
+<img alt="Screenshot of Scheduler's Dashboard" src="docs/06-darkmode.gif?raw=true" name="Dashboard" width="1000"></img>
 
 ### Create or Update Appointments 
 
