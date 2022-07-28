@@ -1,4 +1,4 @@
-import pg from 'pg';
+import * as pg from 'pg';
 
 const client = new pg.Client({
   connectionString: process.env.DATABASE_URL || '',
@@ -7,6 +7,6 @@ const client = new pg.Client({
 
 client
   .connect()
-  .catch(e => console.log(`Error connecting to Postgres server:\n${e}`));
+  .catch((e) => console.log(`Error connecting to Postgres server:\n${e}`));
 
 export default client;
