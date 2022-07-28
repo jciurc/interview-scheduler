@@ -1,17 +1,21 @@
 import * as fs from 'fs';
 import * as path from 'path';
 
+type IRead = (file: string) => Promise<string>;
+type IUpdateAppointment = (id: number, interview: string) => void;
+
 // = get env variables =
-import * as dotenv from 'dotenv';
 const ENV = process.env.NODE_ENV || 'development';
-const PATH = path.resolve(__dirname, './.env.' + ENV);
+const PATH = path.resolve(__dirname, '../.env.' + ENV + '.local');
+import * as dotenv from 'dotenv';
 dotenv.config({ path: PATH });
 
 // = modules =
-import express, { Express, Request, Response } from 'express';
+import * as express from 'express';
+import { Express, Request, Response } from 'express';
 import * as http from 'http';
-import WebSocket1 from 'ws';
-import cors from 'cors';
+import * as WebSocket1 from 'ws';
+import * as cors from 'cors';
 import helmet from 'helmet';
 import db from './db';
 
@@ -21,7 +25,7 @@ import appointments from './routes/appointments';
 import interviewers from './routes/interviewers';
 
 // = functions =
-const read = (file) => {
+const read: IRead = (file) => {
   return new Promise((resolve, reject) => {
     fs.readFile(file, { encoding: 'utf-8' }, (error, data) => {
       if (error) return reject(error);
@@ -30,7 +34,7 @@ const read = (file) => {
   });
 };
 
-const updateAppointment = (id, interview) => {
+const updateAppointment: IUpdateAppointment = (id, interview) => {
   wss.clients.forEach(function eachClient(client) {
     if (client.readyState === WebSocket1.OPEN) {
       client.send(
@@ -47,7 +51,7 @@ const updateAppointment = (id, interview) => {
 // = server config =
 const PORT = process.env.PORT || 8001;
 const app: Express = express();
-const server = http.Server(app);
+const server = new http.Server(app);
 const wss = new WebSocket1.Server({ server });
 
 app.use(cors());
@@ -78,8 +82,6 @@ if (ENV === 'development' || ENV === 'test') {
       console.log(`Error setting up the reset route: ${error}`);
     });
 };
-
-app.close = () => db.end();
 
 // web sockets
 wss.on('connection', socket => {
