@@ -1,8 +1,15 @@
+<<<<<<< HEAD
 import * as express from 'express';
 const router = express.Router();
 
 const appointmentsRoutes = (db, updateAppointment) => {
   router.get('/appointments', (request, response) => {
+=======
+const router = require("express").Router();
+
+module.exports = (db, updateAppointment) => {
+  router.get("/appointments", (request, response) => {
+>>>>>>> 7a2c01f48d63bef3216340d2cf5251fd5efc12cd
     db.query(
       `
       SELECT
@@ -27,7 +34,11 @@ const appointmentsRoutes = (db, updateAppointment) => {
     });
   });
 
+<<<<<<< HEAD
   router.put('/appointments/:id', (request, response) => {
+=======
+  router.put("/appointments/:id", (request, response) => {
+>>>>>>> 7a2c01f48d63bef3216340d2cf5251fd5efc12cd
     if (process.env.TEST_ERROR) {
       setTimeout(() => response.status(500).json({}), 1000);
       return;
@@ -52,7 +63,11 @@ const appointmentsRoutes = (db, updateAppointment) => {
       .catch(error => console.log(error));
   });
 
+<<<<<<< HEAD
   router.delete('/appointments/:id', (request, response) => {
+=======
+  router.delete("/appointments/:id", (request, response) => {
+>>>>>>> 7a2c01f48d63bef3216340d2cf5251fd5efc12cd
     if (process.env.TEST_ERROR) {
       setTimeout(() => response.status(500).json({}), 1000);
       return;
@@ -70,5 +85,8 @@ const appointmentsRoutes = (db, updateAppointment) => {
 
   return router;
 };
+<<<<<<< HEAD
 
 export default appointmentsRoutes;
+=======
+>>>>>>> 7a2c01f48d63bef3216340d2cf5251fd5efc12cd

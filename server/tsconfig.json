@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+<<<<<<< HEAD
     "module": "commonjs", /* Specify what module code is generated. */
     "outDir": "./dist", /* Specify an output folder for all emitted files. */
     "forceConsistentCasingInFileNames": true, /* Ensure that casing is correct in imports. */
@@ -8,3 +9,13 @@
     "skipLibCheck": true, /* Skip type checking all .d.ts files. */
   }
 }
+=======
+    "module": "commonjs",                                /* Specify what module code is generated. */
+    "outDir": "./dist",                                   /* Specify an output folder for all emitted files. */
+    "forceConsistentCasingInFileNames": true,            /* Ensure that casing is correct in imports. */
+    "strict": true,                                      /* Enable all strict type-checking options. */
+    "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
+    "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
+  }
+}
+>>>>>>> 7a2c01f48d63bef3216340d2cf5251fd5efc12cd
