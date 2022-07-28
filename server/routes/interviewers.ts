@@ -1,7 +1,8 @@
-const router = require("express").Router();
+import * as express from 'express';
+const router = express.Router();
 
-module.exports = db => {
-  router.get("/interviewers", (request, response) => {
+const interviewersRoutes = (db) => {
+  router.get('/interviewers', (request, response) => {
     db.query(`SELECT * FROM interviewers`).then(({ rows: interviewers }) => {
       response.json(
         interviewers.reduce(
@@ -14,3 +15,5 @@ module.exports = db => {
 
   return router;
 };
+
+export default interviewersRoutes;

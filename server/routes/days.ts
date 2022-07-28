@@ -1,7 +1,8 @@
-const router = require("express").Router();
+import * as express from 'express';
+const router = express.Router();
 
-module.exports = db => {
-  router.get("/days", (request, response) => {
+const daysRoutes = (db) => {
+  router.get('/days', (request, response) => {
     db.query(
       `
       SELECT
@@ -23,3 +24,5 @@ module.exports = db => {
 
   return router;
 };
+
+export default daysRoutes;

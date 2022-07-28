@@ -1,15 +1,15 @@
-import fs from 'fs';
-import path from 'path';
+import * as fs from 'fs';
+import * as path from 'path';
 
 // = get env variables =
-import dotenv from 'dotenv';
+import * as dotenv from 'dotenv';
 const ENV = process.env.NODE_ENV || 'development';
 const PATH = path.resolve(__dirname, './.env.' + ENV);
 dotenv.config({ path: PATH });
 
 // = modules =
 import express, { Express, Request, Response } from 'express';
-import http from 'http';
+import * as http from 'http';
 import WebSocket1 from 'ws';
 import cors from 'cors';
 import helmet from 'helmet';
@@ -82,12 +82,12 @@ if (ENV === 'development' || ENV === 'test') {
 app.close = () => db.end();
 
 // web sockets
-wss.on("connection", socket => {
+wss.on('connection', socket => {
   socket.onmessage = event => {
     console.log(`Message Received: ${event.data}`);
 
-    if (event.data === "ping") {
-      socket.send(JSON.stringify("pong"));
+    if (event.data === 'ping') {
+      socket.send(JSON.stringify('pong'));
     }
   };
 });
