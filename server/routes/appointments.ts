@@ -3,8 +3,7 @@ const router = express.Router();
 
 const appointmentsRoutes = (db, updateAppointment) => {
   router.get('/appointments', (request, response) => {
-    db.query(
-      `
+    db.query(`
       SELECT
         appointments.id,
         appointments.time,
@@ -18,12 +17,9 @@ const appointmentsRoutes = (db, updateAppointment) => {
       ORDER BY appointments.id
     `
     ).then(({ rows: appointments }) => {
-      response.json(
-        appointments.reduce(
-          (previous, current) => ({ ...previous, [current.id]: current }),
-          {}
-        )
-      );
+      response.json(appointments.reduce((previous, current) => (
+        { ...previous, [current.id]: current }
+      ), {}));
     });
   });
 
@@ -35,21 +31,18 @@ const appointmentsRoutes = (db, updateAppointment) => {
 
     const { student, interviewer } = request.body.interview;
 
-    db.query(
-      `
+    db.query(`
       INSERT INTO interviews (student, interviewer_id, appointment_id) VALUES ($1::text, $2::integer, $3::integer)
       ON CONFLICT (appointment_id) DO
       UPDATE SET student = $1::text, interviewer_id = $2::integer
-    `,
-      [student, interviewer, Number(request.params.id)]
-    )
+    `, [student, interviewer, Number(request.params.id)])
       .then(() => {
         setTimeout(() => {
           response.status(204).json({});
           updateAppointment(Number(request.params.id), request.body.interview);
         }, 1000);
       })
-      .catch(error => console.log(error));
+      .catch((e) => console.log(e));
   });
 
   router.delete('/appointments/:id', (request, response) => {
