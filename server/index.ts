@@ -2,7 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 
 type IRead = (file: string) => Promise<string>;
-type IUpdateAppointment = (id: number, interview: string) => void;
+export type IUpdateAppointment = (id: number, interview: string) => void;
 
 // = get env variables =
 const ENV = process.env.NODE_ENV || 'development';
@@ -78,9 +78,7 @@ if (ENV === 'development' || ENV === 'test') {
           });
       });
     })
-    .catch(error => {
-      console.log(`Error setting up the reset route: ${error}`);
-    });
+    .catch((e) => { console.log(`Error setting up the reset route: ${e}`); });
 };
 
 // web sockets

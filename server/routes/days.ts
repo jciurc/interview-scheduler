@@ -1,7 +1,8 @@
 import * as express from 'express';
 const router = express.Router();
+import { Client } from 'pg';
 
-const daysRoutes = (db) => {
+const daysRoutes = (db: Client) => {
   router.get('/days', (request, response) => {
     db.query(
       `

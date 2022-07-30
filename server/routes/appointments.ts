@@ -1,7 +1,9 @@
 import * as express from 'express';
+import { Client } from 'pg';
 const router = express.Router();
+import { IUpdateAppointment } from '../';
 
-const appointmentsRoutes = (db, updateAppointment) => {
+const appointmentsRoutes = (db: Client, updateAppointment: IUpdateAppointment) => {
   router.get('/appointments', (request, response) => {
     db.query(`
       SELECT
