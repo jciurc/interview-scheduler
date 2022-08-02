@@ -1,12 +1,11 @@
 import * as express from 'express';
 import { Client } from 'pg';
 const router = express.Router();
-import { IUpdateAppointment } from '../';
 
 const appointmentsRoutes = (db: Client, updateAppointment: IUpdateAppointment) => {
   router.get('/appointments', (request, response) => {
     db.query(`
-      SELECT
+    SELECT
         appointments.id,
         appointments.time,
         CASE WHEN interviews.id IS NULL
@@ -17,7 +16,7 @@ const appointmentsRoutes = (db: Client, updateAppointment: IUpdateAppointment) =
       LEFT JOIN interviews ON interviews.appointment_id = appointments.id
       GROUP BY appointments.id, interviews.id, interviews.student, interviews.interviewer_id
       ORDER BY appointments.id
-    `
+      `
     ).then(({ rows: appointments }) => {
       response.json(appointments.reduce((previous, current) => (
         { ...previous, [current.id]: current }

@@ -41,19 +41,19 @@ Use hotkey `ctrl + c` in respective terminal
 
 ### Dashboard (Dark) 
 
-<img alt="Screenshot of Scheduler's Dashboard" src="docs/06-darkmode.gif?raw=true" name="Dashboard"></img>
+<img alt="Screenshot of Scheduler's Dashboard" src="_docs/06-darkmode.gif?raw=true" name="Dashboard"></img>
 
 ### Create or Update Appointments 
 
-<img alt="Screenshot of Scheduler's Edit Page" src="docs/02-create.png?raw=true" name="Create or Update Appointments" width="1000"></img>
+<img alt="Screenshot of Scheduler's Edit Page" src="_docs/02-create.png?raw=true" name="Create or Update Appointments" width="1000"></img>
 
 ### Cancel Appointment
 
-<img alt="Screenshot of Delete Confirmation" src="docs/03-confirm.png?raw=true" name="Cancel Appointment" width="1000"></img>
+<img alt="Screenshot of Delete Confirmation" src="_docs/03-confirm.png?raw=true" name="Cancel Appointment" width="1000"></img>
 
 ### Mobile View
 
-<img alt="Screenshot of Mobile View" src="docs/04-mobile.png?raw=true" name="Mobile View" width="600"></img>
+<img alt="Screenshot of Mobile View" src="_docs/04-mobile.png?raw=true" name="Mobile View" width="600"></img>
 
 ---
 

@@ -1,8 +1,4 @@
-import * as fs from 'fs';
 import * as path from 'path';
-
-type IRead = (file: string) => Promise<string>;
-export type IUpdateAppointment = (id: number, interview: string) => void;
 
 // = get env variables =
 const ENV = process.env.NODE_ENV || 'development';
@@ -18,41 +14,28 @@ import * as WebSocket1 from 'ws';
 import * as cors from 'cors';
 import helmet from 'helmet';
 import db from './db';
+import { read } from './helpers';
 
 // = routes =
 import days from './routes/days';
 import appointments from './routes/appointments';
 import interviewers from './routes/interviewers';
 
-// = functions =
-const read: IRead = (file) => {
-  return new Promise((resolve, reject) => {
-    fs.readFile(file, { encoding: 'utf-8' }, (error, data) => {
-      if (error) return reject(error);
-      resolve(data);
-    });
-  });
-};
-
-const updateAppointment: IUpdateAppointment = (id, interview) => {
-  wss.clients.forEach(function eachClient(client) {
-    if (client.readyState === WebSocket1.OPEN) {
-      client.send(
-        JSON.stringify({
-          type: 'SET_INTERVIEW',
-          id,
-          interview
-        }));
-    };
-  });
-};
-
-
 // = server config =
 const PORT = process.env.PORT || 8001;
 const app: Express = express();
 const server = new http.Server(app);
-const wss = new WebSocket1.Server({ server });
+export const wss = new WebSocket1.Server({ server });
+
+// helpers
+const updateAppointment: IUpdateAppointment = (id, interview) => {
+  wss.clients.forEach(function eachClient(client) {
+    if (client.readyState === WebSocket1.OPEN) {
+      client.send(JSON.stringify({ type: 'SET_INTERVIEW', id, interview }));
+    };
+  });
+};
+
 
 app.use(cors());
 app.use(helmet());
@@ -92,6 +75,6 @@ wss.on('connection', socket => {
   };
 });
 
-server.listen(PORT, () => {
+const httpServer = server.listen(PORT, () => {
   console.log(`⚡️[server]: Server is running at http://localhost:${PORT} in ${ENV} mode.`);
 });
