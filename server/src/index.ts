@@ -14,7 +14,7 @@ import * as WebSocket1 from 'ws';
 import * as cors from 'cors';
 import helmet from 'helmet';
 import db from './db';
-import socketServer from './socket';
+import * as socketServer from './socketServer';
 import { read } from './helpers';
 
 // = routes =
