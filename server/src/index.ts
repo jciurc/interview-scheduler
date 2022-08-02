@@ -8,12 +8,13 @@ dotenv.config({ path: PATH });
 
 // = modules =
 import * as express from 'express';
-import { Express } from 'express';
+import { Express } from 'express'; // type
 import * as http from 'http';
 import * as WebSocket1 from 'ws';
 import * as cors from 'cors';
 import helmet from 'helmet';
 import db from './db';
+import socketServer from './socket';
 import { read } from './helpers';
 
 // = routes =
@@ -74,6 +75,8 @@ wss.on('connection', socket => {
   };
 });
 
-const httpServer = server.listen(PORT, () => {
+const httpServer: http.Server = server.listen(PORT, () => {
   console.log(`⚡️[server]: Server is running at http://localhost:${PORT} in ${ENV} mode.`);
 });
+
+const io = socketServer.listen(httpServer);
