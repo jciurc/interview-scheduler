@@ -1,6 +1,6 @@
 import * as path from 'path';
 
-// = get env variables =
+// = set env variables =
 const ENV = process.env.NODE_ENV || 'development';
 const PATH = path.resolve(__dirname, `../.env.${ENV}.local`);
 import * as dotenv from 'dotenv';
@@ -21,7 +21,7 @@ import days from './routes/days';
 import appointments from './routes/appointments';
 import interviewers from './routes/interviewers';
 
-// = helpers =
+// = functions =
 const updateAppointment: IUpdateAppointment = (id, interview) => {
   wss.clients.forEach(function eachClient(client) {
     if (client.readyState === WebSocket1.OPEN) {
@@ -38,7 +38,7 @@ export const wss = new WebSocket1.Server({ server });
 
 app.use(cors());
 app.use(helmet());
-app.use(express.json())
+app.use(express.json());
 
 app.use('/api', days(db));
 app.use('/api', appointments(db, updateAppointment));
