@@ -1,9 +1,6 @@
-import * as http from 'http';
-import { Server } from 'socket.io';
+import { Server } from 'http'; // types
+import * as socketio from 'socket.io';
 
-const listen = (httpServer: http.Server) => {
-  const io = new Server(httpServer);
-  return io;
-};
+const listen = (httpServer: Server) => new socketio.Server(httpServer);
 
 export default { listen };
