@@ -1,120 +1,116 @@
-# Interview Scheduler API
+## About
 
-## Setup
+Interview Scheduler is a single page App built in JS and React.
+It simulates a web portal that allows students to view and book appointments with instructors.  
+<sub>disclaimer - this project was built for educational purposes only as part of the curriculum at [Lighthouse Labs](https://github.com/lighthouse-labs) - Web Dev Bootcamp</sub> 
 
-Install dependencies with `npm install`.
+## Features
 
-## Creating The DB
+* `View and Book Appointments`
+* `Update or Cancel Appointments`
+* `Mobile and Desktop View`
+* `Dark & Light Mode`
+* `Automated Testing`
 
-Use the `psql -U development` command to login to the PostgreSQL server with the username `development` and the password `development`. This command **MUST** be run in a vagrant terminal, we are using the PostgreSQL installation provided in the vagrant environment.
+## Usage
 
-Create a database with the command `CREATE DATABASE scheduler_development;`.
+**Download or Clone the Project** \
+* `git clone git@github.com:symphony/interview-scheduler.git && cd interview-scheduler`
 
-Copy the `.env.example` file to `.env.development` and fill in the necessary PostgreSQL configuration. The `node-postgres` library uses these environment variables by default.
+**Set up Server API** (Cloned from: [@lighthouse-labs/scheduler-api](https://github.com/lighthouse-labs/scheduler-api)) 
+* `cd server`
+* `cp .env.development.example .env.development` (file is already configured with default values)
+* `cp .env.test.example .env.test`
+* `npm i`
+* `npm start`
 
+Once running, `curl` or visit [`http://localhost:8001/api/debug/reset`](http://localhost:8001/api/debug/reset) to reseed the db. \
+Visit Lighthouse Labs repo above for more information.
 
-## Seeding
+**Set up Client in Separate Terminal** \
+* `cd client`
+* `cp .env.development.example .env.development`
+* `npm i`
+* `npm start`
 
-Run a the development server with `npm start` in the Host environment. We are only using vagrant for `psql` this week.
+**Visit Scheduler in Your Browser** \
+* [`http://localhost:8000`](http://localhost:8000) 
 
-Both of these achieve the same result.
+**Stop the Server or Client** \
+* Use hotkey `ctrl + c` in respective terminal
 
-- Make a `GET` request to `/api/debug/reset` with `curl http://localhost:8001/api/debug/reset`.
-- Use the browser to navigate to `http://localhost:8001/api/debug/reset`.
+### Dashboard (Dark) 
 
-The `development` data is random. Each time we seed we expect to see different appointments.
+<img alt="Screenshot of Scheduler's Dashboard" src="_docs/06-darkmode.gif?raw=true" name="Dashboard"></img>
 
-## Run The Server
+### Create or Update Appointments 
 
-Running the server normally
-```sh
-npm start
-```
+<img alt="Screenshot of Scheduler's Edit Page" src="_docs/02-create.png?raw=true" name="Create or Update Appointments" width="1000"></img>
 
-Running the server so it returns an error when saving/deleting for testing the client's error handling capabilities
-```sh
-npm run error
-```
+### Cancel Appointment
 
-## Api
+<img alt="Screenshot of Delete Confirmation" src="_docs/03-confirm.png?raw=true" name="Cancel Appointment" width="1000"></img>
 
-### Days
+### Mobile View
 
-`GET /api/days`
+<img alt="Screenshot of Mobile View" src="_docs/04-mobile.png?raw=true" name="Mobile View" width="600"></img>
 
-Response
+---
 
-```json
-[
-  {
-    "id": 1,
-    "name": "Monday",
-    "appointments": [1, 2],
-    "interviewers": [1, 2],
-    "spots": 0
-  }
-]
-```
+## Running Tests (Ensure Scheduler API and PSQL db are running)
 
-### Appointments
+* `npm test` for Jest tests
+* `npm run storybook` and visit [`http://localhost:9009`](http://localhost:9009)
 
-`GET /api/appointments`
+## Running Cypress Tests
 
-Response:
+**Restart Scheduler API in test environment** \ 
+* `NODE_ENV=test npm start`
+* `npm run cypress`
 
-```json
-{
-  "1": {
-    "id": 1,
-    "time": "12pm",
-    "interview": {
-      "student": "Lydia Miller-Jones",
-      "interviewer": 1
-    }
-  },
-  "2": {
-    "id": 2,
-    "time": "1pm",
-    "interview": {
-      "student": "Archie Cohen",
-      "interviewer": 2
-    }
-  }
-}
-```
+## Dependencies
 
-`PUT /api/appointments/:id`
+- react
+- react-dom
+- react-scripts
+- typescript
+- axios
+- normalize.css
 
-Body:
+## Dev Dependencies
 
-```json
-{
-  "interview": {
-    "student": String,
-    "interviewer": Number
-  }
-}
-```
+- @storybook/addon-actions
+- @storybook/addon-backgrounds
+- @storybook/addon-links
+- @storybook/addons
+- @storybook/react
+- @testing-library/jest-dom
+- @testing-library/react
+- @testing-library/react-hooks
+- @types/node
+- @types/react
+- @types/react-dom
+- babel-plugin-named-exports-order
+- cypress
+- sass
+- webpack
 
-`DELETE /api/appointments/:id`
+## Server Dependencies
+- body-parser
+- cors
+- dotenv
+- express
+- helmet
+- pg
+- socket.io
+- ws
+- jest
+- supertest
 
-### Interviewers
-
-`GET /api/interviewers`
-
-Response:
-
-```json
-{
-  "1": {
-    "id": 1,
-    "name": "Sylvia Palmer",
-    "avatar": "https://i.imgur.com/LpaY82x.png"
-  },
-  "2": {
-    "id": 2,
-    "name": "Tori Malcolm",
-    "avatar": "https://i.imgur.com/Nmx0Qxo.png"
-  }
-}
-```
+## Troubleshooting
+- The API database data can be reset by visiting `http://localhost:8001/api/debug/reset` \
+    or by running `npm run reset`
+- The Scheduler API can intentionally reject requests by running it with `npm run error`
+- A test environment for the Scheduler API can be run with `NODE_ENV=test npm start` - this is used for Cypress E2E testing
+- [Cypress](https://docs.cypress.io/guides/guides/command-line) may need an external server to be running (such as X-Server on WSL Machines)
+- More instructions for Scheduler API can be found here: https://github.com/lighthouse-labs/scheduler-api
