@@ -15,7 +15,7 @@ It simulates a web portal that allows students to view and book appointments wit
 ## Usage
 
 **Download or Clone the Project** \
-`git clone git@github.com:symphony/interview-scheduler.git && cd interview-scheduler`
+* `git clone git@github.com:symphony/interview-scheduler.git && cd interview-scheduler`
 
 **Set up Server API** (Cloned from: [@lighthouse-labs/scheduler-api](https://github.com/lighthouse-labs/scheduler-api)) 
 * `cd server`
@@ -24,20 +24,20 @@ It simulates a web portal that allows students to view and book appointments wit
 * `npm i`
 * `npm start`
 
-Once running, `curl` or visit `http://localhost:8001/api/debug/reset` to reseed the db. \
+Once running, `curl` or visit [`http://localhost:8001/api/debug/reset`](http://localhost:8001/api/debug/reset) to reseed the db. \
 Visit Lighthouse Labs repo above for more information.
 
-**Set up Client in Separate Terminal** 
+**Set up Client in Separate Terminal** \
 * `cd client`
 * `cp .env.development.example .env.development`
 * `npm i`
 * `npm start`
 
 **Visit Scheduler in Your Browser** \
-`http://localhost:8000`  
+* [`http://localhost:8000`](http://localhost:8000) 
 
 **Stop the Server or Client** \
-Use hotkey `ctrl + c` in respective terminal
+* Use hotkey `ctrl + c` in respective terminal
 
 ### Dashboard (Dark) 
 
@@ -60,11 +60,12 @@ Use hotkey `ctrl + c` in respective terminal
 ## Running Tests (Ensure Scheduler API and PSQL db are running)
 
 * `npm test` for Jest tests
-* `npm run storybook` and visit http://localhost:9009
+* `npm run storybook` and visit [`http://localhost:9009`](http://localhost:9009)
 
 ## Running Cypress Tests
 
-* Restart Scheduler API in test environment with `NODE_ENV=test npm start`
+**Restart Scheduler API in test environment** \ 
+* `NODE_ENV=test npm start`
 * `npm run cypress`
 
 ## Dependencies
@@ -107,8 +108,9 @@ Use hotkey `ctrl + c` in respective terminal
 - supertest
 
 ## Troubleshooting
-- The API database data can be reset by visiting `http://localhost:8001/api/debug/reset` or `running npm run reset`
+- The API database data can be reset by visiting `http://localhost:8001/api/debug/reset` \
+    or by running `npm run reset`
 - The Scheduler API can intentionally reject requests by running it with `npm run error`
 - A test environment for the Scheduler API can be run with `NODE_ENV=test npm start` - this is used for Cypress E2E testing
-- Cypress may need an external server to be running (such as X-Server on WSL Machines)
+- [Cypress](https://docs.cypress.io/guides/guides/command-line) may need an external server to be running (such as X-Server on WSL Machines)
 - More instructions for Scheduler API can be found here: https://github.com/lighthouse-labs/scheduler-api
